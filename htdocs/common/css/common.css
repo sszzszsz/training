@@ -1,0 +1,260 @@
+/*	
+------------------------------*/
+body {
+  font-family: "Yu Gothic", 游ゴシック, YuGothic, 游ゴシック体, "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", メイリオ, sans-serif;
+  font-weight: 500;
+  background: #fffefc;
+}
+.ttlLv1 {
+  width: 100%;
+  min-width: 1000px;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 4px double #555555;
+  padding-bottom: 20px;
+}
+.wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 30px auto;
+}
+.wrapper .content {
+  margin-top: 50px;
+}
+.wrapper .content h2,
+.ttlLv2 {
+  font-size: 16px;
+  font-weight: bold;
+  max-width: 1000px;
+  width: 100%;
+  margin: 40px auto 30px;
+  border-left: 3px solid #561e00;
+  padding-left: 8px;
+  color: #561e00;
+  line-height: 1.2;
+}
+.wrapper a {
+  color: #ff6613;
+}
+.wrapper .linkList {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.wrapper .linkList li {
+  width: 80%;
+  padding: 0 10px;
+  border: 1px solid #d2d2d2;
+  margin: 10px 0 0;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+.wrapper .linkList li:hover {
+  background: #eee;
+}
+.wrapper .linkList li a {
+  display: block;
+  padding: 10px;
+}
+.wrapper .linkList li a::hover {
+  text-decoration: underline;
+}
+.wrapper .linkList li a::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 10px;
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent #ff601c;
+}
+.filterList {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+.filterList li {
+  position: relative;
+  flex-grow: 1;
+  border-bottom: 1px solid;
+  padding: 10px;
+  border: 1px dotted;
+  background: #ff9d74;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filterList li:hover {
+  opacity: 0.7;
+}
+.filterList li:not(:last-child) {
+  border-right: none;
+}
+.filterList li::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 8px 0 8px;
+  border-color: #fff transparent transparent transparent;
+}
+/*-- txtList --*/
+.txtList>li {
+  padding-left: 1em;
+  text-indent: -1em;
+}
+.txtList>li::before {
+  content: "\0030fb"/* &middot; */
+}
+.memoBox {
+  border: 1px solid #561e00;
+  margin: 40px auto;
+  padding: 20px;
+}
+.txtList>li+li {
+  margin-top: 0.5em;
+}
+#gfooter {
+  position: relative;
+}
+.topPage {
+  display: none;
+  position: relative;
+  bottom: -72px;
+  z-index: 100;
+}
+.topPage.topFix {
+  bottom: 0;
+  position: fixed;
+  right: 7%;
+}
+.topPage a {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ff6613;
+  bottom: 40px;
+  right: 7%;
+  margin: auto;
+  vertical-align: middle;
+}
+.topPage a:hover {
+  background: #f3a275;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.topPage a::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  vertical-align: middle;
+  position: absolute;
+  top: 16px;
+  right: 13px;
+}
+.btnTOP {
+  max-width: 1000px;
+  margin: 30px auto 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+.btnTOP a {
+  display: inline-block;
+  padding: 6px 24px;
+  border: 1px solid #ff6613;
+  color: #ff6613;
+  background: #fff;
+  transition: background 0.2s ease;
+}
+.btnTOP a:hover {
+  background: #eee;
+}
+.btnTOP a::before {
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+.btnTOP a span {
+  padding-right: 5px;
+}
+::selection {
+  background: #000;
+  color: #fff;
+}
+//Firefox
+::-moz-selection {
+  background: #000;
+  color: #fff;
+}
+.content .memo {
+  margin-top: 30px;
+  display: flex;
+}
+.content .memo dd, .content dl.memo dt {
+  vertical-align: top;
+  flex-wrap: wrap;
+}
+.content .memo dt {
+  flex-basis: 200px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.content .memo dd {
+  flex-basis: auto;
+  width: auto;
+}
+.content pre, .content code {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.content pre {
+  background: #eeeeee;
+  padding: 0 10px;
+  margin-bottom: 50px;
+  overflow-x: scroll;
+  text-align: left;
+}
+.txtlink:hover {
+  text-decoration: underline;
+}
+/*--- sp --*/
+@media screen and (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .wrapper .linkList li {
+    width: 100%;
+  }
+  .ttlLv1,
+  .wrapper h1 {
+    min-width: 0;
+    font-size: 18px;
+  }
+  .wrapper .content h2,
+  .ttlLv2 {
+    width: 100%;
+  }
+  .filterList li {
+    padding: 10px 15px;
+  }
+  .filterList li::after {
+    right: 5px;
+    border-width: 10px 5px 0 5px;
+  }
+}
