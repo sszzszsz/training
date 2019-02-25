@@ -1,0 +1,133 @@
+@charset "utf-8";
+$breakPoint: 768px;
+
+/*------------------------------
+slick
+------------------------------*/
+
+#slick {
+  img {
+    width: 100%;
+    height: auto;
+  }
+  div {
+    margin-top: 0;
+  }
+  .sample1, .sample2 {
+    margin-top: 50px;
+  }
+  .sample1 .slick-prev, .sample2 .slick-prev {
+    left: 10px;
+    z-index: 10;
+  }
+  .sample1 .slick-next {
+    right: 10px;
+  }
+  .sample2 {
+    .slick-next {
+      right: 10px;
+    }
+    .slick-prev:before, .slick-next:before {
+      color: #6d6d6d;
+    }
+  }
+  .sample3 {
+    .slick-initialized .slick-slide {
+      text-align: center;
+    }
+    img {
+      width: 95%;
+      display: inline-block;
+    }
+  }
+  .sample4 {
+    .slider-container {
+      position: relative;
+      display: none;
+    }
+    .initialized{
+      display: block;
+    }
+    .slider-nav-container {
+      text-align: center;
+      position: relative;
+      width: 80%;
+      margin: 0 auto;
+      img{
+        width: 96%;
+        display: inline-block;
+      }
+      .slick-prev:before, .slick-next:before{
+        color: #616161;
+      }
+    }
+  }
+}
+.sample5 {
+  .slider-container {
+    overflow: hidden;
+  }
+  .slick-slide {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+.sample6 {
+  .slider-container {
+    overflow: hidden;
+    position: relative;
+  }
+  .slick-slide {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .slick-dots{
+    li{
+      &.slick-active{
+        button:before {
+          color: #0027ff;  
+        }
+      }
+      button:before {
+        
+      }
+      &:hover{
+        button:before {
+          color: #cc0000;
+        }
+      }
+    }
+  }
+}
+.sample7{
+  .slider-container {
+    overflow: hidden;
+    position: relative;
+  }
+  .slick-slide {
+    .slidInr{
+      display: block;
+      position: relative;
+      img {
+        width: 100%;
+        height: auto;
+      }
+      .slidTxt{
+        position: absolute;
+        bottom: 30px;
+        right: 50px;
+        width: 200px;
+        height: 200px;
+        padding: 30px;
+        background: #909090;
+        opacity: 0.7;
+        border-radius: 50%;
+        color: #fff;
+      }
+    }
+  }
+}

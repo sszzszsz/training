@@ -1,0 +1,72 @@
+@charset "utf-8";
+$breakPoint: 768px;
+/*------------------------------
+Chart
+------------------------------*/
+
+.wrapper .graphArea {
+  margin-top: 35px;
+  padding-bottom: 90px;
+  text-align: center;
+}
+
+.graphArea .chart-container {
+  display: inline-block;
+  vertical-align: middle;
+  width: 700px;
+}
+
+.wrapper {
+  .graphArea div {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+    .ariaList {
+      display: inline-block;
+      li {
+        margin-bottom: 7px;
+        text-align: left;
+        &::before {
+          background: #000000;
+          content: '';
+          display: inline-block;
+          height: 29px;
+          margin-right: 1em;
+          vertical-align: middle;
+          width: 31px;
+        }
+        p {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        &.aria01::before {
+          background: #e11113;
+        }
+        &.aria02::before {
+          background: #3b7ab1;
+        }
+        &.aria03::before {
+          background: #f4c340;
+        }
+        &.aria04::before {
+          background: #a2519a;
+        }
+        &.aria05::before {
+          background: #12b285;
+        }
+        &.aria06::before {
+          background: #eb5e23;
+        }
+        &.aria07::before {
+          background: #6d6db2;
+        }
+        &.aria08::before {
+          background: #57a8de;
+        }
+        &.aria09::before {
+          background: #66b72e;
+        }
+      }
+    }
+  }
+}

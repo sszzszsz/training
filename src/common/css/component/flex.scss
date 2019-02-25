@@ -1,0 +1,279 @@
+@charset "utf-8";
+$breakPoint: 768px;
+/*------------------------------
+flex
+------------------------------*/
+#flex {
+  .wrapper {
+    .content {
+      h2 {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      margin-top: 50px;
+    }
+
+    div {
+      margin-top: 30px;
+    }
+    
+    a {
+      color: #ff6613;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    div ul {
+      border: 1px solid #eeeeee;
+      display: flex;
+      margin-top: 10px;
+      padding: 10px;
+    }
+  }
+}
+.flexArea {
+  border: 1px solid #eeeeee;
+  display: flex;
+  margin-top: 10px;
+
+  li {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    background: #545454;
+    color: #fff;
+    border: 1px solid #dedede;
+  }
+}
+
+#ex02 .flexArea {
+  flex-direction: row-reverse;
+}
+
+#ex03 .flexArea {
+  flex-direction: column;
+}
+
+#ex04 .flexArea {
+  flex-direction: column-reverse;
+}
+
+#ex05 .flexArea {
+  flex-wrap: nowrap;
+}
+
+#ex06 .flexArea {
+  flex-wrap: wrap;
+}
+
+#ex07 .flexArea {
+  flex-wrap: wrap-reverse;
+}
+
+#ex08 .flexArea {
+  justify-content: flex-start;
+}
+
+#ex09 .flexArea {
+  justify-content: flex-end;
+}
+
+#ex10 .flexArea {
+  justify-content: center;
+}
+
+#ex11 .flexArea {
+  justify-content: space-around;
+}
+
+#ex12 .flexArea {
+  align-items: stretch;
+  height: 200px;
+  li{
+    height: auto;
+  }
+}
+
+#ex13 .flexArea {
+  align-items: flex-start;
+  height: 200px;
+}
+
+#ex14 .flexArea {
+  align-items: flex-end;
+  height: 200px;
+}
+
+#ex15 .flexArea {
+  align-items: center;
+  height: 200px;
+}
+
+#ex16 .flexArea {
+  align-content: stretch;
+  flex-wrap: wrap;
+  height: 500px;
+}
+
+#ex17 .flexArea {
+  align-content: flex-start;
+  flex-wrap: wrap;
+  height: 500px;
+}
+
+#ex18 .flexArea {
+  align-content: flex-end;
+  flex-wrap: wrap;
+  height: 500px;
+}
+
+#ex19 .flexArea {
+  align-content: center;
+  flex-wrap: wrap;
+  height: 500px;
+}
+
+#ex20 .flexArea {
+  align-content: space-between;
+  flex-wrap: wrap;
+  height: 500px;
+}
+
+#ex21 .flexArea {
+  align-content: space-around;
+  flex-wrap: wrap;
+  height: 500px;
+}
+
+#ex22 .flexArea {
+  .flexItem01 {
+    order: 3;
+  }
+  .flexItem02 {
+    order: 6;
+  }
+  .flexItem03 {
+    order: 1;
+  }
+  .flexItem04 {
+    order: 4;
+  }
+  .flexItem05 {
+    order: 2;
+  }
+  .flexItem06 {
+    order: 5;
+  }
+}
+
+#ex23 .flexArea li {
+  flex-basis: 25%;
+}
+
+#ex24 .flexArea li {
+  border: 1px solid #dedede;
+  flex-basis: 300px;
+  &:nth-child(1) {
+    flex-shrink: 2;
+  }
+  &:nth-child(2) {
+    flex-shrink: 3;
+  }
+}
+
+#ex25 .flexArea li {
+  border: 1px solid #dedede;
+  flex-basis: 100px;
+  &:nth-child(1) {
+    flex-grow: 2;
+  }
+  &:nth-child(2) {
+    flex-grow: 3;
+  }
+}
+
+#ex26 .flexArea {
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+}
+
+#ex27 .flexArea {
+  position: relative;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  li {
+    position: absolute;
+  }
+}
+#ex28 .flexArea {
+  justify-content: space-between;
+}
+#ex29 .flexArea {
+  display: inline-flex;
+}
+#ex30 .flexArea {
+  li:first-child{
+    height: 100px;
+    align-self: auto;
+  }
+  li:nth-child(2){
+    align-self: stretch;
+  }
+  li:nth-child(3){
+    height: 100px;
+    align-self: flex-start;
+  }
+  li:nth-child(4){
+    height: 100px;
+    align-self: flex-end;
+  }
+  li:nth-child(5){
+    height: 100px;
+    align-self: center;
+  }
+  li:nth-child(6){
+    height: 100px;
+    align-self: baseline;
+  }
+}
+
+/*--- sp ---*/
+
+@media screen and (max-width: $breakPoint) {
+  .flexArea {
+    li {
+      border: 1px solid #dedede;
+      img {
+        border: none;
+        width: 100%;
+        height: auto;
+      }
+      span{
+        bottom: 10px;
+      }
+    }
+  }
+  #ex08 .flexArea, #ex09 .flexArea, #ex10 .flexArea,
+  #ex11 .flexArea, #ex28 .flexArea {
+    li {
+      width: 20%;
+    }
+  }
+  #ex12 .flexArea, #ex13 .flexArea, #ex14 .flexArea, 
+  #ex15 .flexArea, #ex16 .flexArea, #ex17 .flexArea,
+  #ex18 .flexArea, #ex19 .flexArea, #ex20 .flexArea,
+  #ex21 .flexArea {
+    height: 300px;
+    li {
+      width: 20%;
+      height: 100px;
+    }
+  }
+  #ex22 .flexArea li {
+    height: auto;
+  }
+}

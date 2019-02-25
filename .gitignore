@@ -1,0 +1,11 @@
+# "#" で始まる行はコメント
+# (例)exe ファイルは要らない
+# (例)*.exe
+# (例)bin フォルダは要らない
+# (例)bin/
+/node_modules/
+/htdocs/pwa/
+# (例)nuget.exe は必用なファイル
+# (例)!/.nuget/nuget.exe
+# (例) パッケージフォルダ内の .ts ファイルは要らない
+# (例)package/**/*.ts
