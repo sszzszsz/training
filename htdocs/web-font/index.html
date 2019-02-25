@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta property="og:url" content=""><!-- 絶対パスでページのURLを記述 ※index.htmlはトリ-->
+  <meta property="og:type" content="website"><!-- topはwebsite、その他はarticle -->
+  <meta property="og:title" content=""><!-- titleと同じものを記述 -->
+  <meta property="og:site_name" content=""><!-- 全ページ同じものを記述 （例）○○株式会社 など -->
+  <meta property="og:description" content=""><!-- descriptionと同じものを記述 -->
+  <meta property="og:image" content=""><!-- 絶対パスで記述、かつ全ページ共通で記述 -->
+  <meta property="og:locale" content="ja_JP"><!-- 日本語ならja_JP、英語ならen_US -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple_touch_icon.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+  <link rel="stylesheet" href="../common/css/base.css">
+  <link rel="stylesheet" href="../common/css/common.css">
+  <link rel="stylesheet" href="../common/css/parts.css">
+  <script src="../common/lib/syntaxHighlighter/scripts/shCore.js"></script>
+  <script src="../common/lib/syntaxHighlighter/scripts/shBrushXml.js"></script>
+  <script src="../common/lib/syntaxHighlighter/scripts/shBrushCss.js"></script>
+  <link type="text/css" rel="stylesheet" href="../common/css/custom_syntaxHighlighter.css">
+  <script type="text/javascript">
+    SyntaxHighlighter.all();
+  </script>
+  <title>webフォントについて</title>
+</head>
+
+<body>
+  <h1 class="ttlLv1">webフォントについて</h1>
+  <section id="webFont" class="wrapper">
+    <div class="content">
+      <h2 class="ttlLv2">webフォントとは？</h2>
+      <blockquote>
+        <p>元来、Webブラウザは端末にインストールされているフォントを呼び出し文字を表示する。端末のフォント如何では、Webデザイナーが意図しないWeb表示がなされてしまい、またフォントに関するWebデザインに制約が生じてしまう。フォントを画像にして表示するという手はあったが、文章修正のメンテナンス、文章の検索といった点で問題がある。そこでWebサーバー上にフォントファイルを置き、Webデザイナーの意図するフォントを表示できるようにした技術がWebフォントである。</p>
+        <p>出典：wikipedia<br><a href="http://ja.wikipedia.org/wiki/Web%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88" target="_blank">http://ja.wikipedia.org/wiki/Web%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88</a></p>
+      </blockquote>
+      <p>つまり、PC上にないフォントでもwebサーバ上にあればどのPCで見ても同じフォントで見れるということらしい。（windowsとMacのフォント違いのせいでfont-familyに悩まなくて済むかもしれない。）</p>
+      <ul class="linkList">
+        <li><a href="http://www.hp-stylelink.com/news/2013/08/20130829.php#list05" target="_blank">実はすごく簡単！webフォントの使い方＆日本語対応webフォントまとめ</a></li>
+      </ul>
+
+      <dl class="mgt30">
+        <dt>基本的な埋め込み方法</dt>
+        <dd>
+          <ol>
+            <li>1.サイトからフォントをダウンロードしてくる。</li>
+            <li>2.適当なディレクトリに配置（今回は/practice/web-font/配下に格納）</li>
+            <li>3.CSSにファイルを読み込む<br>webフォントは大抵下記のファイル形式らしいので、ダウンロードしてきてどのファイル形式かを確認すること。
+              <pre class="brush: css;">
+                @font-face {
+                  font-family: 'フォント名';
+                  src: url('フォント名.eot');
+                  src: url('フォント名.eot?iefix') format('eot'),
+                  url('フォント名.woff') format('woff'),
+                  url('フォント名.ttf') format('truetype'),
+                  url('フォント名.svg#webfontjSpbZQRv') format('svg');
+                }
+              </pre>
+            </li>
+          </ol>
+        </dd>
+      </dl>
+
+      <section class="mgt50">
+        <h3 class="fwB">★Google Fontsを埋め込んでみる!</h3>
+        <p>Google Fontsはwebサーバ上に置く必要は基本的にない。<br>公式ページから使用したいフォントを探して、いろいろ選択していくと、Googleが勝手CSSを作ってくれる。<br>そのCSSをhead内で読み込んで、あとはstyleでfont-familyを指定すればオッケー</p>
+        <ul class="linkList">
+          <li><a href="https://fonts.google.com/?selection.family=Indie+Flower" target="_blank">Google Fonts</a></li>
+          <li><a href="https://saruwakakun.com/html-css/basic/google-fonts" target="_blank">【2018年版】Google Fontsの使い方：初心者向けに解説！</a></li>
+        </ul>
+        <div class="fontSample01">
+          <h3>Google font</h3>
+          <blockquote class="mgt10">I AM A CAT. As yet I have no name.<br>
+            I’ve no idea where I was born.<br>
+            All I remember is …</blockquote>
+        </div>
+      </section><!-- /section -->
+
+      <section>
+        <h3 class="fwB">★日本語のGoogle Fontsを埋め込んでみる</h3>
+        <p>[Noto Sans Japanese]の埋め込み</p>
+        <ul class="linkList">
+          <li><a href="https://www.google.com/get/noto/#sans-jpan" target="_blank">公式</a></li>
+        </ul>
+        <p class="mgt40">
+          @importもしくはhead内での読み込みを追記する。
+        </p>
+        <pre class="brush: html;">
+          @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+          <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+        </pre>
+
+        <p class="mgt20">CSSの中身は以下</p>
+        <pre class="brush: css;">
+/*
+* Noto Sans Japanese (japanese) http://www.google.com/fonts/earlyaccess
+ */
+@font-face {
+  font-family: 'Noto Sans Japanese';
+  font-style: normal;
+  font-weight: 100;
+  src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Thin.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Thin.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Thin.otf) format('opentype');
+}
+@font-face {
+  font-family: 'Noto Sans Japanese';
+  font-style: normal;
+  font-weight: 200;
+  src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Light.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Light.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Light.otf) format('opentype');
+}
+@font-face {
+   font-family: 'Noto Sans Japanese';
+   font-style: normal;
+   font-weight: 300;
+   src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.otf) format('opentype');
+}
+@font-face {
+   font-family: 'Noto Sans Japanese';
+   font-style: normal;
+   font-weight: 400;
+   src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Regular.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Regular.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Regular.otf) format('opentype');
+ }
+@font-face {
+   font-family: 'Noto Sans Japanese';
+   font-style: normal;
+   font-weight: 500;
+   src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.otf) format('opentype');
+ }
+@font-face {
+   font-family: 'Noto Sans Japanese';
+   font-style: normal;
+   font-weight: 700;
+   src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.otf) format('opentype');
+ }
+@font-face {
+   font-family: 'Noto Sans Japanese';
+   font-style: normal;
+   font-weight: 900;
+   src: url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.woff2) format('woff2'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.woff) format('woff'),
+        url(//fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.otf) format('opentype');
+ }
+        </pre>
+
+        <div class="fontSample04">
+          <h4 class="mgt20">font-weight: 100</h4>
+          <p class="fw100">
+            吾輩わがはいは猫である。名前はまだ無い。
+            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪どうあくな種族であったそうだ。
+          </p>
+
+          <h4 class="mgt20">font-weight: 200</h4>
+          <p class="fw200">
+            吾輩わがはいは猫である。名前はまだ無い。
+            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪どうあくな種族であったそうだ。
+          </p>
+
+          <h4 class="mgt20">font-weight: 300</h4>
+          <p class="fw300">
+            吾輩わがはいは猫である。名前はまだ無い。
+            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪どうあくな種族であったそうだ。
+          </p>
+
+          <h4 class="mgt20">font-weight: 400</h4>
+          <p class="fw400">
+            吾輩わがはいは猫である。名前はまだ無い。
+            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪どうあくな種族であったそうだ。
+          </p>
+
+          <h4 class="mgt20">font-weight: 500</h4>
+          <p class="fw500">
+            吾輩わがはいは猫である。名前はまだ無い。
+            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪どうあくな種族であったそうだ。
+          </p>
+
+          <h4 class="mgt20">font-weight: 700</h4>
+          <p class="fw700">
+            吾輩わがはいは猫である。名前はまだ無い。
+            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪どうあくな種族であったそうだ。
+          </p>
+
+          <h4 class="mgt20">font-weight: 900</h4>
+          <p class="fw900">
+            吾輩わがはいは猫である。名前はまだ無い。
+            どこで生れたかとんと見当けんとうがつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪どうあくな種族であったそうだ。
+          </p>
+        </div>
+        
+        <p class="mgt20">ちなみに容量は以下。さすがに全部読み込むのは重いので、普通のと太字のだけくらいがいいのかも</p>
+        <img src="./img/notosans.jpg" alt="">
+      </section><!-- /section -->
+
+      <section class="mgt50 webFontIcon">
+        <h3 class="fwB">★webフォントのアイコンを使ってみる</h3>
+        <p>今回はFont Awesome<br>Font AwesomeもGoogle Fontsもローカルやサーバーに置いておく必要が無いタイプで、head内に下記の読み込みを追加するだけで、670種類を超えるアイコンを使えるようになる！</p>
+
+        <dl class="mgt30">
+          <dt>埋め込み方法</dt>
+          <dd>
+            <ol>
+              <li>1.head内に下記の読み込みを追加
+                <pre class="brush: css;">
+                  &lt;link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"&gt;
+                </pre>
+              </li>
+
+              <li>2.使用したいアイコンを選ぶ<br>左側のFreeにチェックを入れるとフリーで使用できるものが絞り込まれる。
+                <ul class="linkList disBlo mgt10">
+                  <li class="pdt0">
+                    <a href="https://fontawesome.com/icons?from=io">Font Awesomeアイコン一覧</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="mgt30">3アイコンを表示する
+                <p>使用したいアイコンをクリックすると、各アイコンのページに遷移する。<br>ページ下部に埋め込むコードが表示されているので、これをコピペでhtmlに貼り付ければ完成！<br>デフォルトではiタグになっているが、別に何でもよい。ただ、Font Awesomeのcssでブロック要素のタグに突っ込んでも、全てdieplay:inline-blockになるので注意</p>
+                <p>埋め込んでみた</p>
+                <p><span class="fas fa-sun"></span>晴れ</p>
+                <p><span class="fas fa-cloud"></span>曇り</p>
+                <p><span class="fas fa-umbrella"></span>雨</p>
+                <p><span class="far fa-snowflake"></span>雪</p>
+              </li>
+              <li></li>
+            </ol>
+          </dd>
+        </dl>
+
+
+        <ul class="linkList disBlo mgt10">
+          <li class="pdt0">
+            <a href="https://allabout.co.jp/gm/gc/402551/">アイコンをWebフォントで表示！ Font Awesomeの使い方</a>
+          </li>
+        </ul>
+      </section><!-- /section -->
+    </div><!-- /content -->
+  </section>
+  <!--#include virtual="../common/inc/footer.html" -->
+</body>
+
+</html>

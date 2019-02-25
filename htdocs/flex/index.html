@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<title>flexboxについて</title>
+</head>
+
+<body>
+<h1 class="ttlLv1">flexboxについて</h1>
+<div id="flex" class="wrapper">
+<section class="content">
+<p>使用する場合、対象端末に要注意。Android4.4ではいまだに使用出来ない。</p>
+<p>display: flex;</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+</ul>
+<ul class="flexArea">
+<li>box03</li>
+<li>box04</li>
+</ul>
+
+<div id="ex29">
+<p class="mgt50">display: inline-flex;<br>display: flex;は、大枠の幅指定が無い限り横幅いっぱいになるが、inline-flexは大枠がinline-blockのように中身によって幅が決まる。<br>ただ子要素が親要素に収まりらなくなった場合、縮まない。</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+</ul>
+<ul class="flexArea">
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<h2>flex-direction flexboxアイテムの配置（縦/横）</h2>
+<div id="ex01">
+<h3 class="description">flex-direction: row;</h3>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex02" class="mgt50">
+<h3 class="description">flex-direction: row-reverse;</h3>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex03" class="mgt50">
+<h3 class="description">flex-direction: column;</h3>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex04" class="mgt50">
+<h3 class="description">flex-direction: column-reverse;</h3>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+</section>
+
+
+<section class="content">
+<h2>flex-wrap flexboxアイテムの折り返し</h2>
+<div id="ex05">
+<h3 class="description">flex-wrap: nowrap;</h3>
+<p>「flex-wrap」のデフォルト値: nowrapなので指定しない限り大枠に収まろうとする。</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+
+<div id="ex06" class="mgt50">
+<h3 class="description">flex-wrap: nowrap;</h3>
+<p>余白は保ったまま、収まりきらなくなった場合、カラム落ちする。</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+
+<div id="ex07" class="mgt50">
+<h3 class="description">flex-wrap: wrap-reverse;</h3>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+</section>
+
+<section class="content">
+<h2>justify-content コンテナ内の水平方向の揃え方</h2>
+<div id="ex08">
+<h3 class="description">justify-content: flex-start;</h3>
+<p>大枠内で子のコンテンツが左寄せになる。<br>text-align: left;とのちがいは中身のテキストは左寄せにはならない</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex09" class="mgt50">
+<h3 class="description">justify-content: flex-start;</h3>
+<p>大枠内で子のコンテンツが右寄せになる。<br>text-align: right; ととのちがいは中身のテキストは右寄せにならない</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex10" class="mgt50">
+<h3 class="description">justify-content: center;</h3>
+<p>大枠内で子のコンテンツが中央寄せになる。<br>text-align: center;との違いは中身のテキストは中央寄せにはならない</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex11" class="mgt50">
+<h3 class="description">justify-content: space-around;</h3>
+<p>大枠内の余白が等間隔になる。</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex28" class="mgt50">
+<h3 class="description">justify-content: space-between;</h3>
+<p>大枠内の子のコンテンツとの余白は計算せず、子のコンテンツで余白を等間隔に割り振る</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+</section>
+
+<section class="content">
+<h2>align-items コンテナ内の垂直方向の揃え方</h2>
+<div id="ex12">
+<h3 class="description">align-items: stretch;</h3>
+<p>子要素のheightに関係する。指定しないとデフォルトで大枠の高さに勝手に揃う。<br> なので、親に高さ指定があり、子に高さ指定がないと子要素がのびる。（hright: auto; みたいなイメージ）</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex13" class="mgt50">
+<h3 class="description">align-items: flex-start;</h3>
+<p>親の左上に子がそろう</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex14" class="mgt50">
+<h3 class="description">align-items: flex-end;</h3>
+<p>親の左下に子がそろう</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+
+<div id="ex15" class="mgt50">
+<h3 class="description">align-items: center;</h3>
+<p>親の高さの中央に子がそろう</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+</ul>
+</div>
+</section>
+
+<section class="content">
+<h2>align-content コンテナ内の行の揃え方</h2>
+<div id="ex16">
+<h3 class="description">align-content: stretch;</h3>
+<p>これがデフォルト値。デフォルトだと改行しないので、「flex-wrap: wrap;」を指定している。<br>「align-content」は何も指定しないと、親要素の高さが子要素より大きいとき、左上を基点に余白を子要素の行に対して均等に割り振る設定になっている。</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+
+<div id="ex17" class="mgt50">
+<h3 class="description">align-content: flex-start;</h3>
+<p>デフォルトだと改行しないので、「flex-wrap: wrap;」を指定している。<br> 「align-items: flex-start;」との違いは子要素が改行などして2行以上になった時の行同士の余白の調整は「align-content」になる。</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+
+<div id="ex18" class="mgt50">
+<h3 class="description">align-content: flex-end;</h3>
+<p>デフォルトだと改行しないので、「flex-wrap: wrap;」を指定している。<br> 「align-items: flex-end;」だけ指定すると二行目は親要素の左下に揃うが、行同士の余白は等間隔に保たれる。</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+
+<div id="ex19" class="mgt50">
+<h3 class="description">align-content: center;</h3>
+<p>デフォルトだと改行しないので、「flex-wrap: wrap;」を指定している。<br>「align-content: stretch;」との違いは行同士の余白は潰されて、親要素に対して天地中央余寄せになる。</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+
+<div id="ex20" class="mgt50">
+<h3 class="description">align-content: space-between;</h3>
+<p>デフォルトだと改行しないので、「flex-wrap: wrap;」を指定している。<br> 子要素の行は親要素の始点から終点に等間隔で表示される。
+</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+
+<div id="ex21" class="mgt50">
+<h3 class="description">align-content: space-around;</h3>
+<p>デフォルトだと改行しないので、「flex-wrap: wrap;」を指定している。<br> 子要素の全ての行の周りに等間隔で表示される。
+</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+</section>
+
+<section class="content">
+<h2>order 子要素の順番を入れ替える</h2>
+<div id="ex22">
+<p>ソース上では1～6の順だが、それぞれに「order」を指定しているので表示上は順番を入れ替えることが出来る</p>
+<ul class="flexArea">
+<li class="flexItem01">box01</li>
+<li class="flexItem02">box02</li>
+<li class="flexItem03">box03</li>
+<li class="flexItem04">box04</li>
+<li class="flexItem05">box05</li>
+<li class="flexItem06">box06</li>
+</ul>
+</div>
+</section>
+
+<section class="content">
+<h2>flex 子要素のアイテムの幅についてまとめて指定</h2>
+<p>flex-growプロパティ・ flex-shrinkプロパティ・ flex-basisプロパティ の値を、flexプロパティ一つでまとめて指定できる</p>
+<div id="ex23">
+<h3 class="description">flex-basisプロパティ</h3>
+<p>子要素の基本幅を指定する際に使用する。必ず指定した幅で表示されるわけではなく、他の指定との兼ね合いでフレックスコンテナ内におさまるように自動調整される。</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+
+<div id="ex24" class="mgt50">
+<h3 class="description">flex-shrinkプロパティ</h3>
+<p>フレックスコンテナ内のアイテムの縮み方の比率を指定する。<br>例えば、4つの要素にそれぞれ幅50%を指定すると全部で幅200%となるが、 フレックスボックスでは親要素内に子要素が収まるように、各アイテムが縮められて自動調整される。 flex-shrinkプロパティは、この際の各アイテムの縮み方の比率を、相対的に正の数値で指定する。</p>
+<p>下の例だと、「box1」は何もしていない時より二倍縮み、「box2」は何もしていない時より三倍縮む（ということらしい）</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+</div>
+
+<div id="ex25" class="mgt50">
+<h3 class="description">flex-growプロパティ</h3>
+<p>フレックスコンテナ内のアイテムの伸び方の比率を指定する。<br>親要素の横幅に対して、子要素の横幅の合計が短くて余白がある場合、 flex-growプロパティの指定に応じた比率で子要素が自動的に伸ばされて余白が埋めらる。 </p>
+<p>下の例だと、「box1」は何もしていない時より二倍伸び、「box2」は何もしていない時より三倍伸びる（ということらしい）</p>
+<ul class="flexArea">
+<li>box01</li>
+<li>box02</li>
+<li>box03</li>
+<li>box04</li>
+<li>box05</li>
+<li>box06</li>
+</ul>
+<ul class="linkList">
+<li>
+<a href="https://parashuto.com/rriver/development/how-flex-item-width-is-calculated" target="_blank">Flexboxを使うなら知っておきたい「flexアイテム」の幅の計算方法</a>
+</li>
+</ul>
+</div>
+</section>
+
+<section class="content">
+<h2>align-self子要素のFlexアイテム同士の個々の位置を調整する</h2>
+<div id="ex30" class="mgt50">
+<ul class="flexArea">
+<li>align-self: auto;</li>
+<li>align-self: stretch;</li>
+<li>align-self: flex-start;</li>
+<li>align-self: flex-end;</li>
+<li>align-self: center;</li>
+<li>align-self: baseline;</li>
+</ul>
+</div>
+</section>
+
+<section class="content">
+<div id="ex26" class="mgt50">
+<h2 class="description">flex-box で天地中央揃え</h2>
+<p>「justify-content: center;」で左右真ん中。「justify-content: center;」で天地中央。</p>
+<ul class="flexArea">
+<li>box01</li>
+</ul>
+</div>
+<div id="ex27" class="mgt50">
+<p>中身がabsoluteでも外枠に高さがあれば天地中央に設置することが可能!</p>
+<ul class="flexArea">
+<li>box01</li>
+</ul>
+</div>
+<!--#include virtual="../common/inc/footer.html" -->
+</section>
+</div><!-- /wrapper -->
+</body>
+
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<script type="text/javascript" src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<link type="text/css" rel="stylesheet" href="../common/lib/syntaxhighlighter/styles/shCoreDefault.css">
+<link type="text/css" rel="stylesheet" href="../common/css/custom_syntaxhighlighter.css">
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<title>Chart.jsについて</title>
+</head>
+<body>
+<h1 class="ttlLv1">Chart.jsについて</h1>
+<section class="wrapper">
+<div class="content">
+<h2>Chart.jsとは</h2>
+<p>いろんなグラフをカッコよくしてくれるプラグイン。<br></p>
+<ul class="linkList">
+<li><a href="https://misc.0o0o.org/chartjs-doc-ja/" target="_blank">Chart.js</a></li>
+<li><a href="https://misc.0o0o.org/chartjs-doc-ja/getting-started/usage.html" target="_blank">埋め込み方法</a></li>
+</ul> 
+
+<div class="graphArea">
+<p>ドーナツグラフの実装。必要なデータを入力すればそれなりに動かすことは可能。だたし、カスタマイズするとなると結構めんどくさい（印象）。</p>
+<div class="chart-container">
+<canvas id="myChart"></canvas>
+</div>
+</div>
+
+<p class="mgt20">円グラフの基本的な挙動。下記、動いてる仕組み</p>
+<pre class="brush: js;">
+var ctx = document.getElementById("myChart").getContext('2d'); 
+var myChart = new Chart(ctx, { 
+  type: 'pie',
+  data: { 
+    labels: ["M", "T", "W", "T", "F", "S", "S"],
+    datasets: [
+      { 
+        backgroundColor: [
+        "#2ecc71",
+        "#3498db",
+        "#95a5a6",
+        "#9b59b6",
+        "#f1c40f",
+        "#e74c3c",
+        "#34495e"
+        ], 
+        data: [12, 19, 3, 17, 28, 24, 7] 
+      }
+    ]
+  }
+});
+</pre>
+
+<dl class="memo">
+<dt>type</dt>
+<dd>これで棒グラフとか折れ線グラフとか円グラフとかの設定ができる</dd>
+</dl>
+<dl class="memo">
+<dt>date</dt>
+<dd>この中に表のラベルや数値などを入力していく。</dd>
+</dl>
+<dl class="memo">
+<dt>date＞labels</dt>
+<dd>多分凡例のとこと、グラフにホバーした時にでる文字の設定(？)円グラフだと設定してもよくわからない</dd>
+</dl>
+<dl class="memo">
+<dt>date＞datasets</dt>
+<dd>グラフの色や数値を具体的に設定。円グラフで設定できるdatasetsプロパティは<a href="https://misc.0o0o.org/chartjs-doc-ja/charts/doughnut.html" target="_blank">こちら</a></dd>
+</dl>
+
+
+<div class="graphArea">
+<p class="alL mgt20">基本的に上記だけ設定すれば動くはず。カスタマイズしたのは下記参照。</p>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d'); 
+var myChart = new Chart(ctx, { 
+  type: 'pie',
+  data: { 
+    labels: ["M", "T", "W", "T", "F", "S", "S"],
+    datasets: [
+      { 
+        label: '得票数',
+        backgroundColor: [ "#2ecc71", "#3498db", "#95a5a6", "#9b59b6", "#f1c40f", "#e74c3c","#34495e" ], 
+        data: [12, 19, 3, 17, 28, 24, 7] 
+      }
+    ]
+  }
+});
+</script>
+
+<div class="chart-container">
+<canvas id="donutChart"></canvas>
+</div>
+<div id="chartLabel">
+<ul class="ariaList">
+<li class="aria01"><p>NY</p></li>
+<li class="aria02"><p>パリ</p></li>
+<li class="aria03"><p>エジプト</p></li>
+<li class="aria04"><p>ブラジル</p></li>
+<li class="aria05"><p>マチュピチュ</p></li>
+<li class="aria06"><p>タイ</p></li>
+<li class="aria07"><p>モルディブ</p></li>
+<li class="aria08"><p>チベット</p></li>
+<li class="aria09"><p>その他</p></li>
+</ul>
+</div>
+</div><!-- /graphArea -->
+
+<pre class="brush: js;">
+  chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["NY", "パリ", "エジプト", "ブラジル", "マチュピチュ", "タイ", "モルディブ", "チベット", "その他"],
+      datasets: [{
+        backgroundColor: [
+          "#e11113",
+          "#3b7ab1",
+          "#f4c340",
+          "#a2519a",
+          "#12b285",
+          "#eb5e23",
+          "#6d6db2",
+          "#57a8de",
+          "#66b72e"
+        ],
+        data: [12, 19, 3, 17, 14, 14, 12, 12, 7]
+      }]
+    },
+    options: {
+      tooltips: {
+        enabled: true,
+        mode: 'label',
+        backgroundColor: 'black',
+        caretSize: 5,
+        callbacks: {
+          title: function(tooltipItem, data) {
+            return data.labels[tooltipItem[0].index];
+          },
+          label: function(tooltipItem, data) {
+            return "ここに何か書けるよ!<br>何も設定しないとグラフの数値が表示されます";
+          }
+        } //callbacks;
+      }, //tooltips;
+      cutoutPercentage: 50,
+      legend: {
+        display: false
+      }
+    }
+  });
+</pre>
+
+<dl class="memo">
+<dt>options</dt>
+<dd>この中で基本的にカスタマイズしていく。</dd>
+</dl>
+<dl class="memo">
+<dt>options＞tooltips</dt>
+<dd>グラフにホバーした時に表示される吹き出し的なものの設定。テキストを挿入するオプションはあるが、<br>「コレだけこうしたい！」みたいなのが設定できるらしい
+<ul class="linkList mgt0">
+<li class="w100P">
+<a href="https://misc.0o0o.org/chartjs-doc-ja/configuration/tooltip.html" target="_blank">ツールチップ設定</a>
+</li>
+</ul>
+</dd>
+</dl>
+
+<dl class="memo">
+<dt>options＞cutoutPercentage</dt>
+<dd>ドーナツグラフの真ん中の空き具合を調整</dd>
+</dl>
+<dl class="memo">
+<dt>options＞legend</dt>
+<dd><p>上の表でいうグラフ上部の「凡例」の設定。上下左右に設定するoption的なものはあるのに、左右に配置ができないらしい</p>
+<ul class="linkList mgt0">
+<li class="w100P">
+<a href="https://qiita.com/0x50/items/3e5fd118342187296524" target="_blank">Chart.jsでLegendをチャートの横に配置する方法</a>
+</li>
+</ul>
+<p>参照みたいに出来なかったので上記はHTMLを直書きしてスタイルをあてている。</p></dd>
+</dl>
+<dl class="memo">
+
+<dt>options＞maintainAspectRatio</dt>
+<dd>縦横比を保つ（true）か保たない（false）の設定。保ったままだとSP表示の時にグラフが以上に小さくなる。<br>
+また、PC表示で保たないとすると今度はPCの時に小さくなりすぎるので、if文で分岐するように設定。（下記参照）
+<ul class="linkList mgt0">
+<li class="w100P">
+<a href="https://beiznotes.org/pie-chart-shrinks-in-small-window-on-chart-js/" target="_blank">Chart.jsのパイチャートがスマホ画面で潰れてしまうのを防ぐ方法！</a>
+</li>
+<li class="w100P">
+<a href="https://obel.hatenablog.jp/entry/20160626/1466937585" target="_blank">Chart.js でレスポンシブ指定をするとサイズが自由に変更できなくなる</a>
+</li>
+</ul>
+</dd>
+</dl>
+
+<pre class="brush: js;">
+  if (window.matchMedia('screen and (min-width:750px)').matches) {
+    //750px以上のデスクトップでの処理
+    chart = new Chart(ctx, {
+      options: {
+        maintainAspectRatio: true
+      }
+    });
+  } else {
+    //スクリーンサイズが750pxより小さい時の処理
+    chart = new Chart(ctx, {
+      options: {
+        maintainAspectRatio: false
+      }
+    });
+  }
+</pre>
+
+<p>グラフが表示領域に入ったらアニメーションさせたい<br>（これが面倒で結局こうなる）</p>
+
+<pre class="brush: js;">
+  var donutChart = document.getElementById("donutChart");
+    var chartFlag1 = false;
+    var chart1Func = function() {
+      var ctx = donutChart.getContext('2d')
+      if (window.matchMedia('screen and (min-width:750px)').matches) {
+        //750px以上のデスクトップでの処理
+        chart = new Chart(ctx, {
+          options: {
+            maintainAspectRatio: true
+          }
+        });
+      } else {
+        //スクリーンサイズが750pxより小さい時の処理
+        chart = new Chart(ctx, {
+          options: {
+            maintainAspectRatio: false
+          }
+        });
+      }
+      chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ["NY", "パリ", "エジプト", "ブラジル", "マチュピチュ", "タイ", "モルディブ", "チベット", "その他"],
+          datasets: [{
+            backgroundColor: [
+              "#e11113",
+              "#3b7ab1",
+              "#f4c340",
+              "#a2519a",
+              "#12b285",
+              "#eb5e23",
+              "#6d6db2",
+              "#57a8de",
+              "#66b72e"
+            ],
+            data: [12, 19, 3, 17, 14, 14, 12, 12, 7]
+          }]
+        },
+        options: {
+          tooltips: {
+            enabled: true,
+            mode: 'label',
+            backgroundColor: 'black',
+            caretSize: 5,
+            callbacks: {
+              title: function(tooltipItem, data) {
+                return data.labels[tooltipItem[0].index];
+              },
+              label: function(tooltipItem, data) {
+                return "ここに何か書けるよ!何も設定しないとグラフの数値が表示されます";
+              }
+            } //callbacks;
+          }, //tooltips;
+          cutoutPercentage: 50,
+          legend: {
+            display: false
+          }
+        }
+      });
+    };
+    // スクロール処理
+    var pieGraphAnim = function() {
+      var wy = window.pageYOffset,
+        wb = wy + screen.height - 300,
+        chartElPos1 = wy + donutChart.getBoundingClientRect().top;
+  
+      if (wb > chartElPos1 && chartFlag1 == false) {
+        chart1Func();
+        chartFlag1 = true;
+      }
+    };
+    window.addEventListener('load', pieGraphAnim);
+    window.addEventListener('scroll', pieGraphAnim);
+</pre>
+
+</div>
+</div>
+<!--#include virtual="../common/inc/footer.html" -->
+</section>
+</body>
+
+<script>
+var donutChart = document.getElementById("donutChart");
+  var chartFlag1 = false;
+  var chart1Func = function() {
+    var ctx = donutChart.getContext('2d')
+    if (window.matchMedia('screen and (min-width:750px)').matches) {
+      //750px以上のデスクトップでの処理
+      chart = new Chart(ctx, {
+        options: {
+          maintainAspectRatio: true
+        }
+      });
+    } else {
+      //スクリーンサイズが750pxより小さい時の処理
+      chart = new Chart(ctx, {
+        options: {
+          maintainAspectRatio: false
+        }
+      });
+    }
+    chart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ["NY", "パリ", "エジプト", "ブラジル", "マチュピチュ", "タイ", "モルディブ", "チベット", "その他"],
+        datasets: [{
+          backgroundColor: [
+            "#e11113",
+            "#3b7ab1",
+            "#f4c340",
+            "#a2519a",
+            "#12b285",
+            "#eb5e23",
+            "#6d6db2",
+            "#57a8de",
+            "#66b72e"
+          ],
+          data: [12, 19, 3, 17, 14, 14, 12, 12, 7]
+        }]
+      },
+      options: {
+        tooltips: {
+          enabled: true,
+          mode: 'label',
+          backgroundColor: 'black',
+          caretSize: 5,
+          callbacks: {
+            title: function(tooltipItem, data) {
+              return data.labels[tooltipItem[0].index];
+            },
+            label: function(tooltipItem, data) {
+              return "ここに何か書けるよ!何も設定しないとグラフの数値が表示されます";
+            }
+          } //callbacks;
+        }, //tooltips;
+        cutoutPercentage: 50,
+        legend: {
+          display: false
+        }
+      }
+    });
+  };
+  // スクロール処理
+  var pieGraphAnim = function() {
+    var wy = window.pageYOffset,
+      wb = wy + screen.height - 300,
+      chartElPos1 = wy + donutChart.getBoundingClientRect().top;
+
+    if (wb > chartElPos1 && chartFlag1 == false) {
+      chart1Func();
+      chartFlag1 = true;
+    }
+  };
+  window.addEventListener('load', pieGraphAnim);
+  window.addEventListener('scroll', pieGraphAnim);
+</script>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<script type="text/javascript" src="../common/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<link type="text/css" rel="stylesheet" href="../common/lib/syntaxhighlighter/styles/shCoreDefault.css">
+<link type="text/css" rel="stylesheet" href="../common/css/custom_syntaxhighlighter.css">
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<title>syntaxhighlighter</title>
+</head>
+
+<body>
+<h1 class="ttlLv1">syntax high lighterの使い方</h1>
+<section class="wrapper" id="syntax">
+<div class="content">
+<h2 class="ttlLv2">syntax high lighterとは？</h2>
+<p>簡単に言うとhtml上にソースコードをカッコよく表示してくれるプラグイン<br>今までソースをHTMLで表示させててなんかカッコ悪いなと思って調べてみた。</p>
+<ul class="linkList">
+<li><a href="http://alexgorbatchev.com/SyntaxHighlighter/" target="_blank">オフィシャルサイト</a></li>
+<li><a href="http://web.archive.org/web/20161023131816/http://alexgorbatchev.com:80/SyntaxHighlighter/download/" target="_blank">オフィシャルサイト ダウンロード先</a></li>
+</ul>
+
+<dl class="mgt30">
+<dt><h2 class="ttlLv2">埋め込み方法</h2></dt>
+<dd>
+<ol>
+<li>1.ダウンロードしてくると何やらたくさん落ちてくるが、ひとまず「script」配下と「style」配下を使う。</li>
+<li>2.適当なディレクトリに上記の2ファイル配下を配置</li>
+<li>3.一緒にダウンロードされてきた「index.html」のhead内の記述をコピペしてパスを直す。<br>「index.html」にあったソースもコピペすると下記のように表示される。
+<pre class="brush: js;">
+function helloSyntaxHighlighter()
+{
+	return "hi!";
+}
+</pre>
+</li>
+</ol>
+</dd>
+</dl>
+
+<h2 class="ttlLv2">「script」配下と「style」配下</h2>
+<dl>
+<dt>「script」配下</dt>
+<dd>「shBrush******.js」のファイルは、それぞれの言語に対応したスクリプト（htmlとかcssとかjsとかphpとかいろいろ）</dd>
+<dt class="mgt20">「style」配下</dt>
+<dd>「shCore.css」は、ハイライトさせるためのコアの処理をする CSSファイルのため、装飾の情報は持っていない</dd>
+<dd>「shTheme******.css」のファイルは、それぞれのテーマに合った装飾（背景や行番号などの色）を設定しているファイル</dd>
+<dd>基本「shCore.css」と「shTheme******.css」をセットで使うが、あらかじめセットになっているのが「shCore******.css」</dd>
+</dl>
+<ul class="linkList">
+<li><a href="http://alexgorbatchev.com/SyntaxHighlighter/manual/themes/" target="_blank">オフィシャルサイト 各テーマ</a></li>
+</ul>
+
+<h2 class="ttlLv2" class="mgt50">お試し</h2>
+<ul>
+<li>
+<p>1.HTMLを表示させてみる。<br>HTMLを表示させるときはpreタグに「class="brush: html;"」をつける</p>
+<pre class="brush: html;">
+	<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shCore.js"></script>
+	<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+	<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+</pre>
+</li>
+<li class="mgt30">
+<p>2.CSSを表示させてみる。<br>CSSを表示させるときはpreタグに「class="brush: css;"」をつける</p>
+<pre class="brush: css;">
+.wrapper .linkList {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.wrapper .linkList li {
+  width: 80%;
+  padding: 0 10px;
+  border: 1px solid #d2d2d2;
+  margin: 10px 0 0;
+  text-align: left;
+}
+.wrapper .linkList li:hover {
+  background: #eee;
+}
+.wrapper .linkList li a {
+  display: block;
+  padding: 10px;
+}
+.wrapper .linkList li a::hover {
+  text-decoration: underline;
+}
+.wrapper .linkList li a::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 10px;
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent #ff601c;
+}
+</pre>
+</li>
+<li class="mgt30">
+<p>3.JSを表示させてみる。<br>JSを表示させるときはpreタグに「class="brush: js;"」をつける</p>
+<pre class="brush: js;">
+function helloSyntaxHighlighter()
+{
+	return "hi!";
+}
+</pre>
+</li>
+</ul>
+<p class="mgt30">基本的にはこれでつかえる！</p>
+
+<h2 class="ttlLv2" class="mgt50">カスタマイズ</h2>
+
+
+<p class="mgt50">参考にしたサイト</p>
+<ul class="linkList mgt0">
+<li><a href="http://www.netyasun.com/syntaxhighlighter/" target="_blank">行番号や各行背景色で見やすい ソースコード ビュー ライブラリ　SyntaxHighlighter</a></li>
+<li><a href="https://blog.s-giken.net/231.html" target="_blank">SyntaxHighlighterの設定、カスタマイズ方法を解説。</a></li>
+</ul>
+<!--#include virtual="../common/inc/footer.html" -->
+</div>
+</section>
+</body>
+</html>
+

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="../common/css/base.css">
+  <link rel="stylesheet" href="../common/css/common.css">
+  <link rel="stylesheet" href="../common/css/parts.css">
+  <script type="text/javascript" src="../common/js/jquery-3.3.1.min.js"></script>
+  <script src="js/Chart.min.js"></script>
+  <script type="text/javascript" src="../common/js/common.js"></script>
+  <script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shCore.js"></script>
+  <script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+  <script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+  <script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+  <link type="text/css" rel="stylesheet" href="../common/lib/syntaxhighlighter/styles/shCoreDefault.css">
+  <link type="text/css" rel="stylesheet" href="../common/css/custom_syntaxhighlighter.css">
+  <script type="text/javascript">
+    SyntaxHighlighter.all();
+  </script>
+  <title>Chart.jsについて</title>
+</head>
+
+<body>
+  <h1 class="ttlLv1">Chart.jsについて</h1>
+  <section class="wrapper">
+    <section class="content">
+      <h2>折れ線グラフ（1本版）</h2>
+      <div class="graphArea">
+        <canvas id="lineGraph"></canvas>
+      </div>
+      <pre class="brush: js;">
+  //折れ線グラフ
+  var lineCtx = document.getElementById("lineGraph").getContext('2d');
+  var gradientBrown = lineCtx.createLinearGradient(0, 0, 0, 500);
+  gradientBrown.addColorStop(0, 'rgba(138, 88, 61, 0.7)');
+  gradientBrown.addColorStop(1, 'rgba(255, 232, 222, 0.7)');
+  var dataLabels = [
+    ["土", "12/1"],
+    ["日", "12/2"],
+    ["月", "12/3"],
+    ["火", "12/4"],
+    ["水", "12/5"],
+    ["木", "12/6"],
+    ["金", "12/7"],
+    ["土", "12/8"],
+    ["日", "12/9"],
+    ["月", "12/10"],
+    ["火", "12/11"],
+    ["水", "12/12"],
+    ["木", "12/13"],
+    ["金", "12/14"]
+  ];
+  var dataNum = [50, 26, 120, 43, 33, 210, 29, 100, 80, 140, 40, 32, 88, 250]
+  var lineGraph = new Chart(lineCtx, {
+    type: 'line',
+    data: {
+      labels: dataLabels,
+      datasets: [{
+        label: "",
+        borderColor: 'rgba(86, 30, 0, 0.7)',
+        backgroundColor: gradientBrown,
+        lineTension: 0,
+        fill: true,
+        data: dataNum
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      tooltips: {
+        callbacks: {
+          labelColor: function(tooltipItem, chart) {
+            return {
+              borderColor: 'rgba(86, 30, 0, 0.7)',
+              backgroundColor: 'rgba(86, 30, 0, 0.7)'
+            }
+          }
+        }
+      }
+    }
+  });
+</pre>
+      <dl class="memo">
+        <dt>type（24行目）</dt>
+        <dd>折れ線グラフの場合は"line"を指定</dd>
+      </dl>
+      <dl class="memo">
+        <dt>gradientBrown（24行目）</dt>
+        <dd>グラフの背景色をグラデーションにする場合に指定。べた書きの場合は関係ない。<br>「.createLinearGradient」メソッドはchart.js用の指定方法ではなく、HTML5でcanvasタグでグラデーションするとき共通の指定方法<br>ちなみに指定は「RGB(A)」で指定しないとエラーになる。<a href="http://www.html5.jp/canvas/ref/method/createLinearGradient.html" target="_blank">＞createLinearGradient()
+            メソッド</a></dd>
+      </dl>
+      <dl class="memo">
+        <dt>date＞labels（6行目～20行目）</dt>
+        <dd>折れ線グラフだと、横軸のラベル。<br>改行させるには、配列の中をカンマでつなげば改行される。<br><a href="https://stackoverflow.com/questions/37090625/chartjs-new-lines-n-in-x-axis-labels-or-displaying-more-information-around-ch" target="_blank">＞参考：stack overflow</a></dd>
+      </dl>
+      <dl class="memo">
+        <dt>lineTension（31行目）</dt>
+        <dd>折れ線グラフの折れる角度を調整できる。0だと角ばって、数が増えるにつれて丸くなっていく。</dd>
+      </dl>
+      <dl class="memo">
+        <dt>fill（32行目）</dt>
+        <dd>折れ線グラフをただたの”線”とみるなら「ture」<br>線から下を”面”とみるなら「false」を指定する。<br>例のように折れ線グラフの下側の色をつけたいなら”面”としてみる必要があるので、背景色を使い時は「false」を指定すること。</dd>
+      </dl>
+      <dl class="memo">
+        <dt>tooltips（40行目～）</dt>
+        <dd>グラフ部分にホバーすると表示される吹き出しの設定。<br>この設定にはコールバックなどを使用する必要があり、設定が面倒。しかも特に指定してくるお客様やディレクターはいない。色味くらいは揃えてくようにする程度。</dd>
+      </dl>
+    </section>
+
+    <section class="content">
+      <h2>折れ線グラフ（複数版）</h2>
+      <div class="graphArea" style="position: relative; width:100%; height:110vh">
+        <canvas id="doubleGraph"></canvas>
+      </div>
+
+      <pre class="brush: js;">
+        //折れ線グラフ
+        var doubleCtx = document.getElementById("doubleGraph").getContext('2d');
+        var dataLabels1 = [
+          ["土", "12/1"],
+          ["日", "12/2"],
+          ["月", "12/3"],
+          ["火", "12/4"],
+          ["水", "12/5"],
+          ["木", "12/6"],
+          ["金", "12/7"],
+          ["土", "12/8"],
+          ["日", "12/9"],
+          ["月", "12/10"],
+          ["火", "12/11"],
+          ["水", "12/12"],
+          ["木", "12/13"],
+          ["金", "12/14"]
+        ];
+        var dataLabels2 = [
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+          ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"]
+        ];
+        var dataNum1 = [50, 260, 120, 430, 303, 210, 290, 100, 80, 140, 400, 302, 88, 250]
+        var dataNum2 = [5, 60, 100, 30, 30, 21, 9, 40, 78, 14, 54, 22, 10, 50]
+        var doubleCtx = new Chart(doubleCtx, {
+          type: 'line',
+          data: {
+            labels: dataLabels2,
+            datasets: [{
+              label: "",
+              borderWidth: 2,
+              borderDash: [5, 15],
+              borderColor: 'rgba(138, 88, 61, 0.7)',
+              lineTension: 0.2,
+              fill: false,
+              data: dataNum2
+            }, {
+              label: "",
+              borderColor: 'rgba(255, 102, 19, 0.7)',
+              lineTension: 0.2,
+              fill: false,
+              pointStyle: 'cross',
+              pointBorderWidth: 7,
+              data: dataNum1
+            }]
+          },
+          options: {
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  max: 500,
+                  stepSize: 50,
+                  callback: function(value, index, values) {
+                    return value + '回'
+                  }
+                }
+              }],
+              xAxes: [{
+                ticks: {
+                  maxRotation: 90,
+                  minRotation: 90
+                }
+              }]
+            }
+          }
+        });
+      </pre>
+      <p>グラフを複数設定する場合は、「datasets」をカンマでつないで書けばOK<br>上に書いてあるほうが重なり順は下になる。</p>
+      <p class="fwB mgt40">optionのscalesについて</p>
+      <dl class="memo">
+        <dt>yAxes</dt>
+        <dd>グラフのY軸の設定に関する記述を設定。<br>Y軸の最大値＝max<br>Y軸の最小値＝min<br>Y軸のっメモリの幅＝stepSize</dd>
+      </dl>
+      <dl class="memo">
+        <dt>xAxes</dt>
+        <dd>グラフのX軸の設定に関する記述を設定。Y軸のように最大・最小ではなく、ラベルの向きなどが設定できる。例のようにラベルの文言の角度を調整できるが、縦書きには現状できないらしい。（縦書きが存在するのは日本語のみなので…）<br>最大何度まで回転するか。＝maxRotation<br>最小何度まで回転するか。＝minRotation</dd>
+      </dl>
+      <p class="mgt30">ラベル部分が長すぎたり、大きすぎるとグラフ自体ががつぶれてしまうらしい。その辺の調整はうまくできないみたいなのでCSSで頑張るしか現状打開策は無いそう。</p>
+      <ul class="linkList mgt0">
+        <li class="w100P">
+          <a href="https://beiznotes.org/pie-chart-shrinks-in-small-window-on-chart-js/" target="_blank">Chart.jsのパイチャートがスマホ画面で潰れてしまうのを防ぐ方法！</a>
+        </li>
+        <li class="w100P">
+          <a href="https://obel.hatenablog.jp/entry/20160626/1466937585" target="_blank">Chart.js でレスポンシブ指定をするとサイズが自由に変更できなくなる</a>
+        </li>
+      </ul>
+    </section>
+    <!--#include virtual="../common/inc/footer.html" -->
+  </section>
+  </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  //折れ線グラフ
+  var lineCtx = document.getElementById("lineGraph").getContext('2d');
+  //グラデーション
+  var gradientBrown = lineCtx.createLinearGradient(0, 0, 0, 500);
+  gradientBrown.addColorStop(0, 'rgba(138, 88, 61, 0.7)');
+  gradientBrown.addColorStop(1, 'rgba(255, 232, 222, 0.7)');
+
+  var dataLabels1 = [
+    ["土", "12/1"],
+    ["日", "12/2"],
+    ["月", "12/3"],
+    ["火", "12/4"],
+    ["水", "12/5"],
+    ["木", "12/6"],
+    ["金", "12/7"],
+    ["土", "12/8"],
+    ["日", "12/9"],
+    ["月", "12/10"],
+    ["火", "12/11"],
+    ["水", "12/12"],
+    ["木", "12/13"],
+    ["金", "12/14"]
+  ];
+  var dataLabels2 = [
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"],
+    ["長いテキストが入ります。長いテキストが入ります。長いテキストが入ります。"]
+  ];
+  var dataNum1 = [50, 260, 120, 430, 303, 210, 290, 100, 80, 140, 400, 302, 88, 250]
+  var dataNum2 = [5, 60, 100, 30, 30, 21, 9, 40, 78, 14, 54, 22, 10, 50]
+
+  var lineGraph = new Chart(lineCtx, {
+    type: 'line',
+    data: {
+      labels: dataLabels1,
+      datasets: [{
+        label: "",
+        borderColor: 'rgba(86, 30, 0, 0.7)',
+        backgroundColor: gradientBrown,
+        lineTension: 0,
+        fill: true,
+        data: dataNum1
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      tooltips: {
+        callbacks: {
+          labelColor: function(tooltipItem, chart) {
+            return {
+              borderColor: 'rgba(86, 30, 0, 0.7)',
+              backgroundColor: 'rgba(86, 30, 0, 0.7)'
+            }
+          }
+        }
+      }
+    }
+  });
+
+  //折れ線グラフ
+  var doubleCtx = document.getElementById("doubleGraph").getContext('2d');
+  var doubleCtx = new Chart(doubleCtx, {
+    type: 'line',
+    data: {
+      labels: dataLabels2,
+      datasets: [{
+        label: "",
+        borderWidth: 2,
+        borderDash: [5, 15],
+        borderColor: 'rgba(138, 88, 61, 0.7)',
+        lineTension: 0.2,
+        fill: false,
+        data: dataNum2
+      }, {
+        label: "",
+        borderColor: 'rgba(255, 102, 19, 0.7)',
+        lineTension: 0.2,
+        fill: false,
+        pointStyle: 'cross',
+        pointBorderWidth: 7,
+        data: dataNum1
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            max: 500,
+            stepSize: 50,
+            callback: function(value, index, values) {
+              return value + '回'
+            }
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            maxRotation: 90,
+            minRotation: 90
+          }
+        }]
+      }
+    }
+  });
+</script>

@@ -1,0 +1,18 @@
+
+#app-2 input {
+  display: block;
+  border: 1px solid #ddd;
+  padding: 5px;
+  background: #fff;
+}
+#app-2 .error {
+  color: red;
+}
+#app-103 input[type="checkbox"] {
+  display: inline-block;
+  border: 1px solid #ddd;
+  padding: 5px;
+  background: #fff;
+  width: 10px;
+  height: 10px;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="../common/js/common.js"></script>
+<title>Gitの使い方</title>
+</head>
+
+<body>
+<h1 class="ttlLv1">Gitの使い方</h1>
+<section class="wrapper" id="git">
+<div class="content">
+<div class="section">
+<h2>コマンドの立ち上げ方</h2>
+<p>右クリック→「Git Bash」を選択するとコマンド画面が表示される</p>
+<img src="img/img01.jpg" alt="" class="mgt20">
+</div>
+<h3 class="mgt20">ログ整理の「git rebase」のコマンドについて説明</h3>
+<ul class="linkList mgt20">
+<li><a href="#reword">コメントの編集-reword-</a></li>
+<li><a href="#order">ログの順番の入れ替え</a></li>
+<li><a href="#fixup">ログの合体-fixup-</a></li>
+<li><a href="#miss">やらかした時</a></li>
+</ul>
+
+<div id="reword" class="section">
+<h2>コメントの編集-reword-</h2>
+<h3 class="step">1.コメントを編集したいログを確認</h3>
+<img src="img/img08.jpg" class="capture">
+
+<h3 class="step">2.コマンドラインを立ち上げ、一つ前のSHA番号をrebase -i で入力</h3>
+<img src="img/img09.jpg" class="capture">
+<p>表示させたログの中から変更したいログのひとつ前のSHAを確認、「git rebase -i 基点とするSHA-1」を実行<br>ログ全体を表示させるには「git rebase -i」<br>過去4つのログを表示させるには「git rebase -i HEAD~4」<br>リポジトリ作成直後の一番最初のコミットも含めて表示させるには「git rebase -i --root」<br>mergeのコミットログを表示させる場合は「git rebase -i -p」
+</p>
+
+<h3 class="step">3.下記画面が表示されるので、「i」を押下し編集モードにする</h3>
+<img src="img/img10.jpg" class="capture">
+
+<h3 class="step">4.編集したいコメントのあるコミットの「pick」を「reword」に変更</h3>
+<p>コメントもここで同様に書き換える</p>
+<p>＜例＞</p>
+<p>変更前：【電手でんさい】QAページの半角カタカナを数値参照・ご留意エリアの下マージン詰め</p>
+<p>変更後：【電手でんさい】1st_in2<br>QAページの半角カタカナを数値参照・ご留意エリアの下マージン詰め</p>
+<img src="img/img11.jpg" class="capture">
+
+<h3 class="step">5.修正し終えたら、Escキーを押して、編集モードを終了し、コマンドで「:wq!」を押しEnter</h3>
+<h3 class="step">6.ログが変更されていることを確認</h3>
+<img src="img/img12.jpg" class="capture">
+
+<h3 class="step">7.強制プッシュをする</h3>
+<p>右クリックから強制プッシュをする場合「把握してる変更」にチェックを入れてプッシュすると強制プッシュができる。</p>
+<img src="img/img07.jpg" class="capture">
+</div>
+
+<div id="order" class="section">
+<h2>ログの順番の入れ替え</h2>
+<h3 class="step">1.コメントを編集したいログを確認。</h3>
+<img src="img/img13.jpg" class="capture">
+<p>「画像追加」を「テスト１」の下に持っていきたいとする</p>
+
+<h3 class="step">2.コマンドで「git rebase -i」を使用しログを表示</h3>
+<img src="img/img14.jpg" class="capture">
+
+<h3 class="step">3．順番を入れ替えたいログをコピーし、変更したい箇所にペーストする。</h3>
+<p>変更前</p>
+<img src="img/img15.jpg" class="capture">
+<p>変更後</p>
+<img src="img/img16.jpg" class="capture">
+
+<h3 class="step">4.Escキーを押して、編集モードを終了し、コマンドで「:wq!」を押しEnter</h3>
+<h3 class="step">6.ログが変更されていることを確認</h3>
+<img src="img/img17.jpg" class="capture">
+
+<h3 class="step">7.強制プッシュをする</h3>
+<p>右クリックから強制プッシュをする場合「把握してる変更」にチェックを入れてプッシュすると強制プッシュができる。</p>
+<img src="img/img07.jpg" class="capture">
+</div>
+
+
+<div id="fixup" class="section">
+<h2>ログの合体-fixup-</h2>
+<h3 class="step">1.コメントを編集したいログを確認し、最新のコミットから何番目か数える。</h3>
+<img src="img/img02.jpg" class="capture">
+
+<h3 class="step">2.コマンドに"git rebase -i HEAD~5"を入力しEnterを押す</h3>
+
+<h3 class="step">3.下記画面が表示されたら、「i」を押して編集モードにする</h3>
+<img src="img/img03.jpg" class="capture">
+
+<h3 class="step">4.合体させたいコミットのpickをfixupに変更</h3>
+<p>コマンドラインでは古いものが一番上にくる。<br>fixupすると、コマンドライン上では上のコミット合体させるが、
+<br> 右クリから開いたログでは、下のコミットと合体される。<br>rebase後、画像の例ではログ上に『「ウェブマガジン」「季節のおすすめ」エリアを削除』のログが残るが、<br>ファイルは『「ウェブマガジン」「季節のおすすめ」エリアを削除』+「不要な修正」の内容となる。
+</p>
+<img src="img/img04.jpg">
+
+<h3 class="step">5.修正し終えたら、Escキーを押して、編集モードを終了し、コマンドで「:wq!」を押しEnter</h3>
+<p>ファイルの上書き保存は:wを入力<br> 次に、viエディタを終了するには:qを入力<br> 組み合わせて:wqや:wq!と入力することもできる。<br> :wq!でファイル書き込みをして強制終了するという意味になる。（ ! は強制指定）</p>
+<ul class="linkList mgt20 mgb20">
+<li><a href="https://www.granfairs.com/blog/staff/git-commit-fix" target="_blank">参考URL：Gitのコミットメッセージを後から変更する方法をわかりやすく書いてみた</a></li>
+</ul>
+<img src="img/img05.jpg" class="capture">
+
+<h3 class="step">6.ログが変更されていることを確認</h3>
+<img src="img/img06.jpg" class="capture">
+<p>変更後のログでは赤枠内の「不要な修正」のログが
+<br>『「ウェブマガジン」「季節のおすすめ」エリアを削除』に合体されてログから消える
+</p>
+
+<h3 class="step">7.強制プッシュをする</h3>
+<p>右クリックから強制プッシュをする場合「把握してる変更」にチェックを入れてプッシュすると強制プッシュができる。</p>
+<img src="img/img07.jpg" class="capture">
+</div>
+
+<div id="miss" class="section">
+<h2>やらかした時</h2>
+<h3 class="step">1.Reflogを確認する</h3>
+<img src="img/img18.jpg" class="capture">
+<p>右クリック→「TortoiseGit」→「Reflogを表示」でReflogを表示させ、戻したいログを確認する</p>
+<h3 class="step">2.戻したいログのHEAD@{数字}を確認し、コマンドで「git reset --hard HEAD@{数字}」を入力</h3>
+<h3 class="step">3.強制プッシュをする</h3>
+</div>
+<!--#include virtual="../common/inc/footer.html" -->
+</div><!-- /content -->
+</section>
+</body>
+
+</html>

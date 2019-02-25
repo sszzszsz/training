@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<script type="text/javascript" src="../common/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../common/js/common.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<link type="text/css" rel="stylesheet" href="../common/lib/syntaxhighlighter/styles/shCoreDefault.css">
+<link type="text/css" rel="stylesheet" href="../common/css/custom_syntaxhighlighter.css">
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<title>gulpfile.jsについて</title>
+</head>
+
+<body>
+<h1 class="ttlLv1">gulpfile.jsについて</h1>
+<div class="wrapper">
+<div class="content">
+<section>
+<p class="mgb20">※以下、参考程度にすること※</p>
+<h2 class="ttlLv2">ディレクトリ構造とpackage.json</h2>
+<p>基本的には「src」の中身をコンパイルなりなんなりして「htdocs」に吐き出す。という構成。必要によって書き換えてください。</p>
+<img src="img/img01.jpg" alt="">
+</section>
+
+<section>
+<h2 class="ttlLv2">gulpfile.js</h2>
+<pre class="brush: js;">
+  var gulp = require('gulp');
+  var sass = require('gulp-sass');
+  var plumber = require('gulp-plumber'); //強制停止を防止
+  var notify = require('gulp-notify'); //通知を表示
+  var connect = require('gulp-connect'); //ローカルサーバ立ち上げ
+  var browserSync = require('browser-sync'); //ブラウザシンク
+  var ssi = require('connect-ssi'); //ssi
+  
+  var csscomb = require('gulp-csscomb'); // css整形
+  var autoprefixer = require('gulp-autoprefixer'); // ベンダープレフィックス付与
+  var cache = require('gulp-cached');
+  var cssmin = require('gulp-clean-css'); // css圧縮
+  var jsmin = require('gulp-uglify'); // js圧縮
+  
+  var imagemin = require('gulp-imagemin'); // 画像圧縮
+  var pngquant = require('imagemin-pngquant'); // 圧縮率を高めるのにプラグインを入れる png
+  var mozjpeg = require('imagemin-mozjpeg'); // 圧縮率を高めるのにプラグインを入れる jpg
+  
+  // paths 
+  var paths = {
+    srcDir: 'src',
+    dstDir: 'htdocs'
+  }
+  var srcGlob = paths.srcDir; //開発環境
+  var dstGlob = paths.dstDir; //コンパイル先
+  
+  // css 
+  gulp.task('sass', function() {
+    gulp.src(paths.srcDir + '/**/*.scss')
+      .pipe(plumber({ // デスクトップに通知を出す
+        errorHandler: notify.onError('<%= error.message %>')
+      }))
+      .pipe(autoprefixer(['last 2 versions']))
+      // .pipe(autoprefixer({ grid: true }))
+      .pipe(csscomb())
+      .pipe(sass({
+        outputStyle: 'expanded'
+      }))
+      .pipe(cache())
+      .pipe(gulp.dest(dstGlob))
+  });
+  
+  //server 
+  gulp.task('connect', function() {
+    connect.server({
+      root: paths.dstDir, //ルートディレクトリ
+      livereload: true //ライブリロード
+    });
+  });
+  
+  // browserSync
+  gulp.task('browserSync', function() {
+    browserSync({
+      server: {
+        baseDir: "htdocs", // ルートとなるディレクトリを指定
+        middleware: [
+          ssi({
+            baseDir: dstGlob,
+            ext: '.html'
+          })
+        ]
+      }
+    });
+  });
+  
+  //reload
+  gulp.task('reload', function() {
+    gulp.src(paths.dstDir + '/**/*.css').pipe(connect.reload());
+    gulp.src(paths.dstDir + '/**/*.html').pipe(connect.reload());
+    browserSync.reload();
+  });
+  
+  //watchタスク
+  gulp.task('watch', function() {
+    gulp.watch(paths.srcDir + '/**/*.scss', ['sass']);
+    gulp.watch(dstGlob + '/**/*.*', ['reload']);
+    browserSync.reload();
+  });
+  
+  /// default ////////////////////////////////////////////
+  gulp.task('default', ['watch', 'browserSync']);
+  
+  
+  /// css comb ////////////////////////////////////////////
+  gulp.task('csscomb', function() {
+    gulp.src(['../scss/**/*.scss'])
+      .pipe(autoprefixer(
+        ['last 2 versions']
+      ))
+      .pipe(csscomb())
+      .pipe(gulp.dest('../css/'))
+  });
+  
+  /// css min ////////////////////////////////////////////
+  gulp.task("cssmin", function() {
+    var srcGlob = paths.srcDir + '/**/*.css';
+    var dstGlob = paths.dstDir;
+    gulp.src(srcGlob)
+      .pipe(cssmin())
+      .pipe(gulp.dest(dstGlob));
+  });
+  
+  /// js min ////////////////////////////////////////////
+  gulp.task("jsmin", function() {
+    var srcGlob = paths.srcDir + '/**/*.js';
+    var dstGlob = paths.dstDir;
+    gulp.src(srcGlob)
+      .pipe(jsmin())
+      .pipe(gulp.dest(dstGlob));
+  });
+  
+  /// imagemin ////////////////////////////////////////////
+  gulp.task('imagemin', function() {
+    var srcGlob = paths.srcDir + '/**/*.+(jpg|jpeg|png|gif)';
+    var dstGlob = paths.dstDir;
+    gulp.src(srcGlob)
+      .pipe(imagemin([
+        pngquant({
+          quality: '60-80',
+          speed: 1,
+          floyd: 0
+        }),
+        imagemin.jpegtran({
+          quality: 85,
+          progressive: true
+        })
+      ]))
+      .pipe(imagemin())
+      .pipe(gulp.dest(dstGlob))
+      .pipe(notify('images task finished'));
+  });
+</pre>
+<h2 class="ttlLv2">gulpfile.js</h2>
+<pre class="brush: js;">
+  
+</pre>
+<h2 class="ttlLv2">解説</h2>
+<p>gulpfile.jsの書き方</p>
+<p>1行目から16行目までは使用するパッケージの宣言。</p>
+<pre class="brush: js;">
+  // css 
+  gulp.task('sass', function() {
+    gulp.src(paths.srcDir + '/**/*.scss')
+      .pipe(plumber({ // デスクトップに通知を出す
+        errorHandler: notify.onError('<%= error.message %>')
+      }))
+      .pipe(autoprefixer(['last 2 versions']))
+      // .pipe(autoprefixer({ grid: true }))
+      .pipe(csscomb())
+      .pipe(sass({
+        outputStyle: 'expanded'
+      }))
+      .pipe(cache())
+      .pipe(gulp.dest(dstGlob))
+  });
+</pre>
+<p>上記、解説すると</p>
+<ul>
+<li><span class="fwB">■gulp.task('プラグイン名',function(){});</span><br>gulpを使って処理してほしいことを書きます。<br>ここではまず、sassをコンパイルするタスクをかきたいので、プラグイン名の部分を「sass」としました。</li>
+<li class="mgt10"><span class="fwB">■gulp.src('ディレクトリ名')</span><br>実行するファイルのパスを書きます。上記では、18行目から21行目でファイル全体のパスを宣言しています。</li>
+<li class="mgt10"><span class="fwB">■.pipe(プラグイン名())</span><br>処理の内容をかきます。.pipe(プラグイン名(詳細項目の設定))でどんどんつなげて書くことができますので、上記の「sass」のタスクでは6個の処理をつなげて設定しています。（各処理の内容は後述）</li>
+<li class="mgt10"><span class="fwB">■.pipe(gulp.dest('ディレクトリ名'))</span><br>処理の結果のファイルが吐き出さされるパスを指定しています。</li>
+</ul>
+<p>実行する際のコマンドはデフォルトの処理だけでよければ「npm run gulp」となります。<br>これで実行されるのはデフォルトに登録してあるタスクのみです。（74行目の内容が実行されます。）<br>デフォルト登録していないタスクを実行するには「npm run gulp ○○○○」とコマンド入力すれば実行されます。<br>上記の例でいえば、106行目以降の画像圧縮のタスクを実行したい場合、「npm run gulp imagemin」と入力すればsrcディレクトリ内の画像が、htdocs内に圧縮して吐き出される。ということ。</p>
+
+<p class="fwB mgt20">■gulp.watch()</p>
+<pre class="brush: js;">
+  //watchタスク
+  gulp.task('watch', function() {
+    gulp.watch(paths.srcDir + '/**/*.scss', ['sass']);
+    gulp.watch(dstGlob + '/**/*.*', ['reload']);
+    browserSync.reload();
+  });
+</pre>
+<p>変更され、保存されたときを監視することができるタスク。<br>書き方は「gulp.watch('変更されたら更新してほしいファイルのパス', ['タスク名'])」<br>例えば、一番上は開発環境の「src/」配下のscssが変更・保存されたら「gulp.task('sass', function() {}」に登録されている、「sass」のタスクを実行し、コンパイルされるという処理を行う。</p> 
+<p>その下の行は各ファイルが変更・保存されたら、ブラウザをリロードし、各ブラウザに変更内容を自動で表示させるための「reload」のタスクを実行する。という内容。</p>
+
+<p class="fwB mgt20">■gulp.task('default',[]);</p>
+<pre class="brush: js;">
+  /// default ////////////////////////////////////////////
+  gulp.task('default', ['watch','browserSync']);
+</pre>
+<p>デフォルトでどのようなタスクを処理するかを記載する。この場合[]の中身がデフォルトで実行される処理。<br>つまり「変更があるか監視」→「ローカルサーバをリロードして更新」→「各ブラウザを更新」という一連の流れがデフォルトで登録されている。ということ。</p>
+
+<h2 class="ttlLv2">各パッケージの説明</h2>
+<dl>
+<dt class="fwB">■gulp-sass</dt>
+<dd>sassやscssをコンパイルするパッケージ。コンパイル方法にはどのようにcssファイルを作成するか設定できる<br>（すべて一行にするとか、いつも見ているような改行・インデント付きでコンパイルする、など。）<br>
+<a href="https://qiita.com/39_isao/items/b5de3343b3289bceeb88" class="txtlink">＞gulp-sassのコンパイル後のcssをいつもの見た目にしたい</a>
+</dd>
+</dl>
+<dl class="mgt15">
+<dt class="fwB">■gulp-plumber</dt>
+<dd>watch中にエラーが発生するとwatch自体が停止してしまうため、これを防止するために使われています。<br>
+<a href="https://whiskers.nukos.kitchen/2014/12/06/gulp-notify.html" class="txtlink">＞gulp-plumberとgulp-notifyを使ったデスクトップ通知</a>
+</dd>
+</dl>
+<dl class="mgt15">
+<dt class="fwB">■gulp-connect</dt>
+<dd>ローカルサーバを立ち上げるパッケージ<br>
+<a href="https://whiskers.nukos.kitchen/2014/12/04/gulp-connect.html" target="_blank" class="txtlink">＞gulp-connectモジュールを使ったローカルサーバの起動</a></dd>
+</dl>
+<dl class="mgt15">
+<dt class="fwB">■browser-sync</dt>
+<dd>ファイル保存時に変更内容を自動で更新するためのパッケージ（めっちゃ便利）</dd>
+</dl>
+<dl class="mgt15">
+<dt class="fwB">■connect-ssi</dt>
+<dd>ただブラウザシンクのパッケージをインストールしてもssiが表示されないので、「connect-ssi」というパッケージでssiも表示できるようにしています。<br><a href="http://cly7796.net/wp/other/use-ssi-with-browser-sync/" target="_blank" class="txtlink">＞browser-syncでSSIを使う</a></dd>
+</dl>
+<dl class="mgt15">
+<dt class="fwB">■gulp-csscomb</dt>
+<dd>CSSの整形に使用。クラスをつなぐときの半スぺの有無など細かいCSSの書き方を一気に修正できる。<br>また、プロパティをアルファベット順などに並び替えることも可能。<br>「.csscomb.json」に各設定を記述することで好みの設定ができる。設定項目の作成は下記サイトが便利。
+<br><a href="http://csscomb.com/config" target="_blank" class="txtlink">＞CSScomb</a></dd>
+</dl>
+<dl class="mgt15">
+<dt class="fwB">■gulp-cached</dt>
+<dd>変更したファイルのみ処理がはしるようにするパッケージ。無駄な処理が減り、待機時間も減らすことができます。</dd>
+</dl>
+<dl class="mgt15">
+<dt class="fwB">■gulp-autoprefixer</dt>
+<dd>ベンダープレフィックスを自動付与してくれるパッケージ。対象のバージョンを記載することでどの程度まで対応するかを設定できる。<br>
+<a href="https://parashuto.com/rriver/tools/using-custom-data-for-autoprefixer" target="_blank" class="txtlink">＞Autoprefixerの対象ブラウザって、どうやって選べばいいの？</a></dd>
+</dl>
+<dl>
+<dl class="mgt15">
+<dt class="fwB">■gulp-clean-css</dt>
+<dd>CSSを一行化するパッケージ</dd>
+</dl>
+<dl>
+<dl class="mgt15">
+<dt class="fwB">■gulp-uglify</dt>
+<dd>JSを一行化するパッケージ</dd>
+</dl>
+<dl>
+<dl class="mgt15">
+<dt class="fwB">■gulp-imagemin</dt>
+<dd>画像圧縮のためのパッケージ</dd>
+</dl>
+<dl>
+<dl class="mgt15">
+<dt class="fwB">■imagemin-pngquant</dt>
+<dd>png画像の圧縮率を高めるパッケージ。「gulp-imagemin」だけだと圧縮してもほとんど変わらないのでこちらも併用<br>
+<a href="https://qiita.com/sygnas/items/f6700c75df71b8888d80" target="_blank" class="txtlink">＞Gulpでpngquantを使ってPNGの減色＆軽量化</a></dd>
+</dl>
+<dl>
+<dl class="mgt15">
+<dt class="fwB">■imagemin-mozjpeg</dt>
+<dd>jpg画像の圧縮率を高めるパッケージ。「gulp-imagemin」だけだと圧縮してもほとんど変わらないのでこちらも併用<br>ただし併用するとうまくいかないバグがある。<br>
+<a href="https://qiita.com/chieeeeno/items/45b3f6f2370969964e00" target="_blank" class="txtlink">＞gulp-imageminでjpgファイルを圧縮する時に遭遇したエラーと解決法</a></dd>
+</dl>
+
+<p class="mgt20">上記まとめると、使用するコマンドは以下。</p>
+<ul>
+<li>sassのコンパイル・ブラウザシンクはデフォルトなので「npm run gulp」</li>
+<li>css圧縮には「npm run gulp cssmin」</li>
+<li>js圧縮には「npm run gulp jsmin」</li>
+<li>画像圧縮には「npm run gulp imagemin」</li>
+</ul>
+</section>
+
+<section>
+<h2 class="ttlLv2">参考サイト</h2>
+<ul class="linkList jcSB">
+<li><a href="https://qiita.com/sharpenguin/items/dca89263df3e2019630c#csscombjson%E3%81%AE%E4%B8%AD%E8%BA%AB" target="_blank">【オレオレ】gulp 初期設定</a></li>
+<li><a href="https://yatteq.com/gulp-cording03" target="_blank">Gulp(ガルプ)で爆速コーディング！複数の案件でGulpを使い回してみよう</a></li>
+<li><a href="http://www.pccinc.jp/2016/07/08/844/" target="_blank">gulpのファイル構成やgulpfile.jsを公開。</a></li>
+<li><a href="https://qiita.com/shuhei/items/87aadb0cc3d113b94234" target="_blank">package.json の scripts</a></li>
+</ul>
+</section>
+
+<section>
+<h2 class="ttlLv2">Atomの便利機能</h2>
+<ul class="linkList jcSB">
+<li><a href="https://atom.io/packages/gulp-control" target="_blank">Atom gulp-control</a></li>
+</ul>
+<p class="mgt40">上記プラグインを使用すればコマンド打たなくてもクリックでタスクを実行できるようになります。<br>使い方はパッケージをインストール後、Atomの上記メニューの「パッケージ」から「gulp-control」＞「opne」をクリック。右側にタブがひらく。</p>
+<img src="img/img02.jpg" alt="" class="mgt20">
+<p class="mgt40">そのタブの中にgulpfole.jsで定義してあるタスクが一覧で出てくるのでそれをクリックするだけで実行されます。（もっとはやく知りたかった。。）これでいちいちコマンドプロンプトを開く必要がなくなりました。（パッケージインストールには必要ですが。）</p>
+<img src="img/img06.jpg" alt="" class="mgt20">
+<p class="mgt40">クリックすると実行され、再度クリックするとタスクが終了します。</p>
+</section>
+
+<section id="browser-sync">
+<h2 class="ttlLv2">ブラウザシンク</h2>
+<p>sassやscssを案件で使用しない！ということも多いと思うので、以下ブラウザシンクのみ動くようにした環境。<br>ブラウザシンクを実行していればファイルを修正してF5キーを押して更新しなくても、自動で更新されるのでとても便利です。</p>
+<p class="mgt40">ブラウザシンクとは<br>修正して保存した朱運管に自動でブラウザがリロードされます。F5を押す必要もなく、かつ、GC・FF・IE全部のブラウザに全て変更内容が反映されます。</p>
+<h3 class="fwB mgt40">■使い方</h3>
+<p>以下のボタンからzipファイルをDLし適当なところに解凍する（apache配下でなくても構いません。どこでもローカルサーバが（多分）立ち上がります。）</p>
+<a href="http://192.168.10.97/PI4499_frontend/frontend.kakunin.com/tree/feature_npmTest" target="_blank" class="txtLink">FE GitLab</a>
+<img src="img/img03.jpg" alt="" class="mgt20 w100P">
+<p class="mgt20">解凍すると「npm-test」フォルダがあると思うので、「npm-test」をAtomで開き、Atomの上記メニューの「パッケージ」から「gulp-control」＞「opne」をクリック。<br>すると以下のような画面になるので、「default」をクリック。するとローカルサーバが自動で立ち上がります。以降「htdocs」内のファイルが保存されるたびに自動でブラウザが更新されます。</p>
+<img src="img/img04.jpg" alt="" class="mgt20">
+<p class="mgt40">デフォルトで入っている「htdocs/index.html」と「htdocs/css/style.css」をいじると、自動で更新されるのがわかるかと思います。<br>（ちなみにブラウザシンクだけ設定してもssiファイルが表示されないので表示するためのパッケージもインストールしています。）</p>
+<img src="img/img05.jpg" alt="" class="mgt40 w100P">
+<p class="mgt40">便利なのでぜひ案件時に使用してみてください～。</p>
+<p class="mgt60">以上、長野流gulpの設定でした。</p>
+</section>
+<!--#include virtual="../common/inc/footer.html" -->
+</section>
+</div>
+</div>
+</body>
+</html>

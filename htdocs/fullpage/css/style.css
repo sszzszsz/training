@@ -1,0 +1,194 @@
+/*------------------------------
+fullpage
+------------------------------*/
+#fullpage {
+  width: 100%;
+}
+
+#fullpage .section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* align-items: center;
+    justify-content: center; */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+#fullpage div.sec2, #fullpage div.sec4 {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+
+#fullpage div.animate {
+  opacity: 1;
+}
+
+#fullpage div.animate::after {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  background: #000000;
+  content: '';
+  height: 100vh;
+  opacity: 0.3;
+  width: 100vw;
+  z-index: 1;
+}
+
+#fullpage .sec1 {
+  background: url(../../img/pic06.jpg) top center;
+  background-size: cover;
+}
+
+#fullpage .sec2 {
+  background: url(../../img/pic02.jpg) center;
+  background-size: cover;
+}
+
+#fullpage .sec3 .slide1 {
+  background: url(../../img/pic03.jpg) top center;
+  background-size: cover;
+}
+#fullpage .sec3 .slide2 {
+  background: url(../../img/pic04.jpg) top center;
+  background-size: cover;
+}
+#fullpage .sec4 {
+  background: url(../../img/pic01.jpg) top center;
+  background-size: cover;
+}
+
+/*--- sp ---*/
+@media screen and (max-width: 768px) {
+  #fullpage div {
+    background: #eeeeee;
+    height: 100vh;
+  }
+  #fullpage div::after {
+    height: 100vh;
+  }
+  #fullpage div p {
+    top: -5%;
+    left: 0;
+    flex-basis: 1em;
+    -ms-flex-preferred-size: 1em;
+    padding: 10px;
+  }
+}
+
+#parallax .imgArea {
+  position: relative;
+  height: 500px;
+  opacity: 0.8;
+}
+
+#parallax .imgArea.area01 {
+  background: url(../../img/fruit04.jpg) bottom center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#parallax .imgArea.area02 {
+  background: url(../../img/fruit02.jpg) bottom center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#parallax .imgArea.area03 {
+  background: url(../../img/fruit03.jpg) bottom center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#parallax .imgArea.area04 {
+  background: url(../../img/fruit04.jpg) bottom center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#parallax .imgArea h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 4em;
+  margin: 0;
+  padding: 0;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#parallax .txtArea {
+  background: #eeeeee;
+}
+
+#parallax .txtArea p, #parallax .txtArea .memo {
+  margin: 0 auto;
+  padding: 50px 0;
+  width: 1000px;
+}
+
+#parallax .txtArea a {
+  text-decoration: underline;
+}
+
+#parallax .videoArea {
+  position: relative;
+}
+
+#parallax .videoArea video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#parallax .videoArea::before {
+  display: block;
+  content: '';
+  padding-top: 56%;
+}
+
+#parallax .videoArea .txt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 0;
+  align-items: center;
+  background: #000000;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  color: #ffffff;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  font-size: 1.6vw;
+  height: 100%;
+  justify-content: center;
+  opacity: 0.5;
+  text-align: center;
+  width: 100%;
+}
+
+#parallax .videoArea .txt a {
+  color: #ffffff;
+}
+
+#parallax .videoArea .txt a:hover {
+  text-decoration: underline;
+}
+
+/*--- sp ---*/
+@media screen and (max-width: 768px) {
+  #parallax .txtArea p, #parallax .txtArea .memo {
+    padding: 10px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link type="text/css" rel="stylesheet" href="../common/lib/syntaxhighlighter/styles/shCoreDefault.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="../common/lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script src="../common/lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script src="../common/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script src="../common/lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<link type="text/css" rel="stylesheet" href="../common/css/custom_syntaxhighlighter.css">
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<script src="js/index.js"></script>
+<title>汎用JS</title>
+</head>
+
+<body>
+<header class="gHeaderWrapper">
+<div class="subHeader">
+<div class="headerInr">
+<ul class="iconList">
+<li><a href=""><span class="fas fa-question-circle"></span>FAQ</a></li>
+<li><a href=""><span class="fas fa-sitemap"></span>サイトマップ</a></li>
+</ul>
+</div><!-- /headerInr-->
+</div><!-- /subHeader-->
+
+<div class="mainHeader">
+<div class="headerInr">
+<div class="headerItem">
+<ul class="headeMenu">
+<li class="menuItem">
+<a href="/00000000/service/">メニュー1</a>
+<div class="dropMenu">
+<ul class="dropMenuList">
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+</ul>
+<ul class="dropMenuList">
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+</ul>
+<ul class="dropMenuList">
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+</ul>
+<ul class="dropMenuList">
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+</ul>
+</div>
+</li><!-- /menuItem-->
+<li class="menuItem">
+<a href="/00000000/about/">メニュー2</a>
+<div class="dropMenu">
+<ul class="dropMenuList">
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+</ul>
+<ul class="dropMenuList">
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+</ul>
+<ul class="dropMenuList">
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+<li class="dropMenuItem"><a href="#" class="inr">ドロップメニュー</a></li>
+</ul>
+</div>
+</li>
+<li class="menuItem noMenu">
+<a href="">メニュー3</a>
+</li>
+<li class="menuItem noMenu">
+<a href="">メニュー4</a>
+</li>
+</ul>
+</div><!-- /headerItem-->
+<div class="headerItem">
+<ul class="headerBtn">
+<li class="btnItem login"><a href="#" class="no-scroll">ボタン</a></li>
+<li class="btnItem logout"><a href="#" class="no-scroll">ボタン</a></li>
+</ul>
+</div><!-- /headerItem-->
+<a class="spIcon">
+<span></span>
+<span></span>
+<span></span>
+</a>
+</div><!-- /headerInr-->
+
+<div class="spMenuArea">
+<ul class="spLinkMenu">
+<li class="headerBtn">
+<p class="btnItem login"><a href="#" class="no-scroll">ボタン</a></p>
+<p class="btnItem logout"><a href="#" class="no-scroll">ボタン</a></p>
+</li>
+<li class="menuItem">
+<p class="accordionBtn">メニュー1</p>
+<div class="accordionMenu">
+<ul>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+</ul>
+</div>
+</li><!-- /menuItem-->
+<li class="menuItem">
+<p class="accordionBtn">メニュー2</p>
+<div class="accordionMenu">
+<ul>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+</ul>
+</div>
+</li><!-- /menuItem-->
+<li class="menuItem">
+<p class="accordionBtn">メニュー3</p>
+<div class="accordionMenu">
+<ul>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+</ul>
+</div>
+</li><!-- /menuItem-->
+<li class="menuItem">
+<p class="accordionBtn">メニュー4</p>
+<div class="accordionMenu">
+<ul>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+</ul>
+</div>
+</li><!-- /menuItem-->
+<li class="menuItem">
+<p class="accordionBtn">メニュー5</p>
+<div class="accordionMenu">
+<ul>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+<li class="spMenuItem"><a href="#">ドロップメニュー</a></li>
+</ul>
+</div>
+</li><!-- /menuItem-->
+</ul><!-- /spLinkMenu-->
+</div><!-- /spMenuArea-->
+</div><!-- /mainHeader-->
+</header>
+
+<div class="wrapper">
+<h1 class="ttlLv1 mgt50">よく言う汎用JS集</h1>
+<div class="content">
+<section>
+<h2 class="ttlLv2">アンカーリンク</h2>
+<ul class="anchList">
+<li class="listItem"><a href="#" class="inr">ヘッダー追従・ドロップダウン</a></li>
+<li class="listItem"><a href="#tab" class="inr">タブ切り替え</a></li>
+<li class="listItem"><a href="#" class="inr">SPハンバーガーメニュー</a></li>
+<li class="listItem"><a href="#accordion" class="inr">アコーディオン</a></li>
+<li class="listItem"><a href="#fadeIn" class="inr">スクロールで要素フェードイン</a></li>
+<li class="listItem"><a href="#sort" class="inr">絞り込み</a></li>
+</ul>
+</section>
+
+<section id="tab">
+<h2 class="ttlLv2">タブ切り替え</h2>
+
+<div class="tabArea">
+<ul class="tab">
+<li class="current">タブ1</li>
+<li>タブ2</li>
+<li>タブ3</li>
+</ul>
+
+<ul class="tabContList">
+<li class="tabContItem" style="display: block;">
+<p>タブ1の内容が表示されます。<br>HTML構造は以下</p>
+<pre class="brush: html;">
+<div class="tabArea">
+<ul class="tab">
+<li class="current">タブ1</li>
+<li>タブ2</li>
+<li>タブ3</li>
+</ul>
+<ul class="tabContList">
+<li class="tabContItem" style="display: block;"></li>
+<li class="tabContItem" style="display: none;"></li>
+<li class="tabContItem" style="display: none;"></li>
+</ul>
+</div><!-- tabArea -->
+</pre>
+</li><!-- tabContItem -->
+
+<li class="tabContItem" style="display: none;">
+<p>タブ2の内容が表示されます。<br>CSS構造は以下</p>
+<pre class="brush: css;">
+.tab {
+letter-spacing: -0.4rem;
+
+li {
+display: inline-block;
+letter-spacing: normal;
+margin-right: 5px;
+padding: 5px 10px;
+border: 1px solid #561e00;
+border-bottom: none;
+cursor: pointer;
+background: #fffefc;
+-wbkit-transition: background 0.2s;
+transition: background 0.2s;
+border-radius: 5px 5px 0 0;
+
+&:hover {
+  background: #fffbf4;
+  -wbkit-transition: background 0.2s;
+  transition: background 0.2s;
+}
+&.current {
+  background: #ffede3;
+}
+}
+}
+.tabContItem {
+padding: 20px;
+border: 1px solid #561e00;
+}
+</pre>
+</li><!-- tabContItem -->
+
+<li class="tabContItem" style="display: none;">
+<p>タブ3の内容が表示されます。<br>JS構造は以下</p>
+<pre class="brush: js;">
+$(function() {
+var $tab = $('.tabArea .tab li');
+$tab.on('click', function() {
+var $tabs = $(this).parent().children();
+var index = $tabs.index(this);
+var $contents = $(this).parent().next('.tabContList').children();
+
+$tabs.removeClass(current);
+$(this).addClass(current);
+$contents.hide();
+$contents.eq(index).show();
+return false;
+});
+});  
+</pre>
+</li><!-- tabContItem -->
+</ul>
+</div><!-- tabArea -->
+</section>
+
+<section id="accordion">
+<h2 class="ttlLv2">アコーディオン</h2>
+<div class="accordionArea">
+<dl class="accordionBox">
+<dt class="accordionBtn">ボタン</dt>
+<dd class="accordionCont">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</dd>
+</dl>
+<dl class="accordionBox mgt20">
+<dt class="accordionBtn">ボタン</dt>
+<dd class="accordionCont">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</dd>
+</dl>
+</div>
+</section>
+
+<section id="fadeIn">
+<h2 class="ttlLv2">スクロールで要素フェードイン</h2>
+<div class="hideme animationFadeIn">
+<div class="_dummy"></div>
+</div>
+<div class="hideme animationFadeIn">
+<div class="_dummy"></div>
+</div>
+<div class="hideme animationFadeIn">
+<div class="_dummy"></div>
+</div>
+<div class="hideme animationFadeIn">
+<div class="_dummy"></div>
+</div>
+</section>
+
+<section id="sort">
+<h2 class="ttlLv2">絞り込み</h2>
+<div class="sortArea">
+<ul class="sortBtn">
+<li data-category="all" class="current">ALL</li>
+<li data-category="type1">絞り込み1</li>
+<li data-category="type2">絞り込み2</li>
+<li data-category="type3">絞り込み3</li>
+</ul>
+<ul class="sortList">
+<li class="sortItem type1"></li>
+<li class="sortItem type3"></li>
+<li class="sortItem type2"></li>
+<li class="sortItem type1"></li>
+<li class="sortItem type1"></li>
+<li class="sortItem type2"></li>
+<li class="sortItem type1"></li>
+<li class="sortItem type2"></li>
+</ul>
+</div>
+</section>
+
+</div><!-- /content-->
+</div><!-- /wrapper-->
+<footer id="gfooter">
+<span class="topPage smooth"><a href="#"></a></span>
+<div class="footerInr" style="height:400px;">
+フッターです
+</div>
+<div class="subFooter">
+コピーライト
+</div>
+</footer>
+</body>
+</html>

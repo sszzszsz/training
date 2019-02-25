@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="js/fullpage.min.js"></script>
+<title></title>
+</head>
+
+<body>
+<section id="fullpage">
+<div class="section sec1">
+</div>
+
+<div class="section sec2">
+</div>
+
+<div class="section sec3">
+<div class="slide slide1" data-anchor="slide1">
+</div>
+<div class="slide slide2" data-anchor="slide2">
+</div>
+
+</div>
+<div class="section sec4">
+</div>
+</section>
+
+
+<div class="content">
+<p></p>
+</div>
+<!--#include virtual="../common/inc/footer.html" -->
+<script type="text/javascript">
+$(function(){
+	$('#fullpage').fullpage({
+		menu: '#nav',
+		navigation: true,
+		navigationPosition: 'right'
+	});
+});
+</script>
+</body>
+</html>

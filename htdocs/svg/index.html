@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="../common/js/scroll.js"></script>
+<title>SVG練習</title>
+</head>
+
+<body>
+<h1 class="ttlLv1">SVG練習</h1>
+<section class="wrapper">
+<div class="content">
+<h2>SVGとはなんぞや</h2>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+<circle cx="150" cy="200" r="100" fill="#06f"></circle>
+</svg>
+<pre>
+<code>
+&lt;svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"&gt;
+&lt;circle cx="150" cy="200" r="100" fill="#06f"&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+</code>
+</pre>
+<dl class="memo">
+<dt>★ネームスペース★</dt>
+<dd>XMLネームスペースはXMLの仕組み。svgタグ配下では、すべての要素が「http://www.w3.org/2000/svg」に属す要素、つまりSVGの要素として扱われる。<br>SVGにもSVGのa要素があり、同名の要素が混ざらないようにするため、ネームスペースという仕組みを用いている。</dd>
+</dl>
+<dl class="memo">
+<dt>★widthとheight★</dt>
+<dd>1行目では同じくwidthとheight属性が指定されています。これは、ビューポート、つまり「窓」の大きさを決めています。<br>外枠的なイメージ</dd>
+</dl>
+<dl class="memo">
+<dt>★viewBox属性★</dt>
+<dd>viewBox属性は「窓の中の座標」<br>widthが512、heightが512に対して、viewBox="0 0 512 512"と指定すると起点がpostionでいうtop,leftになる。なので、widthとheightとviewBox属性を同じにしておくと考えやすい。</dd>
+</dl>
+<dl class="memo">
+<dt>★circle要素★</dt>
+<dd>2行目には円を描くためのcircle要素があり、属性値はそれぞれ次の意味を持つ。
+<ul>
+<li>・cxは中心のx座標(center xを意味する)</li>
+<li>・cyは中心のy座標(center yを意味する)</li>
+<li>・rは半径の長さ(radiusを意味する)</li>
+<li>・fillは塗り色</li>
+</ul>
+<p>つまり、上の円は「viewBoxにより作られた座標系上の（150, 200）を中心に、半径100の円が描かれている」ということ（らしい）</p></dd>
+</dl>
+<p class="mgt50 fwB alC">つまるところコードで形を書いていくのは大変だし、非効率的なのでイラレか、無料ソフトで.svgを作ればいいと思う</p>
+<ul class="linkList">
+<li><a href="https://app.codegrid.net/entry/svg-basic#toc-0">SVGコードの基本</a></li>
+<li><a href="https://vectr.com/">Free Vector Graphics Software</a></li>
+</ul>
+</div>
+
+<div class="content">
+<h2>SVGの埋め込み方</h2>
+<ol class="testList">
+<li>
+<p>1.HTMLにimgでつっこむ</p>
+<img src="img/star.svg" alt="" width="300" height="300">
+</li>
+<li>
+<p>2.CSSで背景として出す</p>
+<div class="testBox"></div>
+</li>
+<li>
+<p>3.HTMLにソースを書く</p>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 200 200" width="200" height="200"><defs><path d="M142.46 72.54L20 74.71L119.28 140.65L85.22 21.81L42.46 140.65L142.46 72.54Z" id="a1TG3xwcpw"></path><mask id="maska1o4XrvHmx" x="18" y="19.81" width="126.46" height="122.84" maskUnits="userSpaceOnUse"><rect x="18" y="19.81" width="126.46" height="122.84" fill="white"></rect><use xlink:href="#a1TG3xwcpw" opacity="1" fill="black"></use></mask></defs><g><g><g><g></g><use xlink:href="#a1TG3xwcpw" opacity="1" fill="#ff94cc" fill-opacity="1"></use><g mask="url(#maska1o4XrvHmx)"><use xlink:href="#a1TG3xwcpw" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-opacity="1"></use></g></g></g></g></svg>
+</li>
+</ol>
+<p>スクロールしたら出てくるやつ</p>
+<div class="star">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 200 200" width="200" height="200"><defs><path d="M142.46 72.54L20 74.71L119.28 140.65L85.22 21.81L42.46 140.65L142.46 72.54Z" id="a1TG3xwcpw"></path><mask id="maska1o4XrvHmx" x="18" y="19.81" width="126.46" height="122.84" maskUnits="userSpaceOnUse"><rect x="18" y="19.81" width="126.46" height="122.84" fill="white"></rect><use xlink:href="#a1TG3xwcpw" opacity="1" fill="black"></use></mask></defs><g><g><g><g></g><use xlink:href="#a1TG3xwcpw" opacity="1" fill="#ff94cc" fill-opacity="1"></use><g mask="url(#maska1o4XrvHmx)"><use xlink:href="#a1TG3xwcpw" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-opacity="1"></use></g></g></g></g></svg>
+</div>
+<div class="star">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 200 200" width="200" height="200"><defs><path d="M142.46 72.54L20 74.71L119.28 140.65L85.22 21.81L42.46 140.65L142.46 72.54Z" id="a1TG3xwcpw"></path><mask id="maska1o4XrvHmx" x="18" y="19.81" width="126.46" height="122.84" maskUnits="userSpaceOnUse"><rect x="18" y="19.81" width="126.46" height="122.84" fill="white"></rect><use xlink:href="#a1TG3xwcpw" opacity="1" fill="black"></use></mask></defs><g><g><g><g></g><use xlink:href="#a1TG3xwcpw" opacity="1" fill="#ff0000" fill-opacity="1"></use><g mask="url(#maska1o4XrvHmx)"><use xlink:href="#a1TG3xwcpw" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-opacity="1"></use></g></g></g></g></svg>
+</div>
+<div class="star">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 200 200" width="200" height="200"><defs><path d="M142.46 72.54L20 74.71L119.28 140.65L85.22 21.81L42.46 140.65L142.46 72.54Z" id="a1TG3xwcpw"></path><mask id="maska1o4XrvHmx" x="18" y="19.81" width="126.46" height="122.84" maskUnits="userSpaceOnUse"><rect x="18" y="19.81" width="126.46" height="122.84" fill="white"></rect><use xlink:href="#a1TG3xwcpw" opacity="1" fill="black"></use></mask></defs><g><g><g><g></g><use xlink:href="#a1TG3xwcpw" opacity="1" fill="#ff94cc" fill-opacity="1"></use><g mask="url(#maska1o4XrvHmx)"><use xlink:href="#a1TG3xwcpw" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-opacity="1"></use></g></g></g></g></svg>
+</div>
+</div>
+<ul class="linkList">
+<li><a href="http://weboook.blog22.fc2.com/blog-entry-415.html" target="_blank">jQueryとCSSのtransitionで可視範囲に入ってからアニメーションさせる方法</a></li>
+</ul>
+<!--#include virtual="../common/inc/footer.html" -->
+</section>
+</body>
+</html>

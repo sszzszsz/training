@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="lib/slick.css">
+<link rel="stylesheet" href="lib/slick-theme.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="lib/slick.min.js"></script>
+<script src="../common/lib/syntaxHighlighter/scripts/shCore.js"></script>
+<script src="../common/lib/syntaxHighlighter/scripts/shBrushJScript.js"></script>
+<script src="../common/lib/syntaxHighlighter/scripts/shBrushXml.js"></script>
+<script src="../common/lib/syntaxHighlighter/scripts/shBrushCss.js"></script>
+<link type="text/css" rel="stylesheet" href="../common/css/custom_syntaxHighlighter.css">
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<title>slick.js</title>
+
+<script>
+  $(function() {
+    $('.slickSample1').slick();
+});
+
+$(function() {
+  $('.slickSample2').slick({
+    autoplay: true,
+    autoplaySpeed: 2000,
+    dots: true,
+    speed: 1000,
+  });
+});
+
+$(function() {
+  $('.slickSample3').slick({
+    autoplay: true,
+    autoplaySpeed: 3000,
+    dots: true,
+    speed: 3000,
+    fade: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      }
+    ]
+  });
+});
+
+$(function() {
+  var $slider_container = $('.slider-container'),
+    $slider = $('.slickSample4'),
+    $slider_nav_container = $('.slider-nav-container'),
+    $slider_nav = $('.slider-nav');
+    // ナビゲーション用に複製
+    $slider_nav.append($slider.contents().clone());
+    
+    // スライド初期化時にクラスを追加
+    // はじめはdisplay:noneしておき、.initializedが追加されたらdisplay:block
+    $slider.on('init', function(){
+      $slider_container.addClass('initialized');
+    });
+    $slider_nav.on('init', function(){
+      $slider_nav_container.addClass('initialized');
+    });
+    
+    $slider.slick({
+      arrows: false,
+      asNavFor: $slider_nav,
+      fade: true,
+      waitForAnimate: false
+    });
+    $slider_nav.slick({
+      appendArrows: $slider_nav_container,
+      slidesToShow: 3,
+      asNavFor: $slider,
+      focusOnSelect: true,
+      centerMode: true,
+      centerPadding: '40px'
+    });
+    // スライドの横幅を小数点以下pxまで表示
+    // 今回はcenterPaddingもあるのでその分も計算しています
+    $slider_nav.on('setPosition', function(){
+      var slider_width = $slider_nav.width(),
+      slide_gutter = $slider_nav.find('.slick-slide').eq(0).css('margin-right').split('px')[0],
+      slides_num = $slider_nav.slick('slickGetOption', 'slidesToShow'),
+      slides_center_padding = $slider_nav.slick('slickGetOption', 'centerPadding').split('px')[0],
+      slide_width = (slider_width - slide_gutter * (slides_num - 1) - (slides_center_padding * 2)) / slides_num;
+      
+      $slider_nav.find('.slick-slide').css('width', slide_width + 'px');
+    });
+  });
+
+$(function() {
+  $('.slickSample5').slick({
+    autoplay: true,
+    autoplaySpeed: 4000,
+    dots: true,
+    speed: 1000,
+    infinite: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      }
+    ]
+    });
+});
+$(function() {
+  $('.slickSample6').slick({
+    autoplay: true,
+    autoplaySpeed: 4000,
+    dots: true,
+    speed: 1000,
+    infinite: true,
+    centerMode: true,
+    centerPadding: '60px',
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerPadding: '2%',
+          infinite: true,
+          dots: true
+        }
+      }
+    ]
+  });
+});
+</script>
+</head>
+<body>
+<h1 class="ttlLv1">slick.js</h1>
+<section class="wrapper" id="slick">
+<div class="content">
+<dl class="memo">
+<dt>slick.js</dt>
+<dd>簡単にローテーションバナー的なものが実装できるプラグイン<br>案件でもよく使用される。<br>簡単らしいけどカスタマイズするのに一苦労したこと有。<br>写真だけなら楽そう。参考例が結構ある。</dd>
+</dl>
+<ul class="linkList mgt20">
+<li><a href="http://kenwheeler.github.io/slick/">公式ダウンロード</a></li>
+</ul>
+<p class="mgt10">読み込むものは下記</p>
+<ul class="mgt10">
+<li>・jquery</li>
+<li>・slick.css</li>
+<li>・（slick-theme.css）</li>
+<li>・slick.min.js</li>
+</ul>
+<section class="sample1">
+<h2>ふつうの画像単体のスライダー</h2>
+<ul class="slickSample1">
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+</ul>
+<p>「slick-theme.css」で左右のボタンなどのcssを読み込んでいる（この中でwebフォントも読み込みに行っているので、これを読み込むと重くなる）が大抵カスタマイズするので読み込まなくてもいい。必要な記述を移植するのがベター。<br>デフォルトだと矢印などの背景が白なので、スライダーの背景が白だと有るのか無いのかわからないので注意。<br>上のスライドは左右のボタンの位置をcssで上書いている。</p>
+<pre class="brush: js;">
+$(function() {
+  $('.slickSample1').slick();
+});
+</pre>
+</section>
+
+<section class="sample2">
+<h2>画像単体の自動スライダー</h2>
+<p>カスタマイズについて詳しく書いてあるサイト</p>
+<ul class="linkList mgt0">
+<li><a href="http://ithat.me/2016/10/17/how-to-use-slick-jquery-plugin" target="_blank">どこよりも詳しい万能スライダーjQueryプラグインslick.jsの使い方</a></li>
+</ul>
+<p class="mgt30">下のスライダーは自動再生とスライダーの下にドットのボタンを表示させるように設定。</p>
+<ul class="slickSample2">
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+</ul>
+<pre class="brush: js;">
+$(function() {
+  $('.slickSample2').slick({
+    autoplay: true,
+    autoplaySpeed: 2000,
+    dots: true,
+    speed: 1000
+  });
+});
+</pre>
+</section>
+
+<section class="sample3">
+<h2>画像複数の自動スライダー</h2>
+<p class="mgt30">以下のスライダーは左右に余白を指定 + フェードで切り替わるように設定（7行目）。</p>
+<ul class="slickSample3">
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+</ul>
+<pre class="brush: js;">
+$(function() {
+  $('.slickSample3').slick({
+    autoplay: true,
+    autoplaySpeed: 3000,
+    dots: true,
+    speed: 3000,
+    fade: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      }
+    ]
+  });
+});
+</pre>
+</section>
+
+<section class="sample4">
+<h2>サムネイル付きのスライダー</h2>
+<div class="slider-container">
+<ul class="slickSample4">
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+</ul>
+</div>
+<div class="slider-nav-container mgt10">
+<div class="slider-nav"></div>
+</div>
+
+<pre class="brush: js;">
+$(function() {
+  var $slider_container = $('.slider-container'),
+    $slider = $('.slickSample4'),
+    $slider_nav_container = $('.slider-nav-container'),
+    $slider_nav = $('.slider-nav');
+    // ナビゲーション用に複製
+    $slider_nav.append($slider.contents().clone());
+    
+    // スライド初期化時にクラスを追加
+    // はじめはdisplay:noneしておき、.initializedが追加されたらdisplay:block
+    $slider.on('init', function(){
+      $slider_container.addClass('initialized');
+    });
+    $slider_nav.on('init', function(){
+      $slider_nav_container.addClass('initialized');
+    });
+    
+    $slider.slick({
+      arrows: false,
+      asNavFor: $slider_nav,
+      fade: true,
+      waitForAnimate: false
+    });
+    $slider_nav.slick({
+      appendArrows: $slider_nav_container,
+      slidesToShow: 3,
+      asNavFor: $slider,
+      focusOnSelect: true,
+      centerMode: true,
+      centerPadding: '40px'
+    });
+    // スライドの横幅を小数点以下pxまで表示
+    // 今回はcenterPaddingもあるのでその分も計算しています
+    $slider_nav.on('setPosition', function(){
+      var slider_width = $slider_nav.width(),
+      slide_gutter = $slider_nav.find('.slick-slide').eq(0).css('margin-right').split('px')[0],
+      slides_num = $slider_nav.slick('slickGetOption', 'slidesToShow'),
+      slides_center_padding = $slider_nav.slick('slickGetOption', 'centerPadding').split('px')[0],
+      slide_width = (slider_width - slide_gutter * (slides_num - 1) - (slides_center_padding * 2)) / slides_num;
+      
+      $slider_nav.find('.slick-slide').css('width', slide_width + 'px');
+    });
+  });
+</pre>
+</section>
+</div><!-- /content -->
+</section><!-- /wrapper -->
+
+<section class="sample5">
+<h2 class="ttlLv2">フルページのスライダー</h2>
+<div class="slider-container">
+<ul class="slickSample5">
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+</ul>
+</div>
+
+<pre class="brush: js;">
+  $(function() {
+    $('.slickSample5').slick({
+      autoplay: true,
+      autoplaySpeed: 4000,
+      dots: true,
+      speed: 1000,
+      infinite: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        }
+      ]
+      });
+  });
+</pre>
+</section>
+
+<section class="sample6">
+<h2 class="ttlLv2">フルページのスライダー(両脇に余白あるver)</h2>
+<div class="slider-container">
+<ul class="slickSample6">
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+<li><img src="../img/bnr01.png" alt=""></li>
+<li><img src="../img/bnr02.png" alt=""></li>
+<li><img src="../img/bnr03.png" alt=""></li>
+</ul>
+</div>
+<pre class="brush: js;">
+  $(function() {
+    $('.slickSample6').slick({
+      autoplay: true,
+      autoplaySpeed: 4000,
+      dots: true,
+      speed: 1000,
+      infinite: true,
+      centerMode: true,
+      centerPadding: '60px'
+    });
+  });
+</pre>
+</section>
+
+<section class="sample7">
+<h2 class="ttlLv2">フルページのスライダーにデバイスでテキストがある(両脇に余白あるver)</h2>
+<div class="slider-container">
+<ul class="slickSample6">
+<li>
+<div class="slidInr">
+<img src="../img/bnr01.png" alt="">
+<p class="slidTxt">テキストテキストテキスト</p>
+</div>
+</li>
+<li>
+<div class="slidInr">
+<img src="../img/bnr02.png" alt="">
+<p class="slidTxt">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+</div>
+</li>
+<li>
+<div class="slidInr">
+<img src="../img/bnr03.png" alt="">
+<p class="slidTxt">テキストテキストテキスト</p>
+</div>
+</li>
+<li>
+<div class="slidInr">
+<img src="../img/bnr01.png" alt="">
+<p class="slidTxt">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+</div>
+</li>
+<li>
+<div class="slidInr">
+<img src="../img/bnr02.png" alt="">
+<p class="slidTxt">テキストテキストテキスト</p>
+</div>
+</li>
+<li>
+<div class="slidInr">
+<img src="../img/bnr03.png" alt="">
+<p class="slidTxt">テキストテキストテキスト</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<!--#include virtual="../common/inc/footer.html" -->
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<title>css gridについて</title>
+<script>
+  $(function() {
+    $(".addBtn").click(function() {
+      var gridSample = $(this).next();
+      $(gridSample).append("<div>追加してみました</div>");
+
+      var item = gridSample.children();
+      var itemNextNum = item.length;
+      var itemNextClass = "item" + itemNextNum;
+      var lastItem = $(item).filter(":last").addClass(itemNextClass);
+    });
+  });
+</script>
+</head>
+<body>
+<h1 class="ttlLv1">css gridについて</h1>
+<section class="wrapper" id="grid">
+<div class="content">
+<dl class="memo">
+<dt>CSS Grid Layoutとは</dt>
+<dd>CSS Grid Layout（グリッドレイアウト）は、2次元レイアウト を、HTML/CSS を使って簡単・自由に操作できる、CSSの新しい機能。格子状のマス目のグリッドに好きな順番に配置したり結合したりすることで、様々なレイアウトが可能。</dd>
+</dl>
+<dl class="memo">
+<dt>ライン</dt>
+<dd>グリッドを分ける垂直および水平の線のこと。ラインには、上から下、左から右に1から順に正の番号が振られ、下から上、右から左に負の番号が振られている。JSみたいに0から始まるわけではなく、一番最初は1からはじまる。</dd>
+</dl>
+<dl class="memo">
+<dt>トラック</dt>
+<dd>行および列のこと</dd>
+</dl>
+<dl class="memo">
+<dt>セル</dt>
+<dd>隣接する垂直および水平方向のラインが作る、アイテムを配置できる最小の単位。<br>エクセルの「セル」と同じイメージ<br>ただしIEだとベンダープレフィックスが無いと対応していないもの多々有</dd>
+</dl>
+<dl class="memo">
+<dt>エリア</dt>
+<dd>一つあるいは複数のセルが結合してできるセルの集まり。エクセルで言う「セルの結合」と同じイメージ</dd>
+</dl>
+<ul class="linkList">
+<li><a href="https://www.itti.jp/web-staff/css-grid.php">CSS GridをIE11、EDGEに対応させるために注意する点</a></li>
+</ul>
+<h2 class="mgt50">各プロパティ</h2>
+<dl class="memo">
+<dt>grid-template-rows</dt>
+<dd>行の高さを半角スペースで区切って指定</dd>
+</dl>
+<dl class="memo">
+<dt>grid-template-columns</dt>
+<dd>列の幅を半角スペースで区切って指定</dd>
+</dl>
+<dl class="memo">
+<dt>grid-row</dt>
+<dd>アイテムが占める行のラインの番号をスラッシュ区切りで指定する</dd>
+</dl>
+<dl class="memo">
+<dt>grid-column</dt>
+<dd>アイテムが占める列のラインの番号をスラッシュ区切りで指定する</dd>
+</dl>
+<dl class="memo">
+<dt>grid-template-areas</dt>
+<dd>エリアを作ってそれぞれに名前を付ける（コンテナのスタイルとして記述する）</dd>
+</dl>
+<dl class="memo">
+<dt>grid-area</dt>
+<dd>各アイテムが占めるエリアの名前を指定する（アイテムのスタイルとして記述する）</dd>
+</dl>
+<p class="mgt10">各アイテムの位置を指定しないと左上から順に自動で設置されていく</p>
+
+<div class="sample">
+<div class="girdCont">
+<div class="item1">item1</div>
+<div class="item2">item2</div>
+<div class="item3">item3</div>
+<div class="item4">item4</div>
+<div class="item5">item5</div>
+</div>
+
+<p class="mgt40">高さの指定(grid-template-rows)をしないとアイテムの高さに揃うが、幅の指定(grid-template-columns)がないとくずれる</p>
+<div class="girdSample1">
+<div class="item1">item1<br>サンプル  </div>
+<div class="item2">item2</div>
+<div class="item3">item3</div>
+<div class="item4">item4</div>
+<div class="item5">item5</div>
+</div>
+
+<h2 class="mgt50">grid-auto-rows</h2>
+<p>コンテナに grid-template-rowsを指定していない場合、全てのグリッドがgrid-auto-rowsで指定した高さになる。<br>下記は「grid-auto-rows: 70px;」を指定しているので全てのアイテムが70pxの高さになっている。</p>
+<div class="girdSample2">
+<div class="item1">item1<br>サンプル  </div>
+<div class="item2">item2</div>
+<div class="item3">item3</div>
+<div class="item4">item4</div>
+<div class="item5">item5</div>
+</div>
+
+<p class="memo mgt50">grid-row / grid-column でラインの番号を指定する代わりに、隣接するセルをいくつ跨いで占有するかだけを「span ○;」で指定することも出来る</p>
+<div class="girdSample3">
+<div class="item1">item1<br>サンプル</div>
+<div class="item2">item2<br>(縦/横に2つセルを結合させてる)</div>
+<div class="item3">item3</div>
+<div class="item4">item4<br>(横に2つセルを結合させてる)</div>
+<div class="item5">item5<br>(横に2つセルを結合させてる)</div>
+<div class="item6">item6</div>
+<div class="item7">item7</div>
+<div class="item8">item8</div>
+</div>
+
+<h2 class="mgt50">grid-auto-flow</h2>
+<p class="memo">上の例だと結合したりなんだりで隙間ができてしまう。この隙間をなるべく埋めて配置できる指定が「grid-auto-flow: dense;」</p>
+<div class="girdSample4">
+<div class="item1">item1<br>サンプル</div>
+<div class="item2">item2<br>(縦/横に2つセルを結合させてる)</div>
+<div class="item3">item3</div>
+<div class="item4">item4<br>(横に2つセルを結合させてる)</div>
+<div class="item5">item5<br>(横に2つセルを結合させてる)</div>
+<div class="item6">item6</div>
+<div class="item7">item7</div>
+<div class="item8">item8</div>
+</div>
+<p class="mgt10">ー解説的ななにかー</p>
+<ol>
+<li>1：item2が縦横2つずつ結合しているので、item3がitem1の下に来てる。</li>
+<li>2：item4とitem5が横に2つ結合しているのでitem5はitem4の右側にいけないので下におちている。</li>
+<li>3：2で右側に1セル分しかこれないのでそこにitem7とitem8が回り込んできてる。</li>
+</ol>
+<p class="mgt50">「grid-auto-flow」プロパティはアイテムの配置を設定できる。デフォルトでは行方向（row）になっているので1列目の左から右にアイテムは配置されていくが、列方向（grid-auto-flow: column;）を設定すれば1列目の上から下に配置されていく。</p>
+<div class="girdSample5">
+<div class="item1">item1<br>サンプル</div>
+<div class="item2">item2</div>
+<div class="item3">item3</div>
+<div class="item4">item4</div>
+<div class="item5">item5</div>
+<div class="item6">item6</div>
+<div class="item7">item7</div>
+<div class="item8">item8</div>
+</div>
+
+<h2 class="mgt50">繰り返し配置したい</h2>
+<p>同じ大きさの繰り返しをたくさん書くのは面倒くさい!ってときは<br>grid-template-rows / grid-template-columns に「repeat(繰り返す回数, トラックの幅)」で指定数だけ繰り返すように記述できる。</p>
+<div class="girdSample6">
+<div class="item1">item1<br>サンプル</div>
+<div class="item2">item2</div>
+<div class="item3">item3</div>
+<div class="item4">item4</div>
+<div class="item5">item5</div>
+<div class="item6">item6</div>
+<div class="item7">item7</div>
+<div class="item8">item8</div>
+</div>
+
+<p class="mgt50">コンテナに収まるだけくりかえしたい!ってときは<br>grid-template-columns に「repeat(auto-fit, トラックの幅)」を指定する。<br>（ブラウザを縮めてくと違いがわかるよ）</p>
+<div class="girdSample7">
+<div class="item1">item1<br>サンプル</div>
+<div class="item2">item2</div>
+<div class="item3">item3</div>
+<div class="item4">item4</div>
+<div class="item5">item5</div>
+<div class="item6">item6</div>
+<div class="item7">item7</div>
+<div class="item8">item8</div>
+</div>
+
+<p class="mgt50">アイテム数がいくつになるか不明だ!ってとき</p>
+<p class="addBtn">アイテムついか</p>
+<div class="girdSample8">
+<div class="item1">item1</div>
+<div class="item2">item2</div>
+<div class="item3">item3</div>
+<div class="item4">item4</div>
+<div class="item5">item5</div>
+<div class="item6">item6</div>
+<div class="item7">item7</div>
+<div class="item8">item8</div>
+</div>
+
+<p class="addBtn mgt50">アイテムついか</p>
+<div class="girdSample9">
+<div class="item1">item1</div>
+<div class="item2">item2</div>
+<div class="item3">item3</div>
+<div class="item4">item4</div>
+<div class="item5">item5</div>
+<div class="item6">item6</div>
+<div class="item7">item7</div>
+<div class="item8">item8</div>
+</div>
+</div>
+
+<p class="mgt50">色々やってみたが、実案件でつかうのは難しそうな気が。。<br>大方のレイアウトを整えるものなのかなと思った。<br>下記参考にしたサイト</p>
+<ul class="linkList mgt0">
+<li><a href="https://qiita.com/kura07/items/e633b35e33e43240d363" target="_blank">CSS Grid Layout を極める！（基礎編）</a></li>
+<li><a href="https://qiita.com/kura07/items/486c19045aab8090d6d9" target="_blank">CSS Grid Layout を極める！（場面別編）</a></li>
+</ul>
+<!--#include virtual="../common/inc/footer.html" -->
+</div>
+</section>
+
+</body>
+</html>

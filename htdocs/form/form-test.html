@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="css/style.css">
+<title></title>
+<script type="text/javascript" src="js/form2-test.js"></script>
+</head>
+
+<body>
+<div class="wrapper">
+<!-- ★送信フォーム [start] -->
+<form action="#" method="get" name="form1" onsubmit="return send();" class="formArea">
+<fieldset>
+<legend>パラメータに渡す値を入力</legend>
+<div class="inputBox box2Col">
+<dl>
+<dt>名前：</dt><dd><input type="text" name="name" value="" size="20" /></dd>
+</dl>
+</div>
+
+<div class="inputBox box2Col">
+<dl>
+<dt>性別：</dt>
+<dd>
+<div class="circleCheck">
+<label for="male">
+<input type="checkbox" name="sex" value="男性" id="male"><span>男</span>
+</label>
+<label for="female">
+<input type="checkbox" name="sex" value="女性" id="female"><span>女</span>
+</label>
+</div>
+</dd>
+</div>
+
+<div class="inputBox box2Col">
+<dl>
+<dt>趣味：</dt>
+<dd>
+<div class="circleCheck">
+<label for="favorite1">
+<input type="checkbox" name="favorite1" value="スポーツ" id="favorite1"><span>スポーツ</span>
+</label>
+<label for="favorite2">
+<input type="checkbox" name="favorite2" value="映画鑑賞" id="favorite2"><span>映画鑑賞</span>
+</label>
+<label for="favorite3">
+<input type="checkbox" name="favorite3" value="音楽鑑賞" id="favorite3"><span>音楽鑑賞</span>
+</label>
+</div>
+</dd>
+</dl>
+</div>
+
+<p class="sendingBtn">
+<input type="submit" value="送信">
+</p>
+</fieldset>
+</form><!-- ★送信フォーム [end] // -->
+
+</div>
+</body>
+</html>

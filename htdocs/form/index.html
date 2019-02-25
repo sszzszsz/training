@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/component.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="../common/lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script src="../common/lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script src="../common/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script src="../common/lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<link type="text/css" rel="stylesheet" href="../common/lib/syntaxhighlighter/styles/shCoreDefault.css">
+<link type="text/css" rel="stylesheet" href="../common/css/custom_syntaxhighlighter.css">
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<title>form練習</title>
+<style>
+.thumb {
+width: 100px;
+height: auto;
+margin: 10px 5px 0 0;
+}
+</style>
+</head>
+
+<body>
+<h1 class="ttlLv1">form練習</h1>
+<section class="wrapper">
+<div class="content">
+<h2>input要素</h2>
+<dl class="memo">
+<dt>★id属性★</dt>
+<dd>どのフォームと関連付けるかを &lt;input&gt;のid名で指定。<br>つまるところlabelタグのfor属性とinputタグのid属性が同じなら、labelタグ部分をクリックしてもinputタグがアクティブになったりする。（分かりずらい。）<br>labelタグのfor属性とinputタグのid属性に同じものが設定されてれば問題ないという理解でOK。
+</dd>
+</dl>
+<dl class="memo">
+<dt>★name属性★</dt>
+<dd>
+name属性は主にシステム周りでつかう属性。システムテンプレート作成は空で作成しても問題ない<br>inputタグに入力されたデータに名前をつける。<br>例えば、住所の入力欄にname="address"みたいな。<br>input typeタグで、idとnameは必ずしも同じ名前にしなければならないわけではない。（下記参考）
+<ul class="linkList mgt0">
+<li class="w100P"><a href="https://www.web-officer.com/html-css/in-the-input-type-tag-do-i-have-to-make-id-and-name-attributes-the-same-name.html" target="_blank">input typeタグで、idとnameは同じ名前にしなければいけないの？</a></li>
+</ul>
+</dd>
+</dl>
+<dl class="memo">
+<dt>★value属性★</dt>
+<dd>初期値を設定できる。<br>ただinput type="text"には設定しなくても問題ない。<br>radioボタン、checkboxを使うときは設定は必須。
+<ul class="linkList mgt0">
+<li class="w100P"><a href="https://reference.hyper-text.org/html5/attribute/value/">value 属性</a></li>
+</ul>
+</dd>
+</dl>
+<dl class="memo">
+<dt>★disabled属性★</dt>
+<dd>HTML5で追加された属性<br>input要素のdisabled属性は、input要素を無効にする属性。この指定があると入力などができない。</dd>
+</dl>
+<dl class="memo">
+<dt>★required属性★</dt>
+<dd>HTML5で追加された属性<br>input要素のrequired属性を設定すると、入力必須の項目になる。<br>これを指定しているinputボタンに何も入力しないで送信しようとすると、ブラウザで勝手にエラー文言がでてくる。（下の、「市区郡」のとこに設定してみた。）</dd>
+</dl>
+<dl class="memo">
+<dt>★placeholder属性★</dt>
+<dd>input要素のplaceholder属性で指定した値が、入力欄に初期値として表示される。<br> select要素にはまだない。。。
+</dd>
+</dl>
+<ul class="linkList">
+<li><a href="https://www.nxworld.net/tips/15-useful-css-snippets-in-form-style.html" target="_blank">フォーム周りで覚えておくと便利なCSS Snippets | NxWorld</a></li>
+<li><a href="http://nanndemoiikara.hatenablog.com/entry/2015/05/04/154954" target="_blank">CSSだけでradio chackboxをカスタマイズする内容ってほとんどがHTML構造気持ち悪いよね。</a></li>
+<li><a href="http://www.dataplan.jp/blog/css/1252" target="_blank">iPhoneでinput要素に付く影や角丸を消す</a><br>inputタグは「border-radius: 0;」を設定しないとiPhoneで角丸表示になるので、resetにない場合は要注意。</li>
+</ul>
+<p class="fcRD fwB alC mgt50">※シス開にお渡しする時はinputのname、valueは空っぽで作成すること※</p></div>
+
+<div class="content">
+<p>以下、formタグ内コピペして必要なcssコピペして整えれば今後なんとかなる想定</p>
+<form action="" method="post">
+
+<ul class="fileUpList">
+<li>
+<p class="fileUp">
+<label for="fileUpBtn01">
+<span class="inr">画像を選択</span>
+</label>
+<input type="file" name="files[]" id="fileUpBtn01" class="fileUpBtn" multiple>
+</p>
+<ul class="errorTxt">
+<li>画像が添付されておりません。</li>
+<li>ご応募いただきましたデータは容量オーバーのため受付ができません。（3MB以内のみ有効）</li>
+<li>ご応募いただきましたデータは所定の拡張子と異なるため受付ができません。</li>
+</ul>
+<output id="list"></output>
+</li>
+<li>
+<p class="fileUp">
+<label for="fileUpBtn02">
+<span class="inr">画像を選択</span>
+</label>
+<input type="file"name="files[]" id="fileUpBtn02" class="fileUpBtn" multiple>
+</p>
+<ul class="errorTxt">
+<li>画像が添付されておりません。</li>
+<li>ご応募いただきましたデータは容量オーバーのため受付ができません。（3MB以内のみ有効）</li>
+<li>ご応募いただきましたデータは所定の拡張子と異なるため受付ができません。</li>
+</ul>
+<output id="list"></output>
+</li>
+</ul><!-- /fileUpList -->
+
+<div class="memoBox">
+<p>
+<span class="fwB">input type="file"のAndorid4系でのバグについて</span><br>
+inputタグにスタイルを当てるためにdisplay:none;をかけてるとAndroid4.4でボタンをタップしてもファイル選択ができない。<br>
+なので、inputはdisplay:none;ではなく、positionとかでどっかにすっとばして、labelタグでボタンを作るのが正解かも。<br>（端末によってはこんなことしなくてもファイル選択ができたりするのでAndroid4系が対象端末に含まれている場合は要注意。）
+</p>
+<ul class="linkList mgt0">
+<li><a href="https://qiita.com/SatohJohn/items/335616ed2fa8d190e99f" target="_blank">Android標準ブラウザでinput[type="file"]を扱う</a></li>
+<li><a href="https://qiita.com/ebim/items/6c47219bc3d83790e306"target="_blank">もうすぐクリスマスなのでinputとlabelの仲を引き裂いてみた</a></li>
+</ul>
+<p class="mgt20">下記コードでinputタグを画面外へすっとばしている</p>
+<pre class="brush: css;">
+.fileUpList li .fileUp input {
+display: block;
+position: absolute;
+height: 0;
+top: -9999px;
+}
+</pre>
+</div><!-- /memoBox -->
+
+<div class="formArea">
+<form class="" action="index.html" method="post">
+<div class="inputBox">
+<dl>
+<dt><label for="entryNum">▼応募口数（半角数字）</label></dt>
+<dd><input type="number" name="" value="" id="entryNum"></dd>
+</dl>
+<ul class="errorTxt">
+<li>口数が正しく入力されておりません。</li>
+</ul>
+</div><!-- inputBox -->
+
+<div class="memoBox">
+<p>
+<span class="fwB">input type="number"について</span><br>
+type属性を"number"にすると、PCの時、半角数字しか入力されない。また、inputタグホバー時やアクティブ時に右側に数を増減させる矢印（スピンボタン）がでる。<br>これを非表示にするには、下記参照。<br>SPのとき、inputをタップすると数字入力のキーボードが表示される。</p>
+<pre class="brush: css;">
+/*-- Chrome、Safari --/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+/*-- Firefox、IE --/
+input[type="number"] {
+-moz-appearance:textfield;
+}
+</pre>
+</div><!-- /memoBox -->
+
+<div class="inputBox">
+<dl>
+<dt>▼応募賞品<span class="fcRD">※</span></dt>
+<dd>
+<div class="selectBox">
+<select name="">
+<option value="" disabled selected>選択してください</option>
+<option value="">商品1</option>
+<option value="">商品1</option>
+<option value="">商品1</option>                
+</select>
+</div>
+</dd>
+</dl>
+<ul>
+<li><a href="http://kuwasa.hatenablog.com/entry/2016/04/16/155000" target="_blank">selectにplaceholder的なものを追加する</a></li>
+</ul>
+</div><!-- inputBox -->
+<div class="inputBox">
+<dt>▼郵便番号(半角数字）<span class="fcRD">※</span></dt>
+<dd>
+<input type="text" name="" value="" class="postCodeS"> - <input type="text" name="" value="" class="postCodeM">
+<ul class="errorTxt">
+<li>郵便番号が入力されておりません。</li>
+</ul>
+</dd>
+</dl>
+</div><!-- inputBox -->
+<div class="inputBox">
+<dt>●都道府県<span class="notice">※</span></dt>
+<dd>
+<div class="selectBox">
+<select name="">
+<option value='' disabled selected>選択してください</option>
+<option value="" disabled>北海道・東北地方</option>
+<option value="">北海道</option>
+<option value="">青森県</option>
+<option value="">岩手県</option>
+<option value="">宮城県</option>
+<option value="">秋田県</option>
+<option value="">山形県</option>
+<option value="">福島県</option>
+<option value="" disabled>関東地方</option>
+<option value="">茨城県</option>
+<option value="">栃木県</option>
+<option value="">群馬県</option>
+<option value="">埼玉県</option>
+<option value="">千葉県</option>
+<option value="">東京都</option>
+<option value="">神奈川県</option>
+<option value="" disabled>中部地方</option>
+<option value="">新潟県</option>
+<option value="">富山県</option>
+<option value="">石川県</option>
+<option value="">福井県</option>
+<option value="">山梨県</option>
+<option value="">長野県</option>
+<option value="">岐阜県</option>
+<option value="">静岡県</option>
+<option value="">愛知県</option>
+<option value="" disabled>近畿地方</option>
+<option value="">三重県</option>
+<option value="">滋賀県</option>
+<option value="">京都府</option>
+<option value="">大阪府</option>
+<option value="">兵庫県</option>
+<option value="">奈良県</option>
+<option value="">和歌山県</option>
+<option value="" disabled>中国地方</option>
+<option value="">鳥取県</option>
+<option value="">島根県</option>
+<option value="">岡山県</option>
+<option value="">広島県</option>
+<option value="">山口県</option>
+<option value="" disabled>四国地方</option>
+<option value="">徳島県</option>
+<option value="">香川県</option>
+<option value="">愛媛県</option>
+<option value="">高知県</option>
+<option value="" disabled>九州地方・沖縄</option>
+<option value="">福岡県</option>
+<option value="">佐賀県</option>
+<option value="">長崎県</option>
+<option value="">熊本県</option>
+<option value="">大分県</option>
+<option value="">宮崎県</option>
+<option value="">鹿児島県</option>
+<option value="">沖縄県</option>
+</select>
+</div>
+</dd>
+</dl>
+<ul class="errorTxt">
+<li>都道府県が入力されておりません。</li>
+</ul>
+</div><!-- inputBox -->
+
+<div class="memoBox">
+<p>
+<span class="fwB">optgroupについて</span><br>selectタグの中にoptgroupを設定するとiPhoneで見たときプルダウンのメニューが左寄りになってしまう。<br>センター寄せかつグループ化したいときはoptionタグに「disabled」属性で対応するのが無難そう。
+</p>
+<pre class="brush: html;">
+&lt;select&gt;
+&lt;option value="" disabled&gt;関東地方&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+</div><!-- /memoBox -->
+
+<div class="memoBox">
+<p class="mgt20">
+<span class="fwB">IEでの表示について</span><br>IEでは"appearance"で右側の矢印を非表示にできないので、下記の記述を追加すること。自前のリセットに追加すべき!
+</p>
+<pre class="brush: css;">
+select::-ms-expand {
+display: none;
+}
+</pre>
+</div><!-- /memoBox -->
+
+<div class="inputBox">
+<dl>
+<dt><label for="city">●市区郡（全角）<span class="fcRD">※</span></label></dt>
+<dd>
+<input type="text" name="" value="" id="city" class="inputL" required>
+<ul class="errorTxt">
+<li>市区郡が入力されておりません。</li>
+</ul>
+</dd>
+</dl>
+</div><!-- inputBox -->
+
+<div class="memoBox">
+<p>
+<span class="fwB">input type="text"のAndorid標準ブラウザでのバグについて</span><br>
+inputタグから入力したテキストがはみ出した時、普通なら横に改行されずにつながっていくが、Android標準ブラウザだと、ある一定数を超すか、inputから飛び出るかすると改行されてinputタグからはみ出して表示されるバグを発見。<br>端末によっては、そのまま文字が下に飛び出したり、一見問題無さそうに見えても、テキストが見えないだけで、実ははみ出しているので、やけにinputタグの下に余白が出来たりなど、起こったことは少しづつちがうけど、結局inputタグから文字が飛び出していた。<br>対処法としてinputタグに「word-break: normal;」をかけると上手くいった。。</p>
+</div><!-- /memoBox -->
+
+<div class="inputBox">
+<dl>
+<dt><label for="cityBlock">●町村番地（全角）<span class="fcRD">※</span></label></dt>
+<dd>
+<input type="text" name="" value="" id="cityBlock" class="inputL">
+<ul class="errorTxt">
+<li>町村番地が入力されておりません。</li>
+</ul>
+</dd>
+</dl>
+</div><!-- inputBox -->
+<div class="inputBox">
+<dl>
+<dt><label for="buildingName">●ビル・マンション名・号室（全角）<span class="fcRD">※</span></label></dt>
+<dd>
+<input type="text" name="" value="" id="buildingName" class="inputL">
+<ul class="errorTxt">
+<li>ビル・マンション名・号室が入力されておりません。</li>
+</ul>
+</dd>
+</dl>
+</div><!-- inputBox -->
+<div class="inputBox">
+<dl>
+<dt><label for="familyName">●姓（全角）<span class="fcRD">※</span></label></dt>
+<dd>
+<input type="text" name="" value="" id="familyName" class="inputM">
+<ul class="errorTxt">
+<li>姓が入力されておりません。</li>
+</ul>
+</dd>
+</dl>
+</div><!-- inputBox -->
+<div class="inputBox">
+<dl>
+<dt><label for="firstName">●名（全角）<span class="fcRD">※</span></label></dt>
+<dd>
+<input type="text" name="" value="" id="firstName" class="inputL">
+<ul class="errorTxt">
+<li>名が入力されておりません。</li>
+</ul>
+</dd>
+</dl>
+</div><!-- inputBox -->
+<div class="inputBox">
+<dl>
+<dt><label for="gender">●性別<span class="fcRD">※</span></label></dt>
+<dd>
+<div class="circleCheck">
+<label for="male">
+<input type="checkbox" name="" value="" id="male"><span>男</span>
+</label>
+<label for="female">
+<input type="checkbox" name="" value="" id="female"><span>女</span>
+</label>
+</div>
+</dd>
+</dl>
+</div><!-- inputBox -->
+<div class="inputBox">
+<dl>
+<dt><label for="phoneNumber">▼電話番号（半角数字）<span class="fcRD">※</span></label>
+<p>例:0×0XXXXXXXX</p></dt>
+<dd>
+<input type="number" name="" value="" id="phoneNumber" class="inputM">
+<ul class="errorTxt">
+<li>電話番号が正しく入力されておりません。</li>
+</ul>
+</dd>
+</dl>
+<p class="mgt20">
+<span class="fwB">input type="tel"について</span><br>
+HTML5から追加されたtype属性。<br></p>
+<input type="tel" name="" value="" id="TEL" class="inputM">
+</div><!-- inputBox -->
+
+<div class="inputBox">
+<dl>
+<dt><label for="mailAdress">▼メールアドレス1<span class="fcRD">※</span></label>
+<dd>
+<input type="text" name="" value="" id="mailAdress" class="inputL">
+<ul class="errorTxt">
+<li>メールアドレスが正しく入力されておりません。</li>
+</ul>
+</dd>
+</dl>
+</div><!-- inputBox -->
+
+<div class="memoBox">
+<p>
+<span class="fwB">input type="email"について</span><br>
+HTML5から追加されたtype属性。"email"に指定すると@が入力されていない場合、送信ボタンなどを押すとバリデーター（エラーの吹き出し）がでる。ただ、この吹き出しをカスタマイズできるのか謎。（使わないほうが無難かも）<br>下記メールアドレス2は type="email" の指定なので正しく入力せずに、送信ボタンを押すと吹き出しを確認できる。<br>この吹き出しを表示しないようにするには、formタグに"novalidate"を指定する。<br>ページの下のほうで試してみた。</p>
+</div><!-- /memoBox -->
+
+<div class="inputBox test">
+<dl>
+<dt><label for="">▼メールアドレス2<span class="fcRD">※</span></label>
+<dd>
+<input type="email" name="" value="" id="" class="inputL">
+</dd>
+</dl><!-- /inputBox -->
+
+<div class="inputBox">
+<dl>
+<dt><label for="gender">●好きな果物<span class="fcRD">※</span></label></dt>
+<dd>
+<div class="squareCheck">
+<label for="apple"><input type="checkbox" name="" value="" id="apple"><span>りんご</span></label>
+<label for="banana"><input type="checkbox" name="" value="" id="banana"><span>ばなな</span></label>
+<label for="strawberry"><input type="checkbox" name="" value="" id="strawberry"><span>いちご</span></label>
+</div>
+</dd>
+</dl>
+</div><!-- inputBox -->
+<div class="inputBox">
+<dl>
+<dt><label for="mailAdress">▼感想<span class="fcRD">※</span></label>
+<dd><textarea name="" rows="3" cols="34"></textarea></dd>
+</dl>
+</div><!-- inputBox -->
+</div><!-- formArea -->
+<p class="agreementBox">
+<label for="agreement">
+<input type="checkbox" name="" value="" id="agreement">
+<span>同意する。</span>
+</label>
+<p class="sendingBtn"><input type="submit" value="送信画面"></p>
+</form>
+<ul>
+<li>参考：<a href="https://lab.sonicmoov.com/wp-content/uploads/demo/marizo/201705_css_checkbox/" target="_blank">デモ : CSSでチェックボックスとラジオボタンを装飾する</a></li>
+</ul>
+</div><!-- /content -->
+
+<div class="formArea">
+<p>2カラムの場合とエラーが吹き出しの場合</p>
+<form class="" action="index.html" method="post">
+<div class="inputBox box2Col">
+<dl class="">
+<dt><label for="id">ID<span class="fcRD">※</span></label>
+<dd>
+<p class="errorBalloon">IDは半角で記入してください</p>
+<input type="text" name="" value="" id="id" class="inputL">
+</dd>
+</dl>
+</div><!-- inputBox -->
+<div class="inputBox box2Col">
+<dl class="">
+<dt><label for="password">パスワード<span class="fcRD">※</span></label>
+<dd>
+<p class="errorBalloon">パスワードが間違っています</p>
+<input type="password" name="" value="" id="password" class="inputL">
+</dd>
+</dl>
+</div><!-- inputBox -->
+</form>
+
+<div class="memoBox">
+<p>
+<span class="fwB">novalidate属性</span><br>
+HTML5ではtype属性やrequired属性によってバリデート（エラー判断）を勝手にブラウザでやってくれるようになったが、各ブラウザでエラーの吹き出しの文言やテキストがちがうので、これを非表示にするために、formタグにnovalidate属性を指定する。<br>下記の二つを何も入力せずに送信ボタンを押すと挙動の違いがわかるかも!</p>
+</div><!-- /memoBox -->
+
+<form method="get" name="form2" onsubmit="return send2();"　class="formArea">
+<span class="fwB">novalidate属性無し</span>
+<div class="inputBox">
+<dl>
+<dt><label for="textTest">▼type="text"(required属性有)<span class="fcRD">※</span></label>
+<dd>
+<input type="text" name="textRequired" value="" id="textTest" class="inputL" required>
+</dd>
+</dl>
+</div>
+<div class="inputBox">
+<dl>
+<dt><label for="textTest2">▼type="text"(required属性無)<span class="fcRD">※</span></label>
+<dd>
+<input type="text" name="textNonRequired" value="" id="textTest2" class="inputL">
+</dd>
+</dl>
+</div>
+<div class="inputBox">
+<dl>
+<dt><label for="email2">▼type="email"(required属性有)<span class="fcRD">※</span></label>
+<dd>
+<input type="email" name="email1" value="" id="email2" class="inputL" required>
+</dd>
+</dl>
+</div><!-- /inputBox -->
+<div class="inputBox">
+<dl>
+<dt><label for="gender">●好きな果物<span class="fcRD">※</span></label></dt>
+<dd>
+<div class="squareCheck">
+<label for="apple1"><input type="checkBox" name="favorite1" value="りんご" id="apple1"><span>りんご</span></label>
+<label for="banana1"><input type="checkBox" name="favorite2" value="ばなな" id="banana1"><span>ばなな</span></label>
+<label for="strawberry1"><input type="checkBox" name="favorite3" value="いちご" id="strawberry1"><span>いちご</span></label>
+</div>
+</dd>
+</dl>
+</div><!-- inputBox -->
+<p class="sendingBtn"><input type="submit" value="送信画面"></p>
+</form>
+
+<form method="post" name="form3" action="" class="formArea" onsubmit="return send3();" novalidate>
+<span class="fwB">novalidate属性有り</span>
+<div class="inputBox">
+<dl>
+<dt><label for="">▼type="text"(required属性有)<span class="fcRD">※</span></label>
+<dd>
+<input type="text" name="" value="" id="textTest3" class="inputL" required>
+</dd>
+</dl>
+</div><!-- /inputBox -->
+<div class="inputBox">
+<dl>
+<dt><label for="">▼type="text"(required属性無)<span class="fcRD">※</span></label>
+<dd>
+<input type="text" name="" value="" id="textTest4" class="inputL">
+</dd>
+</dl>
+</div><!-- /inputBox -->
+<div class="inputBox test">
+<dl>
+<dt><label for="email3">▼type="email"(novalidate属性有)<span class="fcRD">※</span></label>
+<dd>
+<input type="email" name="" value="" id="email3" class="inputL" required>
+<p class="val">
+<span class="invalid">正しいメールアドレス入れてください。</span>
+<span class="valid">正しいメールアドレスです。</span>
+</p>
+</dd>
+</dl>
+</div><!-- /inputBox -->
+<div class="inputBox">
+<dl>
+<dt><label for="gender">●好きな果物<span class="fcRD">※</span></label></dt>
+<dd>
+<div class="squareCheck">
+<label for="apple2"><input type="checkbox" name="" value="りんご" id="apple2"><span>りんご</span></label>
+<label for="banana2"><input type="checkbox" name="" value="ばなな" id="banana2"><span>ばなな</span></label>
+<label for="strawberry2"><input type="checkbox" name="" value="いちご" id="strawberry2"><span>いちご</span></label>
+</div>
+</dd>
+</dl>
+</div><!-- inputBox -->
+<p class="sendingBtn"><input type="submit" value="送信画面"></p>
+</form>
+
+<div class="memoBox">
+<p>
+<span class="fwB">:invalidと:valid</span><br>
+css4（!?）で追加された疑似クラス。<br>input要素のtype属性に対して入力されたものが正しいか正しくないかを判断して、その状態に対してスタイルを当てる疑似クラス。（つまり、ホバーしたら半透明とかといっしょ。）<br>正しいときは「:valid」、正しくない時は「:invalid」<br>上のメールアドレスには下記のスタイルが当たっているので、type="email"にふさわしくない状態だと赤い吹き出しがでる。</p>
+<pre class="brush: css;">
+.inputBox.test input + .val .valid , 
+.inputBox.test input + .val .invalid {
+display: none;
+}
+
+.inputBox.test input:focus:invalid + .val .invalid {
+position: relative;
+
+background: #cc0000;
+border-radius: 5px;
+color: #ffffff;
+display: inline-block;
+margin-top: 10px;
+padding: 5px 10px;
+}
+
+.inputBox.test input:focus:invalid + .val .invalid::after {
+position: absolute;
+top: -10px;
+right: 0;
+left: 0;
+
+border-color: transparent transparent #cc0000 transparent;
+border-style: solid;
+border-width: 0 5px 10px 5px;
+content: '';
+display: block;
+height: 0;
+margin: auto;
+width: 0;
+}
+</pre>
+</div><!-- /memoBox -->
+</div>
+<!--#include virtual="../common/inc/footer.html" -->
+</section>
+
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="js/form2-test.js"></script>
+<script src="js/form3-test.js"></script>
+</body>
+
+</html>

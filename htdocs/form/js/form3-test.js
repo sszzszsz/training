@@ -1,0 +1,1 @@
+function send3(){var e=document.form3,n=document.form3.elements.length;for(i=0;i<=n;i++)return""==e.elements[i].value?(alert("テキストボックスが空の場合は送信しません"),!1):(e.action="test.php",e.method="post",e.encoding="application/x-www-form-urlencoded",!0)}

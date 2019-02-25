@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="../common/css/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link href="../css/practice.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../common/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+<!--
+
+function move() {
+  var inrHTML = $("#result");
+  if(inrHTML.children().html()){
+    (inrHTML).children().remove();
+  }
+  
+  var inputNum = $("form").children().length;
+  
+  for( i = 0 ; i < inputNum-1 ; i++){
+    var arryItem = document.forms.form1.elements[i].value;
+    if (arryItem == ""){//入力が空だったら
+      (inrHTML).append("<p>"+"エラーです"+ "</p>");
+      break;
+    }else{//入力が一つでもあったら
+      if(inrHTML.children().html() =="error"){
+        (inrHTML).children().remove();
+        (inrHTML).append("<p>"+arryItem+ "</p>");
+      }else if (arryItem == ""){//入力に空があったら
+        (inrHTML).children().remove();
+        break;
+      }else if (arryItem != "") {
+        (inrHTML).append("<p>入力値："+arryItem+ "</p>");  
+      }
+    }
+  }  
+}
+// -->
+</script>
+</head>
+<body>
+<form action="#" name="form1">
+<input type="text" name="text1" value="">
+<input type="text" name="text2" value="">
+<input type="text" name="text3" value="">
+<input type="text" name="text4" value="">
+<input type="button" value="送信" onclick="move();">
+</form>
+<div id="result">
+</div>
+</body>
+</html>

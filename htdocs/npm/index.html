@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../../common/css/base.css">
+<link rel="stylesheet" href="../../common/css/common.css">
+<script type="text/javascript" src="../../common/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../../common/js/common.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="../common/lib/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<link type="text/css" rel="stylesheet" href="../common/lib/syntaxhighlighter/styles/shCoreDefault.css">
+<link type="text/css" rel="stylesheet" href="../common/css/custom_syntaxhighlighter.css">
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<title>gulpをインストールして動かしてみる</title>
+</head>
+
+<body>
+<h1 class="ttlLv1">gulpをインストールして動かしてみる</h1>
+<div class="wrapper">
+<div class="content">
+<section>
+<h2 class="ttlLv2">「npm」とは</h2>
+<p>「Node Package Manager」の略です。<br>Node.jsのパッケージ（Package）を管理する（Manager）ツールです。<br>そもそも「Node.js」とは、サーバーサイドでうごくJavaScriptくらいの認識</p>
+<ul class="linkList">
+<li><a href="https://techacademy.jp/magazine/16248" target="_blank">リアルタイム通信で活用！注目の技術「Node.js」とは【初心者向け】</a></li>
+<li><a href="https://techacademy.jp/magazine/16105" target="_blank">便利なパッケージ管理ツール！npmとは【初心者向け】</a></li>
+</ul>
+<p class="mgt30">実際にフロントエンドで使用するのは以下くらい</p>
+<ul class="txtList">
+<li>sass、scssのコンパイル</li>
+<li>cssの整形、ベンダープレフィックスの自動付与</li>
+<li>画像の圧縮</li>
+<li>ソースの圧縮</li>
+<li>ブラウザシンク</li>
+<li>webpack（稟申が必要です。）</li>
+</ul>
+などなど…
+</section>
+
+<section>
+<h2 class="ttlLv2">プロジェクトをクローンしてきたら「package.json」があった場合</h2>
+<p>「package.json」とは<br>npmでインストールしたパッケージを管理するためのファイルです。パッケージをインストールするたびに自動で更新され、ファイルの中には、インストール済のパッケージと、そのバージョンが記載されています。</p>
+<p class="mgt40">コマンドの立ち上げ方は、「スタート」ボタン＞検索に「コマンド」といれれば出てきます。<br>立ち上げると以下の画面が出てきます。</p>
+<img src="img/img01.jpg" alt="">
+<p class="mgt40">立ち上がったら「cd」と半スぺ入力し、先ほど作成したフォルダをコマンドにドロップし、「Enter」を押します。<br>そうすると、ドラッグした階層に移動できます。</p>
+<img src="img/img02.jpg" alt="">
+<p class="mgt40">移動したら、「npm install」とコマンドに入力。すると「package.json」に記載されている必要なパッケージがインストールされます<br>（自分でごにょごにょやらなくても、設定さえしてあれば他の人にもスムーズに環境を構築してもらえます。）</p>
+<p class="mgt40">以下のリンク先にて参考のzipファイルを添付しております。</p>
+<ul class="linkList mgt0">
+<li><a href="../gulpfile/index.html#browser-sync">gulpfile.jsについて</a></li>
+</ul>
+
+</section>
+
+<section class="mgt40">
+<p>※既にプロジェクト内に「package.json」が存在する場合、以下の行程は不要です。</p>
+<h2 class="ttlLv2">「npm」をインストールする</h2>
+<p>インストールするフォルダを作成します。<br>（例）C:\apache\npm-test　とします。</p>
+<p>インストールにあたって、コマンドラインが必須です。<br>コマンドの立ち上げ方は、「スタート」ボタン＞検索に「コマンド」といれれば出てきます。<br>立ち上げると以下の画面が出てきます。</p>
+<img src="img/img01.jpg" alt="">
+
+<p class="mgt40">立ち上がったら「cd」と半スぺ入力し、先ほど作成したフォルダをコマンドにドロップし、「Enter」を押します。<br>そうすると、ドラッグした階層に移動できます。</p>
+<img src="img/img02.jpg" alt="">
+
+<p class="mgt40">インストールにあたって、グローバルにインストールするか、ローカルにインストールするかを指定することが出来ます。何が違うのかというと、</p>
+<dl>
+<dt class="fwB">■グローバルにインストールする場合</dt>
+<dd>PC全体でnpmを使用することが可能になります。なので各プロジェクトやディレクトリごとにパッケージをインストールしないで済むので、PCの容量も食いません。</dd>
+<dd>たたくコマンドが少し短いです。</dd>
+</dl>
+<dl class="mgt20">
+<dt class="fwB">■ローカルにインストールする場合</dt>
+<dd>各プロジェクト、各ディレクトリごとにパッケージをインストールします。なのでPCの容量を食います。</dd>
+<dd>たたくコマンドが少し長いです。</dd>
+<dd></dd>
+</dl>
+<p class="mgt40">詳しくは下記参照。とりあえず、ローカルでの方法が今後続きます。</p>
+<ul class="linkList">
+<li><a href="https://mosapride.com/index.php/2018/02/06/post-681/#i-4" target="_blank">グローバルインストールは控えるべき理由</a></li>
+</ul>
+
+<p class="mgt40">「npm init -y」と打つと、ディレクトリ内にjsonファイルが出来ます。<br>このjsonファイルでパッケージの管理をしていきます。</p>
+<img src="img/img03.jpg" alt="">
+<p class="memoBox">
+「npm init -y」ですが、「-y」を省略することもできます。ただ、いろいろ手間が増えるので上記のコマンドでOK
+</p>
+</div>
+</section>
+
+<section>
+<h2 class="ttlLv2">「gulp」をインストールする</h2>
+<p class="mgt40">
+上記までできたら、gulpをインストールします。<br>「npm install -D gulp」をコマンドラインに入力。<br>するとgulpのインストールが始まります。<br>コマンドに大量に文字が出てきて、また入力出来るようになったら完了です。</p>
+<img src="img/img04.jpg" alt="">
+<p class="mgt40">完了すると先ほど作成したディレクトリ内に「node_modules」というフォルダが出来ています。このなかにパッケージがインストールされています。<br>これでgulpのインストールは完了です。</p>
+<dl class="mgt10">
+<dt class="fwB">現在のテストフォルダの中身</dt>
+<dd>C:\apache\npm-test\node_modules</dd>
+<dd>C:\apache\npm-test\package.json</dd>
+</dl>
+</section>
+
+<section>
+<h2 class="ttlLv2">「gulp」を動かかす為のモジュールをインストールしていく</h2>
+<p class="mgt40">
+とりあえず、scss、sassをコンパイルするためのモジュールをインストールします。「npm install -D gulp-sass」と入力し、インストール。<br>package.jsonに以下のように記述されてればインストール完了。<br>以降、モジュールをインストールすると、package.jsonに追記されていきます。</p>
+<img src="img/img05.jpg" alt="">
+
+<p class="mgt40">
+  上記がインストールされたらpackage.jsonの以下の部分に「"gulp": "gulp"」と追記します。<br>※カンマでつなぐのを忘れないようにすること。
+  <pre class="brush: js;">
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  </pre>
+  <pre class="brush: js;">
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
+  },
+  </pre>
+</p>
+</section>
+
+<section>
+<h2 class="ttlLv2">「gulp」を動かかす為のjsを作成</h2>
+<p class="mgt40">上記まで終了したら、「gulp」を動かかす為のjsを作成します。node_modulesと同階層に「gulpfile.js」を作成してください。<br>（例）C:\apache\npm-test\gulpfile.js</p>
+<dl class="mgt10">
+<dt class="fwB">現在のテストフォルダの中身</dt>
+<dd>C:\apache\npm-test\node_modules</dd>
+<dd>C:\apache\npm-test\package.json</dd>
+<dd>C:\apache\npm-test\gulpfile.js</dd>
+</dl>
+<p class="mgt40">取り合えず、以下の例を記述し、保存</p>
+<pre class="brush: js;">
+  var gulp = require('gulp');
+  var sass = require('gulp-sass');
+  
+  // style.scssをタスクを作成する
+  gulp.task('default', function () {
+  // style.scssファイルを取得
+  gulp.src('css/*.scss')
+    // Sassのコンパイルを実行
+    .pipe(sass())
+    // cssフォルダー以下に保存
+    .pipe(gulp.dest('css'));
+  });
+</pre>
+
+<p class="mgt40">
+cssフォルダを作成し、scssを作成する。<br>例）C:\apache\npm-test\css\style.scss
+</p>
+<pre class="brush: css;">
+  div{
+    display: block;
+    
+    p {
+      color: #000;
+      
+      span {
+        display: inline-block;
+      }
+    }
+  }
+</pre>
+
+<p class="mgt40">
+上記を作成したら、コマンドに「npm run gulp」と入力。以下のような画面になればコンパイル成功です。
+</p>
+<img src="img/img06.jpg" alt="">
+<dl class="mgt10">
+<dt class="fwB">現在のテストフォルダの中身</dt>
+<dd>C:\apache\npm-test\node_modules</dd>
+<dd>C:\apache\npm-test\package.json</dd>
+<dd>C:\apache\npm-test\gulpfile.js</dd>
+<dd>C:\apache\npm-test\css</dd>
+<dd>C:\apache\npm-test\css\style.scss</dd>
+<dd>C:\apache\npm-test\css\style.css</dd>
+</dl>
+<img src="img/img07.jpg" alt="">
+
+<ul class="linkList">
+<li><a href="https://ics.media/entry/3290" target="_blank">絶対つまずかないGulp入門(2018年版) – インストールとSassを使うまでの手順</a></li>
+</ul>
+<p class="mgt30">以降、使用しているパッケージとgulpfile.jsの紹介</p>
+<ul class="linkList mgt0">
+<li><a href="../gulpfile/">gulpfile.jsについて</a></li>
+</ul>
+<!--#include virtual="../../common/inc/footer.html" -->
+</section>
+</div>
+</div>
+</body>
+</html>

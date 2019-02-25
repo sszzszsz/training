@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<title>css filterについて</title>
+</head>
+
+<body>
+<h1 class="ttlLv1">css filterについて</h1>
+<section class="wrapper" id="filter">
+<div class="content">
+<h2 class="ttlLv2">css filterとは？</h2>
+<p>photoshopの画像加工（明るさとか彩度とかそういうの）がcssでも出来る。CSSのSVG仕様の一部で、写真やイラストなどの画像や文字にフィルタ（効果）を重ねて画像の加工をする機能</p>
+<p class="fwB">ただし！！！IEだとcss filterは使えません！！！</p>
+<p>このページもIE11で見るとただただ同じ画像が並んでるだけのページになってます。</p>
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">彩度：saturate</dt>
+<dd>0%～上限なしを指定でき、色の鮮やかさを変更することが出来る。<br>上限が無いので1000％とか指定も可能。<br>0にすると彩度がなくなってく(白黒になってく)</dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterSaturate">
+</div>
+
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">明度：brightness</dt>
+<dd>0～上限なしをを指定でき、色の明るさを変更することが出来る。指定に単位は付けない。<br>上限が無いので1000とか指定も可能。<br>0にすると暗くなっていき（黒くなる？）、大きくなるにつれて明るくなってく</dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterBrightness">
+</div>
+
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">色相：hue-rotate</dt>
+<dd>0deg～360deg（上限・下限なし）を指定でき、色相を調整できる。<br>指定が角度なのは色相環で計算されるから（懐かしい。。）<br><a href="http://zokeifile.musabi.ac.jp/%E8%89%B2%E7%9B%B8%E7%92%B0/" class="txtlink">色相環について</a></dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterHueRotate">
+</div>
+
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">コントラスト：contrast</dt>
+<dd>0%～上限なしを指定でき、コントラストを調整できる。<br>上限が無いので1000％とか指定も可能。<br>100%だと元画像と変わらない(？)が、だんだん数を小さくするとコントラストが弱くなっていく</dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterContrast">
+</div>
+
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">グレースケール：grayscale</dt>
+<dd>0～100%を指定でき、100%に近づくにつれてだんだん白黒になってく。<br>下の例は80%で指定してみた。</dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterGrayscale">
+</div>
+
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">セピア：sepia</dt>
+<dd>0～100%を指定でき、100%に近づくにつれてだんだんセピア色になってく。<br>下の例は80%で指定してみた。<br>余談:<a href="https://sirabee.com/2016/11/10/20161028666/" class="txtlink">セピア色の「セピア」って何の意味？まさに色々な色の語源</a></dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterSepia">
+</div>
+
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">階調の反転：invert</dt>
+<dd>0～100%を指定でき、値が大きいほど、写真のネガっぽくなる。</dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterInvert">
+</div>
+
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">ぼかし：blur</dt>
+<dd>0px～上限なしを指定でき、値が大きいほど、ぼかしの度合いが大きくなる。値の上限が無く、例えば1000pxという値も設定可能。<br>10px以上指定するのはもうぼやぼやしすぎてみづらすぎる。。下の例は5pxを指定。</dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterBlur">
+</div>
+
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">ドロップシャドウ：drop-shadow</dt>
+<dd>drop-shadow(値1 値2 値3 rgba(値4,値5,値6,値7)で指定。
+<ul>
+<li>値1：横方向への影。下限上限なし</li>
+<li>値2：縦方向への影。下限上限なし</li>
+<li>値3：影のぼかし具合。下限上限なし</li>
+<li>値4～6：色の指定する（色の三原色rgb）0～255</li>
+<li>値7：明るさを指定する。0～上限なし</li>
+</ul>
+</dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterDropShadow">
+<p class="mgt20">
+<span class="fwB">！box-shadowとの違い！</span><br>
+「box-shadow」と何がちがうのか？となったけど、filterで指定すると、画像の透過したところにも影がかかる！
+</p>
+<ul class="SmapleDropShadow">
+<li><p>box-shadowの場合↓</p><img src="../img/icon_egg.png" alt=""></li>
+<li><p>drop-shadowの場合↓</p><img src="../img/icon_egg.png" alt=""></li>
+</ul>
+</div>
+<ul class="linkList">
+<li><a href="https://memocarilog.info/webdesign/4710">透過pngにもそのままシャドウをかける事ができる filter: drop-shadow</a></li>
+</ul>
+
+
+<div class="filterSmapleBox">
+<dl>
+<dt class="fwB">複数つけてみる</dt>
+<dd>各プロパティを半スぺでつないでいけばOK<br>下記は、明るさ・コントラスト・彩度を調整</dd>
+</dl>
+<img src="../img/pic04.jpg" alt="" class="filterMix">
+</div>
+
+<p class="mgt10">今時画像加工なんてみんなやったことあるんだから、cssで出来るのも当たり前でしょ！ってよく考えたら思った。<br>でもIE11ですら使えないなんて、、、</p>
+<p>IE11で使えない理由：<a href="http://htgmi.hateblo.jp/entry/2017/04/18/015756" class="txtlink">【IE10・11対応】svgを使って画像をグレースケール化する</a></p>
+<!--#include virtual="../common/inc/footer.html" -->
+</div>
+</section>
+</body>
+</html>

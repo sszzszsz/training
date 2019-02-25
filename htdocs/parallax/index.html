@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/fullpage.css">
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="js/fullpage.min.js"></script>
+<title></title>
+</head>
+
+<body>
+  <div id="fullpage">
+<h1 class="fullPage">JSを使わずにパララックス</h1>
+<section id="fullPage">
+<div class="sec1">
+<p>コデマリ</p>
+</div>
+<div class="sec2">
+<p>デイジー</p>
+</div>
+<div class="sec3">
+<p>チューリップ</p>
+</div>
+<div class="sec4">
+<p>スイレン</p>
+</div>
+</section>
+
+<section id="parallax">
+<div class="imgArea area01">
+</div>
+<div class="txtArea">
+<dl class="memo">
+<dt>■ vw</dt>
+<dd>viewport width<br>cssで使用する単位のひとつ。画面の横幅を100として計算する。<br>例えば、10vwと指定した時画面幅が1200pxだったら、指定した要素は120pxになるし、320pxで閲覧すれば32pxになる。基本的には％指定と同じであるが！<br>% の場合は対象となる要素のプロパティが親要素のそれと紐付けられるため、必ずしもビューポートの幅が基準になるとは限らない。<br>例えば親要素の横幅を飛び出して子要素を配置したい<br>とかそういう時に便利<br>vwはスクロールバーを含んだサイズになるので、%で指定した場合より少し大きく表示されるので、横スクもでる。</dd>
+</dl>
+<p><a href="https://dev.classmethod.jp/ria/html5/css-length-viewport/" target="_blank" target="_blank">CSS には vw, vh, vmin, vmax という単位がある</a></p>
+</div>
+<div class="imgArea area02">
+</div>
+<div class="txtArea">
+<dl class="memo">
+<dt>■ vh</dt>
+<dd>viewport height	<br>ビューポートの高さに対する割合。<br>vw同様に画面の高さを100として計算する。<br>横幅同様に、親要素に関係なく、画面幅に対して指定ができるのでSPのときに便利。</dd>
+</dl>
+<p><a href="http://cly7796.net/wp/css/try-using-the-css-of-vw-and-vh/" target="_blank">CSSのvwやvhを使ってみる</a></p>
+</div>
+<div class="imgArea area03">
+</div>
+<div class="txtArea">
+<dl class="memo">
+<dt>■ vmin</dt>
+<dd>Viewport Minimum<br>画面の横幅と高さでで小さいほうを100として計算する。<br>なので、PCだったら基本的に画面幅より、画面の高さのほうが小さいので、画面の高さを100として計算される。<br>SPの場合は、画面幅より画面の高さのほうが大きいので、画面幅を100として計算される。<br>SPを横にした場合は画面幅より画面の高さのほうが小さくなるので、逆に高さを100として計算される。</dd>
+<p><a href="http://cly7796.net/wp/css/try-using-the-css-of-vw-and-vh/" target="_blank">CSSのvwやvhを使ってみる</a></p>
+</dl>
+</div>
+<div class="imgArea area04">
+<h2>★vmax★</h2>
+</div>
+<div class="txtArea">
+<dl class="memo">
+<dt>■ vmax</dt>
+<dd>Viewport Maximum<br>画面の横幅と高さでで大きいほうを100として計算する。<br>なので、PCだったら基本的に画面幅を100として計算される。<br>SPの場合は、画面幅より画面の高さのほうが大きいので、画面の高さを100として計算される。<br>SPを横にした場合はvminと逆のことが起こる。</dd>
+<p><a href="http://cly7796.net/wp/css/try-using-the-css-of-vw-and-vh/" target="_blank">CSSのvwやvhを使ってみる</a></p>
+</dl>
+<p>ともろもろ試してみたが使いこなせ無さそう。ネットではfont-size指定に便利とあった。<br>画面幅によって改行位置がことなったり、見出しから飛び出したり<br>というのを下の「vw.vh」を使うと解決できるらしい。<br>たとえば、font-sizeを8vwに設定すると、viewportの幅1200pxに対しては約96px、<br>400pxに対しては33px、1920pxに対しては154pxになります。</p>
+</div>
+<div class="videoArea area05">
+<video src="../img/mv03.mp4" autoplay loop></video>
+<div class="txt">
+<p><a href="https://parashuto.com/rriver/development/position-sticky" target="_blank">position: stickyの面白い使い方と使用時の注意点</a><br>上の野菜の部分はposition: stickyを試してみた。<br>[background-attachment: fixed]でも同様の動きができるが、<br>iOSでもAndroidでもバグるのでこちらのほうがおすすめ。</p>
+</div>
+</div>
+</section>
+</div>
+
+
+<div class="content">
+<p></p>
+</div>
+<!--#include virtual="../common/inc/footer.html" -->
+</body>
+</html>

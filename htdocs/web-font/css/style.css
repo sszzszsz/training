@@ -1,0 +1,81 @@
+/*------------------------------
+web-font
+------------------------------*/
+@font-face {
+  font-family: 'chogokubosogothic';
+  src: url("../chogokubosogothic/chogokubosogothic_5.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'NagomiGokubosoGothic';
+  src: url("../NagomiGokubosoGothic/NagomiGokubosoGothic-ExtraLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'TanukiMagic';
+  src: url("../TanukiMagic/TanukiMagic.ttf") format("truetype");
+}
+
+.fontSample01 {
+  font-size: 24px;
+}
+
+.fontSample01 h3 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 48px;
+  margin-top: 30px;
+}
+
+.fontSample02 {
+  background: #2d2d2d;
+  color: #ffffff;
+  font-family: 'NagomiGokubosoGothic';
+  font-size: 24px;
+  margin-top: 30px;
+  padding: 7px 15px 15px;
+}
+
+.fontSample02 h3 {
+  font-size: 40px;
+  line-height: 1.5;
+}
+
+.fontSample03 {
+  font-family: 'TanukiMagic';
+  margin-top: 30px;
+}
+
+.fontSample03 blockquote {
+  background: #fff6a4;
+  margin: 30px auto;
+  padding: 10px 20px;
+  text-align: center;
+  width: 760px;
+}
+
+.fontSample03 blockquote h4 {
+  background: #eeeeee;
+  font-size: 40px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.fontSample03 blockquote p {
+  font-size: 24px;
+  line-height: 2;
+}
+
+.fontSample03 blockquote p .strong {
+  font-weight: bold;
+}
+
+.webFontIcon span {
+  padding-right: 5px;
+}
+
+/*--- sp ---*/
+@media screen and (max-width: 768px) {
+  .fontSample03 blockquote {
+    width: 100%;
+  }
+}

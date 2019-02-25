@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="../common/css/base.css">
+<link rel="stylesheet" href="../common/css/common.css">
+<link rel="stylesheet" href="../common/css/parts.css">
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="../common/js/common.js"></script>
+<title>よく使うコンポーネント集（グリッド）</title>
+</head>
+
+<body>
+<h1 class="ttlLv1">よく使うコンポーネント集（グリッド）</h1>
+<section class="wrapper">
+<div class="content">
+<h2>PC:2カラム余白なし（SP：1カラム）</h2>
+<div class="column_2col">
+<div class="col">
+<div class="_dummy"></div>
+</div>
+<div class="col">
+<div class="_dummy"></div>
+</div>
+</div>
+<!-- [/box_2col] -->
+
+<h2>PC:2カラム余白なし（SP：2カラム）</h2>
+<div class="column_2col type2">
+<div class="col">
+<div class="_dummy"></div>
+</div>
+<div class="col">
+<div class="_dummy"></div>
+</div>
+</div>
+<!-- [/box_2col type2] -->
+
+<h2>PC:2カラム（SP：1カラム）</h2>
+<div class="column_2col hasSpace">
+<div class="col">
+<div class="_dummy">2カラム</div>
+</div>
+<div class="col">
+<div class="_dummy">2カラム</div>
+</div>
+</div>
+<!-- [/box_2col] -->
+
+<h2>PC:2カラム（SP：2カラム）</h2>
+<div class="column_2col hasSpace type2">
+<div class="col">
+<div class="_dummy">2カラム</div>
+</div>
+<div class="col">
+<div class="_dummy">2カラム</div>
+</div>
+</div>
+<!-- [/box_2col hasSpace type2] -->
+
+<h2>片方可変の場合（SP：1カラム）</h2>
+<div class="column_2col flex">
+<div class="col">
+<p class="_dummy"></p>
+</div>
+<div class="col">
+ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+</div>
+</div>
+<!-- /column_2col flex -->
+
+<div class="column_2col flex reverse">
+<div class="col">
+<p class="_dummy"></p>
+</div>
+<div class="col">
+ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。ダミーテキストです。
+</div>
+</div>
+<!-- /column_2col flex reverse -->
+
+<h2>PC:3カラム（SP：1カラム）</h2>
+<div class="column_3col">
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+</div>
+<!-- /column_3col -->
+
+<h2>PC:3カラム（SP：2カラム）</h2>
+<div class="column_3col type2">
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">3カラム</div>
+</div><!-- /col -->
+</div>
+<!-- /column_3col type2 -->
+
+<h2>PC：4カラム（SP：1カラム）</h2>
+<div class="column_4col">
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+</div>
+<!-- /column_4col -->
+
+<h2>PC：4カラム（SP：2カラム）</h2>
+<div class="column_4col type2">
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+<div class="col">
+<div class="_dummy">4カラム</div>
+</div><!-- /col -->
+</div>
+<!-- /column_4col -->
+
+<h2 class="ttlLv2">表組</h2>
+<h3 class="ttlLv2 line">行がタイトル</h3>
+<h4 class="ttlLv3">SP:2カラム</h4>
+<div class="tableTypeA_01">
+<table>
+<tbody>
+<tr>
+<th>行タイトル</th>
+<td>テキストテキスト</td>
+</tr>
+<tr>
+<th>行タイトル</th>
+<td>テキスト</td>
+</tr>
+<tr>
+<th>行タイトル</th>
+<td>テキスト</td>
+</tr>
+<tr>
+<th>行タイトル</th>
+<td>テキスト</td>
+</tr>
+</tbody>
+</table>
+</div><!-- /tableTypeA_01 -->
+
+<h4 class="ttlLv3">SP:1カラム</h4>
+<div class="tableTypeA_02">
+<table>
+<tbody class="tableTypeB_body">
+<tr>
+<th>行タイトル</th>
+<td>テキスト</td>
+</tr>
+<tr>
+<th>行タイトル</th>
+<td>テキスト</td>
+</tr>
+<tr>
+<th>行タイトル</th>
+<td>テキスト</td>
+</tr>
+<tr>
+<th>行タイトル</th>
+<td>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</td>
+</tr>
+</tbody>
+</table>
+</div><!-- /tableTypeA_02 -->
+
+<h3 class="ttlLv2 line">行がタイトル</h3>
+<div class="tableTypeB_01">
+<table>
+<thead>
+<tr>
+<th>表組み見出し</th>
+<th>表組み見出し</th>
+<th>表組み見出し</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+</tr>
+<tr>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+</tr>
+<tr>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+</tr>
+</tbody>
+</table>
+</div><!-- /tableTypeB_01 -->
+
+<h3 class="ttlLv2 line">行列がタイトル</h3>
+<div class="tableTypeC_01">
+<table>
+<thead>
+<tr>
+<th class="blank"></th>
+<th>表組み見出し</th>
+<th>表組み見出し</th>
+<th>表組み見出し</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>表組み見出し2</th>
+<td>表組みテキスト表組みテキスト</td>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+</tr>
+<tr>
+<th>表組み見出し2</th>
+<td>表組みテキスト表組みテキスト表組みテキスト表組みテキスト</td>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+</tr>
+<tr>
+<th>表組み見出し2</th>
+<td>表組みテキスト表組みテキスト表組みテキスト表組みテキスト</td>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+</tr>
+</tbody>
+</table>
+</div><!-- /tableTypeC_01 -->
+
+<h3 class="ttlLv2 line">行列がタイトル（SP時一文字幅）</h3>
+<div class="tableTypeC_02">
+<table>
+<thead>
+<tr>
+<td></td>
+<th>表組み見出し</th>
+<th>表組み見出し</th>
+<th>表組み見出し</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>表組み見出し2</th>
+<td>表組みテキスト表組みテキスト</td>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+</tr>
+<tr>
+<th>表組み見出し2</th>
+<td>表組みテキスト表組みテキスト表組みテキスト表組みテキスト</td>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+</tr>
+<tr>
+<th>表組み見出し2</th>
+<td>表組みテキスト表組みテキスト表組みテキスト表組みテキスト</td>
+<td>表組みテキスト</td>
+<td>表組みテキスト</td>
+</tr>
+</tbody>
+</table>
+</div><!-- /tableTypeC_01 -->
+
+
+</div><!-- /content -->
+<!--#include virtual="../common/inc/footer.html" -->
+</section>
+</body>
+
+</html>
