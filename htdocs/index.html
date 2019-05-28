@@ -1,84 +1,88 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta property="og:url" content=""><!-- 絶対パスでページのURLを記述 ※index.htmlはトリ-->
-<meta property="og:type" content="website"><!-- topはwebsite、その他はarticle -->
-<meta property="og:title" content=""><!-- titleと同じものを記述 -->
-<meta property="og:site_name" content=""><!-- 全ページ同じものを記述 （例）○○株式会社 など -->
-<meta property="og:description" content=""><!-- descriptionと同じものを記述 -->
-<meta property="og:image" content=""><!-- 絶対パスで記述、かつ全ページ共通で記述 -->
-<meta property="og:locale" content="ja_JP"><!-- 日本語ならja_JP、英語ならen_US -->
-<link rel="icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/apple_touch_icon.png">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<link rel="stylesheet" href="common/css/base.css">
-<link rel="stylesheet" href="common/css/component.css">
-<link rel="stylesheet" href="common/css/common.css">
-<script type="text/javascript" src="common/js/jquery-3.3.1.min.js"></script>
-<title>備忘録とか調べたこと</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta property="og:url" content=""><!-- 絶対パスでページのURLを記述 ※index.htmlはトリ-->
+  <meta property="og:type" content="website"><!-- topはwebsite、その他はarticle -->
+  <meta property="og:title" content=""><!-- titleと同じものを記述 -->
+  <meta property="og:site_name" content=""><!-- 全ページ同じものを記述 （例）○○株式会社 など -->
+  <meta property="og:description" content=""><!-- descriptionと同じものを記述 -->
+  <meta property="og:image" content=""><!-- 絶対パスで記述、かつ全ページ共通で記述 -->
+  <meta property="og:locale" content="ja_JP"><!-- 日本語ならja_JP、英語ならen_US -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple_touch_icon.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="common/css/base.css">
+  <link rel="stylesheet" href="common/css/component.css">
+  <link rel="stylesheet" href="common/css/common.css">
+  <script type="text/javascript" src="common/js/jquery-3.3.1.min.js"></script>
+  <title>備忘録とか調べたこと</title>
 
-<script>
-//簡易絞り込み
-  $(function() {
-    var filterItem = $(".filterList").children();
-    var linkItem = $(".linkList").children()
-    var linkNum = linkItem.length;
+  <script>
+    //簡易絞り込み
+    $(function() {
+      var filterItem = $(".filterList").children();
+      var linkItem = $(".linkList").children()
+      var linkNum = linkItem.length;
 
-    filterItem.click(function() {
-      var filterName = $(this).attr("id");
-      if (filterName == "all") {
-        linkItem.css("display", "block");
-      } else {
+      filterItem.click(function() {
+        var filterName = $(this).attr("id");
+        if (filterName == "all") {
+          linkItem.css("display", "block");
+        } else {
 
-        for (var i = 0; i < linkNum; i++) {
-          var dataName = linkItem.eq(i).data("category");
-          if (filterName == dataName) {
-            linkItem.eq(i).css("display", "block");
-          } else {
-            linkItem.eq(i).css("display", "none");
+          for (var i = 0; i < linkNum; i++) {
+            var dataName = linkItem.eq(i).data("category");
+            if (filterName == dataName) {
+              linkItem.eq(i).css("display", "block");
+            } else {
+              linkItem.eq(i).css("display", "none");
+            }
           }
         }
-      }
-    })
-  });
-</script>
+      })
+    });
+  </script>
 </head>
-<body>
-<h1 class="ttlLv1">備忘録とか調べたこと</h1>
-<div class="wrapper">
-<ul class="filterList">
-<li id="html">HTML</li>
-<li id="css">CSS</li>
-<li id="js">JS</li>
-<li id="all">ALL</li>
-</ul>
 
-<ul class="linkList alC">
-<li data-category="js"><a href="./common-js/index.html">JS:営業部と三瓶さんの汎用js</a></li>
-<li data-category="html"><a href="./gulpfile/index.html">gulpfile.jsについて</a></li>
-<li data-category="html"><a href="./npm/index.html">gulpインストール方法</a></li>
-<li data-category="js"><a href="./chartjs/line.html">JS:Chart.js（折れ線グラフ編）</a></li>
-<li data-category="js"><a href="./chartjs/index.html">JS:Chart.js（ドーナツグラフ編）</a></li>
-<li data-category="js"><a href="./slick/index.html">JS:slick.js</a></li>
-<li data-category="css"><a href="./grid/index.html">CSS:gridについて</a></li>
-<li data-category="css"><a href="./filter/index.html">CSS:filterについて</a></li>
-<li data-category="css"><a href="./web-font/index.html">CSS:webフォントについて</a></li>
-<li data-category="html"><a href="./svg/index.html">HTML:SVG</a></li>
-<li data-category="js"><a href="./colorbox/index.html">JS:colorbox</a></li>
-<li data-category="js"><a href="./fullpage/index.html">JS:fullpage.jsについて</a></li>
-<li data-category="css"><a href="./parallax/index.html">CSS:parallaxについて</a></li>
-<li data-category="js"><a href="./syntaxhighlighter/index.html">JS:SyntaxHighlighter</a></li>
-<li data-category="html"><a href="./git/index.html">Gitについて</a></li>
-<li data-category="html"><a href="./component/index.html">HTML:よく使うコンポーネント集（グリッドでない）</a></li>
-<li data-category="html"><a href="./component-glid/index.html">HTML:よく使うコンポーネント集（グリッド）</a></li>
-<li data-category="css"><a href="./flex/index.html">CSS:flex-boxについて</a></li>
-<li data-category="html"><a href="./form/index.html">HTML:form</a></li>
-</ul>
-</div>
+<body>
+  <h1 class="ttlLv1">備忘録とか調べたこと</h1>
+  <div class="wrapper">
+    <ul class="filterList">
+      <li id="html">HTML</li>
+      <li id="css">CSS</li>
+      <li id="js">JS</li>
+      <li id="all">ALL</li>
+    </ul>
+
+    <ul class="linkList alC">
+      <li data-category="js"><a href="./common-js/index.html">JS:営業部と三瓶さんの汎用js</a></li>
+      <li data-category="html"><a href="./gulpfile/index.html">gulpfile.jsについて</a></li>
+      <li data-category="html"><a href="./npm/index.html">gulpインストール方法</a></li>
+      <li data-category="js"><a href="./chartjs/line.html">JS:Chart.js（折れ線グラフ編）</a></li>
+      <li data-category="js"><a href="./chartjs/index.html">JS:Chart.js（ドーナツグラフ編）</a></li>
+      <li data-category="js"><a href="./slick/index.html">JS:slick.js</a></li>
+      <li data-category="css"><a href="./grid/index.html">CSS:gridについて</a></li>
+      <li data-category="css"><a href="./filter/index.html">CSS:filterについて</a></li>
+      <li data-category="css"><a href="./web-font/index.html">CSS:webフォントについて</a></li>
+      <li data-category="html"><a href="./svg/index.html">HTML:SVG</a></li>
+      <li data-category="js"><a href="./colorbox/index.html">JS:colorbox</a></li>
+      <li data-category="js"><a href="./fullpage/index.html">JS:fullpage.jsについて</a></li>
+      <li data-category="css"><a href="./parallax/index.html">CSS:parallaxについて</a></li>
+      <li data-category="js"><a href="./syntaxhighlighter/index.html">JS:SyntaxHighlighter</a></li>
+      <li data-category="html"><a href="./git/index.html">Gitについて</a></li>
+      <li data-category="html"><a href="./component/index.html">HTML:よく使うコンポーネント集（グリッドでない）</a></li>
+      <li data-category="html"><a href="./component-glid/index.html">HTML:よく使うコンポーネント集（グリッド）</a></li>
+      <li data-category="css"><a href="./flex/index.html">CSS:flex-boxについて</a></li>
+      <li data-category="html"><a href="./form/index.html">HTML:form</a></li>
+    </ul>
+  </div>
 </body>
+
 </html>

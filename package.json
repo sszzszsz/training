@@ -21,6 +21,8 @@
     "gulp-clean-css": "^3.10.0",
     "gulp-connect": "^5.6.1",
     "gulp-csscomb": "^3.0.8",
+    "gulp-convert-encoding": "^2.0.1",
+    "gulp-cr-lf-replace": "0.0.4",
     "gulp-imagemin": "^4.1.0",
     "gulp-imageoptim": "^1.0.9",
     "gulp-notify": "^3.2.0",
@@ -31,6 +33,7 @@
     "imagemin-mozjpeg": "^7.0.0",
     "imagemin-pngquant": "^6.0.0",
     "webpack": "^4.26.0",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "run-sequence": "^2.2.1"
   }
 }

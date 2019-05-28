@@ -1,0 +1,558 @@
+section + section {
+  padding-top: 60px;
+}
+
+/* header ------------------------------*/
+.gHeaderWrapper {
+  position: static;
+  min-width: 1000px;
+  width: 100%;
+  background: #fffefc;
+  border-bottom: 1px solid #ecebeb;
+}
+
+.subHeader {
+  padding: 15px 0 10px;
+  top: 0;
+  z-index: 9999;
+}
+
+.headerInr {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.subHeader {
+  position: relative;
+}
+
+.subHeader .iconList {
+  text-align: right;
+}
+
+.subHeader .iconList li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-left: 1rem;
+}
+
+.subHeader .iconList li a {
+  display: inline-block;
+}
+
+.subHeader .iconList li a:hover {
+  text-decoration: underline;
+}
+
+.subHeader .iconList li a span {
+  padding-right: 5px;
+  color: #333;
+  font-size: 20px;
+  font-size: 2rem;
+}
+
+.mainHeader .headerInr {
+  display: table;
+}
+
+.mainHeader .headerInr > .headerItem {
+  display: table-cell;
+}
+
+.mainHeader .headerInr > .headerItem:nth-child(2) {
+  width: 400px;
+}
+
+.mainHeader.hFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 1000;
+  background: #fffefc;
+}
+
+.mainHeader.hFixed .headerInr {
+  width: 1000px;
+}
+
+.mainHeader.hFixed .headeMenu .dropMenu {
+  top: 58px;
+}
+
+.mainHeader .headeMenu {
+  letter-spacing: -0.4em;
+}
+
+.mainHeader .headeMenu .menuItem {
+  display: inline-block;
+  vertical-align: middle;
+  letter-spacing: normal;
+  padding-right: 30px;
+}
+
+.mainHeader .headeMenu .menuItem a {
+  position: relative;
+  display: inline-block;
+  padding: 20px 0;
+  color: #333333;
+}
+
+.mainHeader .headeMenu .menuItem a:hover {
+  border-bottom: none;
+}
+
+.mainHeader .headerBtn {
+  text-align: right;
+}
+
+.mainHeader .headerBtn li {
+  display: inline-block;
+}
+
+.mainHeader .headerBtn li a {
+  display: inline-block;
+  width: 147px;
+  vertical-align: middle;
+  letter-spacing: normal;
+  padding: 5px 0;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.2s linear;
+}
+
+.mainHeader .headerBtn .login a {
+  background: #fdb44a;
+  margin-right: 10px;
+}
+
+.mainHeader .headerBtn .login a:hover {
+  background: #ffd394;
+}
+
+.mainHeader .headerBtn .logout a {
+  background: #a7a7a7;
+}
+
+.mainHeader .headerBtn .logout a:hover {
+  background: #d3d3d3;
+}
+
+.mainHeader .spMenuArea {
+  display: none;
+}
+
+.mainHeader .spIcon {
+  display: none;
+}
+
+.mainHeader .headeMenu .dropMenu {
+  display: none;
+  position: absolute;
+  width: 100%;
+  min-width: 1000px;
+  padding: 40px;
+  background: #e8e3da;
+  top: 110px;
+  left: 0;
+  z-index: 2000;
+  text-align: center;
+}
+
+.mainHeader .headeMenu .dropMenuList {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+
+.mainHeader .headeMenu .dropMenuItem {
+  display: block;
+  margin-right: 0;
+}
+
+.mainHeader .headeMenu .dropMenuItem a {
+  display: block;
+  position: relative;
+  padding: 5px 40px 5px 20px;
+  color: #333;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+
+.mainHeader .headeMenu .dropMenuItem a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.mainHeader .headeMenu .dropMenuItem a:hover {
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+.mainHeader .headeMenu .dropMenuList:last-child a {
+  padding-right: 0;
+}
+
+/* tab ------------------------------*/
+.tab {
+  letter-spacing: -4px;
+  letter-spacing: -0.4rem;
+}
+
+.tab li {
+  display: inline-block;
+  letter-spacing: normal;
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: 1px solid #561e00;
+  border-bottom: none;
+  cursor: pointer;
+  background: #fffefc;
+  -wbkit-transition: background 0.2s;
+  transition: background 0.2s;
+  border-radius: 5px 5px 0 0;
+}
+
+.tab li:hover {
+  background: #fffbf4;
+  -wbkit-transition: background 0.2s;
+  transition: background 0.2s;
+}
+
+.tab li.current {
+  background: #ffede3;
+}
+
+.tabContItem {
+  padding: 20px;
+  border: 1px solid #561e00;
+}
+
+/* accordion ------------------------------*/
+.accordionBox {
+  border: 1px solid #d2d2d2;
+  color: #ff6613;
+}
+
+.accordionBox .accordionBtn {
+  position: relative;
+  padding: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.accordionBox .accordionBtn:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 10px;
+  margin: auto;
+  width: 0;
+  height: 0;
+  margin-right: 10px;
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent #ff601c;
+  -webkit-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+}
+
+.accordionBox .accordionBtn.open:after {
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+.accordionBox .accordionCont {
+  display: none;
+  padding: 10px;
+  color: #333;
+}
+
+/* animationFadeIn ------------------------------*/
+.hideme {
+  transition: all .5s linear;
+  opacity: 0;
+}
+
+.active {
+  transition: all .5s linear;
+  opacity: 1;
+}
+
+@-webkit-keyframes animationFadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(70px);
+    transform: translateY(70px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes animationFadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(70px);
+    transform: translateY(70px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.animationFadeIn {
+  opacity: 0;
+}
+
+.animationFadeIn.active {
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s;
+  -webkit-animation-name: animationFadeIn;
+  animation-name: animationFadeIn;
+}
+
+#fadeIn ._dummy {
+  width: 100%;
+  margin: 40px 0;
+  padding: 200px 0;
+  background: #d2cecc;
+}
+
+#gfooter {
+  padding: 20px 0;
+  background: #564a44;
+}
+
+.topPage {
+  position: relative;
+  bottom: 0;
+}
+
+.topPage a {
+  position: absolute;
+  bottom: -20px;
+}
+
+.topPage.topFix {
+  bottom: 0;
+  position: fixed;
+}
+
+.topPage.topFix a {
+  bottom: 20px;
+}
+
+/* sort ------------------------------*/
+.sortArea {
+  overflow: hidden;
+}
+
+.sortBtn {
+  letter-spacing: -0.4em;
+}
+
+.sortBtn li {
+  display: inline-block;
+  letter-spacing: normal;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid #561e00;
+  cursor: pointer;
+}
+
+.sortBtn li.current {
+  background: #d2cecc;
+}
+
+.sortList {
+  margin-top: 40px;
+  letter-spacing: -0.4em;
+}
+
+.sortList li {
+  display: inline-block;
+  letter-spacing: normal;
+  width: 480px;
+  margin-right: 20px;
+  background: #d2cecc;
+  padding: 50px 0;
+}
+
+/*------------------------------
+ sp 
+------------------------------*/
+@media screen and (max-width: 768px) {
+  /* header ------------------------------*/
+  body.spMenuOpend {
+    overflow: hidden;
+  }
+  .gHeaderWrapper {
+    width: 100%;
+    min-width: 0;
+    position: static;
+  }
+  .headerInr {
+    width: 100%;
+    padding: 0 10px;
+  }
+  /*----- mainHeader -----*/
+  .mainHeader .headerInr {
+    display: block;
+    padding: 5px 10px;
+  }
+  body.spMenuOpend .mainHeader.hFixed {
+    height: 100%;
+  }
+  .mainHeader.hFixed {
+    height: auto;
+  }
+  .mainHeader.hFixed .headerInr {
+    width: 100%;
+  }
+  .mainHeader .headerInr > .headerItem {
+    display: inline-block;
+    vertical-align: middle;
+    width: 28%;
+  }
+  .mainHeader .headerInr > .headerItem:nth-child(2) {
+    display: none;
+  }
+  .mainHeader .headeMenu .menuItem {
+    display: none;
+  }
+  .mainHeader .headeMenu li.logo {
+    display: inline-block;
+    width: 80px;
+    margin-right: 0;
+  }
+  .mainHeader .headeMenu li.logo img {
+    width: 100%;
+    height: auto;
+  }
+  .mainHeader .headerBtn {
+    display: table;
+    width: 100%;
+    padding: 10px;
+  }
+  .mainHeader .headerBtn li {
+    width: 48%;
+    display: table-cell;
+  }
+  .mainHeader .headerBtn li a {
+    width: 100%;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+  }
+  /*----- SP -----*/
+  .mainHeader .spIcon {
+    display: inline-block;
+    width: 28px;
+    height: 24px;
+    cursor: pointer;
+    float: right;
+    position: relative;
+  }
+  .mainHeader .spIcon span {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    border-top: 2px solid #333;
+    vertical-align: middle;
+    position: absolute;
+    transition: all 0.4s;
+  }
+  .mainHeader .spIcon span:nth-child(1) {
+    top: 0;
+  }
+  .mainHeader .spIcon span:nth-child(2) {
+    top: 11px;
+  }
+  .mainHeader .spIcon span:nth-child(3) {
+    bottom: 0;
+  }
+  .mainHeader .spIcon.close span:nth-child(1) {
+    -webkit-transform: translateY(10px) rotate(-45deg);
+    transform: translateY(10px) rotate(-45deg);
+  }
+  .mainHeader .spIcon.close span:nth-child(2) {
+    opacity: 0;
+  }
+  .mainHeader .spIcon.close span:nth-child(3) {
+    -webkit-transform: translateY(-20px) rotate(45deg);
+    transform: translateY(-12px) rotate(45deg);
+  }
+  .mainHeader .spMenuArea {
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: #e8e3da;
+    position: absolute;
+    z-index: 1000;
+    padding-bottom: 100px;
+  }
+  .mainHeader .spMenuArea a {
+    display: block;
+    color: #333;
+  }
+  .spLinkMenu .headerBtn .btnItem {
+    display: table-cell;
+    width: 48%;
+    margin: 10px auto;
+  }
+  .spLinkMenu .headerBtn .btnItem a {
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+  }
+  .spLinkMenu .menuItem .accordionBtn {
+    border-top: 1px solid #333;
+    padding: 11px 24px 12px 10px;
+    font-weight: bold;
+  }
+  .spLinkMenu .menuItem .accordionMenu {
+    display: none;
+  }
+  .spLinkMenu .menuItem .accordionMenu ul {
+    height: 100%;
+  }
+  .spLinkMenu .menuItem .accordionMenu .spMenuItem a {
+    position: relative;
+    padding: 11px 24px 12px 10px;
+    border-top: 1px solid #888;
+    font-size: 1.4rem;
+    color: #888;
+  }
+  .sortList li {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

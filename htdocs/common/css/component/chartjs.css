@@ -1,0 +1,80 @@
+/*------------------------------
+Chart
+------------------------------*/
+.wrapper .graphArea {
+  margin-top: 35px;
+  padding-bottom: 90px;
+  text-align: center;
+}
+
+.graphArea .chart-container {
+  display: inline-block;
+  vertical-align: middle;
+  width: 700px;
+}
+
+.wrapper .graphArea div {
+  display: inline-block;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.wrapper .graphArea div .ariaList {
+  display: inline-block;
+}
+
+.wrapper .graphArea div .ariaList li {
+  margin-bottom: 7px;
+  text-align: left;
+}
+
+.wrapper .graphArea div .ariaList li:before {
+  background: #000000;
+  content: '';
+  display: inline-block;
+  height: 29px;
+  margin-right: 1em;
+  vertical-align: middle;
+  width: 31px;
+}
+
+.wrapper .graphArea div .ariaList li p {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.wrapper .graphArea div .ariaList li.aria01:before {
+  background: #e11113;
+}
+
+.wrapper .graphArea div .ariaList li.aria02:before {
+  background: #3b7ab1;
+}
+
+.wrapper .graphArea div .ariaList li.aria03:before {
+  background: #f4c340;
+}
+
+.wrapper .graphArea div .ariaList li.aria04:before {
+  background: #a2519a;
+}
+
+.wrapper .graphArea div .ariaList li.aria05:before {
+  background: #12b285;
+}
+
+.wrapper .graphArea div .ariaList li.aria06:before {
+  background: #eb5e23;
+}
+
+.wrapper .graphArea div .ariaList li.aria07:before {
+  background: #6d6db2;
+}
+
+.wrapper .graphArea div .ariaList li.aria08:before {
+  background: #57a8de;
+}
+
+.wrapper .graphArea div .ariaList li.aria09:before {
+  background: #66b72e;
+}

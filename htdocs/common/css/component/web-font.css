@@ -1,0 +1,110 @@
+/*------------------------------
+webFont
+------------------------------*/
+@font-face {
+  font-family: 'NotoSerifCJKjp-Black';
+  src: url("../font/NotoSerifCJKjp-Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NotoSerifCJKjp-Bold';
+  src: url("../font/NotoSerifCJKjp-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NotoSerifCJKjp-ExtraLight';
+  src: url("../font/NotoSerifCJKjp-ExtraLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NotoSerifCJKjp-Light';
+  src: url("../font/NotoSerifCJKjp-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NotoSerifCJKjp-Medium';
+  src: url("../font/NotoSerifCJKjp-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NotoSerifCJKjp-Regular';
+  src: url("../font/NotoSerifCJKjp-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NotoSerifCJKjp-SemiBold';
+  src: url("../font/NotoSerifCJKjp-SemiBold.otf") format("opentype");
+}
+
+.fontSample01 {
+  font-size: 24px;
+}
+
+.fontSample01 h3 {
+  margin-top: 30px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 48px;
+}
+
+.fontSample02 {
+  margin-top: 30px;
+  font-family: 'NagomiGokubosoGothic';
+  font-size: 20px;
+  color: #000;
+}
+
+.fontSample02 h3 {
+  line-height: 1.5;
+  font-size: 40px;
+}
+
+.fontSample03 {
+  margin-top: 30px;
+  font-family: 'Noto Sans Japanese';
+  font-size: 16px;
+}
+
+.fontSample04 {
+  margin-top: 40px;
+  font-family: 'Noto Sans Japanese';
+  font-size: 16px;
+}
+
+.fontSample04 .fw100 {
+  font-weight: 100;
+}
+
+.fontSample04 .fw200 {
+  font-weight: 200;
+}
+
+.fontSample04 .fw300 {
+  font-weight: 300;
+}
+
+.fontSample04 .fw400 {
+  font-weight: 400;
+}
+
+.fontSample04 .fw500 {
+  font-weight: 500;
+}
+
+.fontSample04 .fw700 {
+  font-weight: 700;
+}
+
+.fontSample04 .fw900 {
+  font-weight: 900;
+}
+
+.webFontIcon span {
+  padding-right: 5px;
+}
+
+/*--- sp ---*/
+@media screen and (max-width: 768px) {
+  .fontSample03 blockquote {
+    width: 100%;
+  }
+}

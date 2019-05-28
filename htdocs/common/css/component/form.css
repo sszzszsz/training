@@ -1,0 +1,406 @@
+@charset "UTF-8";
+.memoBox {
+  border: 1px solid #a0a0a0;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/*------------------------------
+form
+------------------------------*/
+.formArea .noteLis {
+  margin-bottom: 34px;
+}
+
+.formArea .noteList li {
+  font-size: 14px;
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+.formArea .inputBox {
+  margin-bottom: 16px;
+}
+
+.errorTxt {
+  border: none;
+  color: #cc0000;
+  margin-top: 0px;
+}
+
+.errorTxt li:before {
+  content: "\0030fb";
+  display: inline;
+}
+
+.wrapper div ul.noteList {
+  border: none;
+  display: block;
+}
+
+.wrapper .formArea .inputBox div {
+  margin: 0;
+}
+
+/*--- fileUp ---*/
+.fileUpList li .fileUp {
+  margin: 24px 0;
+}
+
+.fileUpList li .fileUp label {
+  display: inline-block;
+  width: 200px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background: #cc0000;
+  padding: 10px;
+  transition: all 0.1s 0s ease;
+  cursor: pointer;
+}
+
+.fileUpList li .fileUp label:hover {
+  opacity: 0.7;
+}
+
+.fileUpList li .fileUp input {
+  display: block;
+  position: absolute;
+  height: 0;
+  left: -9999px;
+}
+
+/*--- inputBox ---*/
+.inputBox.box2Col {
+  display: table;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.inputBox.box2Col dt, .inputBox.box2Col dd {
+  display: table-cell;
+  position: relative;
+}
+
+.inputBox.box2Col dt {
+  width: 20%;
+}
+
+.inputBox.box2Col .errorBalloon {
+  position: absolute;
+  display: inline-block;
+  top: -44px;
+  margin: 0 auto;
+  padding: 5px 10px;
+  background: #eee;
+  border-radius: 5px;
+}
+
+.inputBox.box2Col .errorBalloon:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 5px 0 5px;
+  border-color: #eee transparent transparent transparent;
+}
+
+/*--- width-adjustment ---*/
+input.postCodeS {
+  width: 46px;
+}
+
+input.postCodeM {
+  width: 60px;
+}
+
+input.inputS {
+  width: 129px;
+}
+
+input.inputL {
+  width: 605px;
+}
+
+input.inputM {
+  width: 330px;
+}
+
+.selectBox select {
+  width: 188px;
+}
+
+/*--- selectBox-style ---*/
+.selectBox {
+  position: relative;
+  display: inline-block;
+  margin-top: 0;
+}
+
+.selectBox:after {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 0;
+  background: #343434;
+  color: #ffffff;
+  content: '▼';
+  display: inline-block;
+  pointer-events: none;
+  text-align: center;
+  width: 30px;
+}
+
+.formArea .inputBox input, .formArea .inputBox select {
+  border: 1px solid #dddddd;
+  padding: 0 5px;
+}
+
+/*--- circleCheck-style ---*/
+.inputBox .circleCheck {
+  margin-top: 0;
+}
+
+.formArea .inputBox .circleCheck label {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.formArea .inputBox .circleCheck label input[type="radio"], .formArea .inputBox .circleCheck label input[type="checkbox"] {
+  padding: 0;
+  border: none;
+  display: none;
+}
+
+.circleCheck label span {
+  position: relative;
+  display: inline-block;
+  padding-left: 24px;
+}
+
+.circleCheck label span:before {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #343434;
+  border-radius: 50%;
+  left: 0px;
+  top: 3px;
+  content: '';
+  z-index: 3;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.circleCheck label input[type="radio"]:checked + span:before, .circleCheck label input[type="checkbox"]:checked + span:before {
+  border: 6px solid #343434;
+}
+
+/*--- squareCheck-style ---*/
+.inputBox .squareCheck {
+  margin-top: 0;
+}
+
+.formArea .inputBox .squareCheck label {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.formArea .inputBox .squareCheck label input[type="radio"], .formArea .inputBox .squareCheck label input[type="checkbox"] {
+  padding: 0;
+  border: none;
+  display: none;
+}
+
+.squareCheck label span {
+  position: relative;
+  display: inline-block;
+  padding-left: 24px;
+}
+
+.squareCheck label span:before {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #343434;
+  left: 0px;
+  top: 2px;
+  content: '';
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.squareCheck label input[type="radio"] + span:after, .squareCheck label input[type="checkbox"] + span:after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 22px;
+  position: absolute;
+  top: -5px;
+  left: 11px;
+  z-index: 2;
+  border: 2px solid #cc0000;
+  border-width: 0 5px 3px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.squareCheck label input[type="radio"]:checked + span:after, .squareCheck label input[type="checkbox"]:checked + span:after {
+  opacity: 1;
+  pointer-events: none;
+}
+
+/*--- textarea-style ---*/
+textarea {
+  width: 606px;
+  height: 90px;
+  padding: 0 5px;
+  border: 1px solid #dddddd;
+}
+
+/*--- checkBox-style ---*/
+.agreementBox label {
+  position: relative;
+  display: block;
+}
+
+.agreementBox label input[type='checkbox'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.agreementBox label span {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 30px;
+}
+
+.agreementBox label input[type='checkbox'] + span:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid #343434;
+  border-radius: 5px;
+  content: '';
+  cursor: pointer;
+  display: inline-block;
+  height: 24px;
+  overflow: hidden;
+  pointer-events: none;
+  width: 24px;
+  z-index: 1;
+}
+
+.agreementBox label input[type='checkbox'] + span:after {
+  position: absolute;
+  top: -5px;
+  left: 11px;
+  border: 2px solid #cc0000;
+  border-width: 0 5px 3px 0;
+  content: '';
+  display: inline-block;
+  height: 22px;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 12px;
+  z-index: 2;
+}
+
+.agreementBox label input[type='checkbox']:checked + span:after {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.sendingBtn {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.sendingBtn input {
+  background: #cc0000;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  padding: 5px 12px;
+  width: 160px;
+  border-radius: 5px;
+}
+
+.sendingBtn input:hover {
+  opacity: 0.7;
+}
+
+/*--- test ---*/
+.inputBox.test input + .val .valid,
+.inputBox.test input + .val .invalid {
+  display: none;
+}
+
+.inputBox.test input:focus:invalid + .val .invalid {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: #cc0000;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.inputBox.test input:focus:invalid + .val .invalid:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: -10px;
+  left: 0;
+  border-style: solid;
+  border-width: 0 5px 10px 5px;
+  border-color: transparent transparent #cc0000 transparent;
+}
+
+/*--- sp ---*/
+@media screen and (max-width: 768px) {
+  .content .memo {
+    display: block;
+  }
+  input.inputL {
+    width: 100%;
+  }
+  input.inputM {
+    width: 56%;
+  }
+  textarea {
+    width: 100%;
+  }
+  .sendingBtn input {
+    font-size: 16px;
+  }
+  .inputBox.box2Col {
+    margin-top: 84px;
+  }
+  .inputBox.box2Col dt {
+    width: 40%;
+  }
+  .inputBox.box2Col .errorBalloon {
+    top: -64px;
+  }
+}
